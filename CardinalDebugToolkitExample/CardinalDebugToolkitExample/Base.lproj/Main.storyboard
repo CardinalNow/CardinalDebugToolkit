@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TZb-aN-Lgk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CardinalDebugToolkitExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-a3-eBf">
+                                <rect key="frame" x="115" y="253.5" width="144" height="160"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4np-zV-9eu">
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                                        <state key="normal" title="Present Debug Panel"/>
+                                        <connections>
+                                            <action selector="presentDebugPanelTapped:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Se3-ko-TZe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ond-1i-WnY">
+                                        <rect key="frame" x="0.0" y="130" width="144" height="30"/>
+                                        <state key="normal" title="Push Debug Panel"/>
+                                        <connections>
+                                            <action selector="pushDebugPanelTapped:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="IYz-GT-QA0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ne0-a3-eBf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5rq-rh-3Ak"/>
+                            <constraint firstItem="ne0-a3-eBf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="irN-8g-CLV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mgh-hW-Vao"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="124"/>
+        </scene>
+        <!--Example View Controller-->
+        <scene sceneID="OSK-zT-iH2">
+            <objects>
+                <viewController storyboardIdentifier="exampleViewController" id="KX2-gc-RPU" customClass="ExampleViewController" customModule="CardinalDebugToolkitExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C3k-bA-DFR"/>
+                        <viewControllerLayoutGuide type="bottom" id="jzc-tx-bO2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G0n-vu-zBC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom view controller that can implement debug actions that go beyond the built-in capabilities of CardinalDebugToolkit." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFK-Sn-sGs">
+                                <rect key="frame" x="16" y="323" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CFK-Sn-sGs" firstAttribute="centerY" secondItem="G0n-vu-zBC" secondAttribute="centerY" id="Uac-LN-SjJ"/>
+                            <constraint firstItem="CFK-Sn-sGs" firstAttribute="leading" secondItem="G0n-vu-zBC" secondAttribute="leadingMargin" id="X2i-XZ-qWP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CFK-Sn-sGs" secondAttribute="trailing" id="za1-Ih-4K2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqX-W1-aBl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-20" y="817"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KJp-CW-aUJ">
+            <objects>
+                <navigationController id="TZb-aN-Lgk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ry3-IL-GgF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Jjz-oQ-ezV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8zi-B4-0jh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-791" y="124"/>
+        </scene>
+    </scenes>
+</document>

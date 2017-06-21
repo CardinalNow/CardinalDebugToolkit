@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87BE4EAAEC9F8FA6238C1389 /* Pods_CardinalDebugToolkitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FE4745692C5429B65896F1 /* Pods_CardinalDebugToolkitExample.framework */; };
+		BE28BA391F1FFBAF0082F770 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28BA381F1FFBAF0082F770 /* ExampleViewController.swift */; };
+		BE49E8AB1EF991BB00210F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE49E8AA1EF991BB00210F44 /* AppDelegate.swift */; };
+		BE49E8AD1EF991BB00210F44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE49E8AC1EF991BB00210F44 /* ViewController.swift */; };
+		BE49E8B01EF991BB00210F44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE49E8AE1EF991BB00210F44 /* Main.storyboard */; };
+		BE49E8B21EF991BB00210F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE49E8B11EF991BB00210F44 /* Assets.xcassets */; };
+		BE49E8B51EF991BB00210F44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE49E8B31EF991BB00210F44 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B7DDC2AED1BA742A0984031 /* Pods-CardinalDebugToolkitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalDebugToolkitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardinalDebugToolkitExample/Pods-CardinalDebugToolkitExample.release.xcconfig"; sourceTree = "<group>"; };
+		BE28BA381F1FFBAF0082F770 /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		BE49E8A71EF991BB00210F44 /* CardinalDebugToolkitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardinalDebugToolkitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE49E8AA1EF991BB00210F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE49E8AC1EF991BB00210F44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BE49E8AF1EF991BB00210F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE49E8B11EF991BB00210F44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE49E8B41EF991BB00210F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BE49E8B61EF991BB00210F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6FE4745692C5429B65896F1 /* Pods_CardinalDebugToolkitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardinalDebugToolkitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFDF4DD8728C6985E7A66A50 /* Pods-CardinalDebugToolkitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalDebugToolkitExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardinalDebugToolkitExample/Pods-CardinalDebugToolkitExample.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE49E8A41EF991BB00210F44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87BE4EAAEC9F8FA6238C1389 /* Pods_CardinalDebugToolkitExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE49E89E1EF991BB00210F44 = {
+			isa = PBXGroup;
+			children = (
+				BE49E8A91EF991BB00210F44 /* CardinalDebugToolkitExample */,
+				BE49E8A81EF991BB00210F44 /* Products */,
+				FA580144FFA8CBDF6279AA77 /* Pods */,
+				EC73B8BD8B149881F494854E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BE49E8A81EF991BB00210F44 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE49E8A71EF991BB00210F44 /* CardinalDebugToolkitExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE49E8A91EF991BB00210F44 /* CardinalDebugToolkitExample */ = {
+			isa = PBXGroup;
+			children = (
+				BE49E8AA1EF991BB00210F44 /* AppDelegate.swift */,
+				BE28BA381F1FFBAF0082F770 /* ExampleViewController.swift */,
+				BE49E8AC1EF991BB00210F44 /* ViewController.swift */,
+				BE49E8B11EF991BB00210F44 /* Assets.xcassets */,
+				BE49E8B61EF991BB00210F44 /* Info.plist */,
+				BE49E8B31EF991BB00210F44 /* LaunchScreen.storyboard */,
+				BE49E8AE1EF991BB00210F44 /* Main.storyboard */,
+			);
+			path = CardinalDebugToolkitExample;
+			sourceTree = "<group>";
+		};
+		EC73B8BD8B149881F494854E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6FE4745692C5429B65896F1 /* Pods_CardinalDebugToolkitExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA580144FFA8CBDF6279AA77 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DFDF4DD8728C6985E7A66A50 /* Pods-CardinalDebugToolkitExample.debug.xcconfig */,
+				3B7DDC2AED1BA742A0984031 /* Pods-CardinalDebugToolkitExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE49E8A61EF991BB00210F44 /* CardinalDebugToolkitExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE49E8B91EF991BB00210F44 /* Build configuration list for PBXNativeTarget "CardinalDebugToolkitExample" */;
+			buildPhases = (
+				9236696A09E9E2E688C4084E /* [CP] Check Pods Manifest.lock */,
+				BE49E8A31EF991BB00210F44 /* Sources */,
+				BE49E8A41EF991BB00210F44 /* Frameworks */,
+				BE49E8A51EF991BB00210F44 /* Resources */,
+				0EE8BC238264AA28044BE5C4 /* [CP] Embed Pods Frameworks */,
+				48090A0DE12A42174C17D056 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CardinalDebugToolkitExample;
+			productName = CardinalDebugToolkitExample;
+			productReference = BE49E8A71EF991BB00210F44 /* CardinalDebugToolkitExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE49E89F1EF991BB00210F44 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Cardinal Solutions";
+				TargetAttributes = {
+					BE49E8A61EF991BB00210F44 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = GAQ2528ADM;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BE49E8A21EF991BB00210F44 /* Build configuration list for PBXProject "CardinalDebugToolkitExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE49E89E1EF991BB00210F44;
+			productRefGroup = BE49E8A81EF991BB00210F44 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE49E8A61EF991BB00210F44 /* CardinalDebugToolkitExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE49E8A51EF991BB00210F44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE49E8B51EF991BB00210F44 /* LaunchScreen.storyboard in Resources */,
+				BE49E8B21EF991BB00210F44 /* Assets.xcassets in Resources */,
+				BE49E8B01EF991BB00210F44 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EE8BC238264AA28044BE5C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardinalDebugToolkitExample/Pods-CardinalDebugToolkitExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48090A0DE12A42174C17D056 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardinalDebugToolkitExample/Pods-CardinalDebugToolkitExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9236696A09E9E2E688C4084E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE49E8A31EF991BB00210F44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE28BA391F1FFBAF0082F770 /* ExampleViewController.swift in Sources */,
+				BE49E8AD1EF991BB00210F44 /* ViewController.swift in Sources */,
+				BE49E8AB1EF991BB00210F44 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BE49E8AE1EF991BB00210F44 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE49E8AF1EF991BB00210F44 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BE49E8B31EF991BB00210F44 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE49E8B41EF991BB00210F44 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE49E8B71EF991BB00210F44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE49E8B81EF991BB00210F44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE49E8BA1EF991BB00210F44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFDF4DD8728C6985E7A66A50 /* Pods-CardinalDebugToolkitExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GAQ2528ADM;
+				INFOPLIST_FILE = CardinalDebugToolkitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardinalsolutions.CardinalDebugToolkitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BE49E8BB1EF991BB00210F44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B7DDC2AED1BA742A0984031 /* Pods-CardinalDebugToolkitExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GAQ2528ADM;
+				INFOPLIST_FILE = CardinalDebugToolkitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardinalsolutions.CardinalDebugToolkitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE49E8A21EF991BB00210F44 /* Build configuration list for PBXProject "CardinalDebugToolkitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE49E8B71EF991BB00210F44 /* Debug */,
+				BE49E8B81EF991BB00210F44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE49E8B91EF991BB00210F44 /* Build configuration list for PBXNativeTarget "CardinalDebugToolkitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE49E8BA1EF991BB00210F44 /* Debug */,
+				BE49E8BB1EF991BB00210F44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE49E89F1EF991BB00210F44 /* Project object */;
+}

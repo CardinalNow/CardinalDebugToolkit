@@ -1,0 +1,19 @@
+PODS:
+  - CardinalDebugToolkit (1.0.0):
+    - KeychainAccess (~> 3.0)
+  - KeychainAccess (3.0.2)
+
+DEPENDENCIES:
+  - CardinalDebugToolkit (from `../`)
+
+EXTERNAL SOURCES:
+  CardinalDebugToolkit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CardinalDebugToolkit: 97d803f14ffc0f303ac048e02cd6cd04fd92bb73
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+
+PODFILE CHECKSUM: 5629ba56f1c1dfb682cde2aeb201c97a76cdf5fb
+
+COCOAPODS: 1.2.1

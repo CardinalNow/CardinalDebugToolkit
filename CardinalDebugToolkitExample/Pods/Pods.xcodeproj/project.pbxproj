@@ -1,0 +1,953 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0807D04A2BACA832337B23288190DE67 /* DebugViewToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525982E6DA087FE376A181DDE533C1 /* DebugViewToggleCell.swift */; };
+		16AB0190752DBF4D4D27CFC3712D5193 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FDC0D6DC265F0A753008ABAAB304D /* Keychain.swift */; };
+		269C1294B600ED2FB1161F92E38B5776 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18C2EDDF0F7E1E160A695D8CD10B /* Log.swift */; };
+		31AD0627F28AA16F9F0A27ECACA9FC08 /* CardinalDebugToolkit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C90D53C999A60393AE04385D8BA1AACD /* CardinalDebugToolkit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		54807C04C207D434D8346A654AE07EBD /* CardinalDebugToolkit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA1546C748A4B3EEC62BBAA98A86447 /* CardinalDebugToolkit-dummy.m */; };
+		579DE178D0100C4C8CC2BA4987333ABC /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 002EEA680C4F8AE8A6E8B1F6B1A2A879 /* Debug.storyboard */; };
+		7F951C307FF0119EE76E658BBC92D73F /* DebugKeychainItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD693EB1F0CC309D84169BE611ACA3F0 /* DebugKeychainItemViewController.swift */; };
+		809D26F4F90D2E4033AE467A267A553B /* DebugLogListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54330C6AC327D73A1E7CC077BD1165 /* DebugLogListViewController.swift */; };
+		82454FDD636FACEDEF3F3E31E2F803A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61353BC14BF68D1C2DC03B65D7D1D1D3 /* Foundation.framework */; };
+		84759D7FA23FB8EC59D91B4059B61892 /* DebugDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A93F49257EBE87877E951B2B398EF13 /* DebugDataViewController.swift */; };
+		8AEB3A93025820CB7C2FAF81776584AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61353BC14BF68D1C2DC03B65D7D1D1D3 /* Foundation.framework */; };
+		923E17EF8DDD799D1F847ECE813B07CC /* Pods-CardinalDebugToolkitExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3F093C34684554A63B3F6F48AA5B24 /* Pods-CardinalDebugToolkitExample-dummy.m */; };
+		98CD37A96D666748B44BF79FB0E2DA95 /* CardinalDebugToolkit-Storyboards.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E372187CB1FABE20B9E78808FF2EAC3 /* CardinalDebugToolkit-Storyboards.bundle */; };
+		A078BE4AD57FE37092FD6C5C1BF0ECDF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B5AADFACA92DD81A10A3B546F7E207 /* KeychainAccess.framework */; };
+		BCB7833D73D4906E14E356D09663820A /* KeychainAccess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E420B538DBE70FFE8A34791A27F7EFA /* KeychainAccess-dummy.m */; };
+		D6E7DAF4E4A770983579B63B71EEBE8C /* DebugKeychainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B8060B3F02DF0D87173B0139287F98 /* DebugKeychainListViewController.swift */; };
+		D6ED205F02D5C893762A72B5793BFA48 /* KeychainAccess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C0FBF620376E73922C9CBB598A1376A /* KeychainAccess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0BED02D07DA4A015E68ADC4DFB87109 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61353BC14BF68D1C2DC03B65D7D1D1D3 /* Foundation.framework */; };
+		E36416C007A3345444D9767C67EECC19 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7BC3EBF5F271ECEEBA9CD4838E82E /* DebugViewController.swift */; };
+		E6A9A113DA6BE2F3EBE2FA07B0DCB3E5 /* DebugLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207B49F202357490B458415E8C83F22A /* DebugLogViewController.swift */; };
+		F8EA3C8C3219517552D6E3A0C05DEA23 /* Pods-CardinalDebugToolkitExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D15D20E19194A1A802EB26557F2EEB6F /* Pods-CardinalDebugToolkitExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3EA47B3687F5C73EDBF56087294542 /* DebugKeychainItemPropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34812840EC47B8D2FEC43DDC636919E2 /* DebugKeychainItemPropertyCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03B67DFE4DBCBABC4CE076FB28171252 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 483320B76B953CABF295694DDC29A665;
+			remoteInfo = CardinalDebugToolkit;
+		};
+		5E3121C8F9CC5F7930494D174CD803FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 044D42157580D7CC84F19E0C78CA1512;
+			remoteInfo = "CardinalDebugToolkit-CardinalDebugToolkit-Storyboards";
+		};
+		6039A3902EDFC6A51A7F8E1438F56A0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C08E2A42467EAECF84CB45A579F1893C;
+			remoteInfo = KeychainAccess;
+		};
+		AAAC3FC5A6EB6686C6A74314E3693577 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C08E2A42467EAECF84CB45A579F1893C;
+			remoteInfo = KeychainAccess;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		002EEA680C4F8AE8A6E8B1F6B1A2A879 /* Debug.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
+		0A93F49257EBE87877E951B2B398EF13 /* DebugDataViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugDataViewController.swift; sourceTree = "<group>"; };
+		0E372187CB1FABE20B9E78808FF2EAC3 /* CardinalDebugToolkit-Storyboards.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "CardinalDebugToolkit-Storyboards.bundle"; path = "CardinalDebugToolkit-Storyboards.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10B769C03532EFC666B36F4A6D2D65D5 /* Pods-CardinalDebugToolkitExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CardinalDebugToolkitExample-resources.sh"; sourceTree = "<group>"; };
+		14DF18C2EDDF0F7E1E160A695D8CD10B /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		1928A3C32DEB7CB3B0DF34D21B973951 /* Pods-CardinalDebugToolkitExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CardinalDebugToolkitExample-frameworks.sh"; sourceTree = "<group>"; };
+		207B49F202357490B458415E8C83F22A /* DebugLogViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugLogViewController.swift; sourceTree = "<group>"; };
+		297A2C286A3EDBADA7AFDDB53F499575 /* Pods-CardinalDebugToolkitExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CardinalDebugToolkitExample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		34812840EC47B8D2FEC43DDC636919E2 /* DebugKeychainItemPropertyCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugKeychainItemPropertyCell.swift; sourceTree = "<group>"; };
+		4848EC8552812A88C470BB0B8F36C56A /* Pods-CardinalDebugToolkitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CardinalDebugToolkitExample.debug.xcconfig"; sourceTree = "<group>"; };
+		49A34F46614B22B19D75AC45EA903000 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BFEF2957944C6C8C3542212FF544EC4 /* Pods-CardinalDebugToolkitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CardinalDebugToolkitExample.release.xcconfig"; sourceTree = "<group>"; };
+		4C0FBF620376E73922C9CBB598A1376A /* KeychainAccess-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainAccess-umbrella.h"; sourceTree = "<group>"; };
+		504AF63F0C35105EE3BCBB6051B85436 /* CardinalDebugToolkit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CardinalDebugToolkit.modulemap; sourceTree = "<group>"; };
+		543F5C1634F1668C6A3BA20BB714665B /* ResourceBundle-CardinalDebugToolkit-Storyboards-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-CardinalDebugToolkit-Storyboards-Info.plist"; sourceTree = "<group>"; };
+		5E54330C6AC327D73A1E7CC077BD1165 /* DebugLogListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugLogListViewController.swift; sourceTree = "<group>"; };
+		61353BC14BF68D1C2DC03B65D7D1D1D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		628FBFFDBB12BE39FFE4643FAF71461A /* KeychainAccess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainAccess.xcconfig; sourceTree = "<group>"; };
+		88525982E6DA087FE376A181DDE533C1 /* DebugViewToggleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugViewToggleCell.swift; sourceTree = "<group>"; };
+		91EA7CC4441B476E2BC87D79E22462A0 /* KeychainAccess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainAccess-prefix.pch"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94868FE31F918181313F1292264276D3 /* Pods-CardinalDebugToolkitExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CardinalDebugToolkitExample-acknowledgements.plist"; sourceTree = "<group>"; };
+		9D3AC6E9954DBDBCD2E3E793834132DD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E420B538DBE70FFE8A34791A27F7EFA /* KeychainAccess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeychainAccess-dummy.m"; sourceTree = "<group>"; };
+		9E470B8C406366668115BE163F518325 /* KeychainAccess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KeychainAccess.modulemap; sourceTree = "<group>"; };
+		9FA1546C748A4B3EEC62BBAA98A86447 /* CardinalDebugToolkit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CardinalDebugToolkit-dummy.m"; sourceTree = "<group>"; };
+		A7B5AADFACA92DD81A10A3B546F7E207 /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3E5B8D3FBAD95E935A423D2BE5B6217 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD693EB1F0CC309D84169BE611ACA3F0 /* DebugKeychainItemViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugKeychainItemViewController.swift; sourceTree = "<group>"; };
+		C90D53C999A60393AE04385D8BA1AACD /* CardinalDebugToolkit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CardinalDebugToolkit-umbrella.h"; sourceTree = "<group>"; };
+		CD85FC5579747F4FDB4260657C77AFFC /* CardinalDebugToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CardinalDebugToolkit.framework; path = CardinalDebugToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D15D20E19194A1A802EB26557F2EEB6F /* Pods-CardinalDebugToolkitExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CardinalDebugToolkitExample-umbrella.h"; sourceTree = "<group>"; };
+		D203706AD589803B808308D52B958AC3 /* CardinalDebugToolkit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CardinalDebugToolkit-prefix.pch"; sourceTree = "<group>"; };
+		D5E753C3A4DA5BDF0C2334D4B04B696C /* CardinalDebugToolkit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CardinalDebugToolkit.xcconfig; sourceTree = "<group>"; };
+		DACCA258E1AE500F2BD2B2B2E7FBC0B6 /* Pods_CardinalDebugToolkitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CardinalDebugToolkitExample.framework; path = "Pods-CardinalDebugToolkitExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E45FDC0D6DC265F0A753008ABAAB304D /* Keychain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Lib/KeychainAccess/Keychain.swift; sourceTree = "<group>"; };
+		E7B8060B3F02DF0D87173B0139287F98 /* DebugKeychainListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugKeychainListViewController.swift; sourceTree = "<group>"; };
+		ED3F093C34684554A63B3F6F48AA5B24 /* Pods-CardinalDebugToolkitExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CardinalDebugToolkitExample-dummy.m"; sourceTree = "<group>"; };
+		F67C215329B1E2C63A1223515081B85D /* Pods-CardinalDebugToolkitExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CardinalDebugToolkitExample.modulemap"; sourceTree = "<group>"; };
+		FA578371B343ED3928D624D15F99928E /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainAccess.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDF7BC3EBF5F271ECEEBA9CD4838E82E /* DebugViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0C854A80777481CB50FDDDD6618C5D86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0BED02D07DA4A015E68ADC4DFB87109 /* Foundation.framework in Frameworks */,
+				A078BE4AD57FE37092FD6C5C1BF0ECDF /* KeychainAccess.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		199E0B5B1C5B0EC2D2A7DBC6022146C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AEB3A93025820CB7C2FAF81776584AE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ECF7AA0BD3A107AF5373C1B23551514 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC173545258F4E48C4247C7212FD43B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82454FDD636FACEDEF3F3E31E2F803A7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0639ECBA547C890E0C87EF09DD72AE87 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D9A733E0B9B067E4BE244A66E62068DD /* Storyboards */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		27F66F3CC5A04041DB2A2AEFC43CD7E6 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				61353BC14BF68D1C2DC03B65D7D1D1D3 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		2AB1A47AA2CBC2031F01A4135312B7D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CE82D5F87403F7C6C58580E58F91C25 /* KeychainAccess */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2CE21898D01B4409E39BE40EC513E9CD /* CardinalDebugToolkit */ = {
+			isa = PBXGroup;
+			children = (
+				0639ECBA547C890E0C87EF09DD72AE87 /* Resources */,
+				806492737EDE453ABB1FF3998448C0C0 /* Sources */,
+				AE668D219F8982252EE3E46CB312D6B4 /* Support Files */,
+			);
+			name = CardinalDebugToolkit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		49F308BBF6B6D63422DA7AFA7B57B8EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD85FC5579747F4FDB4260657C77AFFC /* CardinalDebugToolkit.framework */,
+				0E372187CB1FABE20B9E78808FF2EAC3 /* CardinalDebugToolkit-Storyboards.bundle */,
+				FA578371B343ED3928D624D15F99928E /* KeychainAccess.framework */,
+				DACCA258E1AE500F2BD2B2B2E7FBC0B6 /* Pods_CardinalDebugToolkitExample.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50B52BFFEEEF7EC00BDF7941DA5A72C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7B5AADFACA92DD81A10A3B546F7E207 /* KeychainAccess.framework */,
+				27F66F3CC5A04041DB2A2AEFC43CD7E6 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DEF3FDA5E5DE988940C916871B50AFC /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18C2EDDF0F7E1E160A695D8CD10B /* Log.swift */,
+			);
+			name = Logging;
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		62DF6992F97C5767302FE62C971CF7ED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				34812840EC47B8D2FEC43DDC636919E2 /* DebugKeychainItemPropertyCell.swift */,
+				88525982E6DA087FE376A181DDE533C1 /* DebugViewToggleCell.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				85C8F8D33E2E31F3E31C05F3B0D02585 /* Development Pods */,
+				50B52BFFEEEF7EC00BDF7941DA5A72C9 /* Frameworks */,
+				2AB1A47AA2CBC2031F01A4135312B7D7 /* Pods */,
+				49F308BBF6B6D63422DA7AFA7B57B8EF /* Products */,
+				B264DC53F09C3E651B393FA967082F6E /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		806492737EDE453ABB1FF3998448C0C0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5DEF3FDA5E5DE988940C916871B50AFC /* Logging */,
+				A7D9ED981711A92B8D740F14B6A23451 /* ViewControllers */,
+				62DF6992F97C5767302FE62C971CF7ED /* Views */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		85C514AE7EE6501083B3C510EED5AEEE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D3AC6E9954DBDBCD2E3E793834132DD /* Info.plist */,
+				9E470B8C406366668115BE163F518325 /* KeychainAccess.modulemap */,
+				628FBFFDBB12BE39FFE4643FAF71461A /* KeychainAccess.xcconfig */,
+				9E420B538DBE70FFE8A34791A27F7EFA /* KeychainAccess-dummy.m */,
+				91EA7CC4441B476E2BC87D79E22462A0 /* KeychainAccess-prefix.pch */,
+				4C0FBF620376E73922C9CBB598A1376A /* KeychainAccess-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/KeychainAccess";
+			sourceTree = "<group>";
+		};
+		85C8F8D33E2E31F3E31C05F3B0D02585 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2CE21898D01B4409E39BE40EC513E9CD /* CardinalDebugToolkit */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		9CE82D5F87403F7C6C58580E58F91C25 /* KeychainAccess */ = {
+			isa = PBXGroup;
+			children = (
+				E45FDC0D6DC265F0A753008ABAAB304D /* Keychain.swift */,
+				85C514AE7EE6501083B3C510EED5AEEE /* Support Files */,
+			);
+			name = KeychainAccess;
+			path = KeychainAccess;
+			sourceTree = "<group>";
+		};
+		A7D9ED981711A92B8D740F14B6A23451 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A93F49257EBE87877E951B2B398EF13 /* DebugDataViewController.swift */,
+				BD693EB1F0CC309D84169BE611ACA3F0 /* DebugKeychainItemViewController.swift */,
+				E7B8060B3F02DF0D87173B0139287F98 /* DebugKeychainListViewController.swift */,
+				5E54330C6AC327D73A1E7CC077BD1165 /* DebugLogListViewController.swift */,
+				207B49F202357490B458415E8C83F22A /* DebugLogViewController.swift */,
+				FDF7BC3EBF5F271ECEEBA9CD4838E82E /* DebugViewController.swift */,
+			);
+			name = ViewControllers;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AE668D219F8982252EE3E46CB312D6B4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				504AF63F0C35105EE3BCBB6051B85436 /* CardinalDebugToolkit.modulemap */,
+				D5E753C3A4DA5BDF0C2334D4B04B696C /* CardinalDebugToolkit.xcconfig */,
+				9FA1546C748A4B3EEC62BBAA98A86447 /* CardinalDebugToolkit-dummy.m */,
+				D203706AD589803B808308D52B958AC3 /* CardinalDebugToolkit-prefix.pch */,
+				C90D53C999A60393AE04385D8BA1AACD /* CardinalDebugToolkit-umbrella.h */,
+				49A34F46614B22B19D75AC45EA903000 /* Info.plist */,
+				543F5C1634F1668C6A3BA20BB714665B /* ResourceBundle-CardinalDebugToolkit-Storyboards-Info.plist */,
+			);
+			name = "Support Files";
+			path = "CardinalDebugToolkitExample/Pods/Target Support Files/CardinalDebugToolkit";
+			sourceTree = "<group>";
+		};
+		B264DC53F09C3E651B393FA967082F6E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B8CCED105A5CF3202BFE9DD62760655E /* Pods-CardinalDebugToolkitExample */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B8CCED105A5CF3202BFE9DD62760655E /* Pods-CardinalDebugToolkitExample */ = {
+			isa = PBXGroup;
+			children = (
+				B3E5B8D3FBAD95E935A423D2BE5B6217 /* Info.plist */,
+				F67C215329B1E2C63A1223515081B85D /* Pods-CardinalDebugToolkitExample.modulemap */,
+				297A2C286A3EDBADA7AFDDB53F499575 /* Pods-CardinalDebugToolkitExample-acknowledgements.markdown */,
+				94868FE31F918181313F1292264276D3 /* Pods-CardinalDebugToolkitExample-acknowledgements.plist */,
+				ED3F093C34684554A63B3F6F48AA5B24 /* Pods-CardinalDebugToolkitExample-dummy.m */,
+				1928A3C32DEB7CB3B0DF34D21B973951 /* Pods-CardinalDebugToolkitExample-frameworks.sh */,
+				10B769C03532EFC666B36F4A6D2D65D5 /* Pods-CardinalDebugToolkitExample-resources.sh */,
+				D15D20E19194A1A802EB26557F2EEB6F /* Pods-CardinalDebugToolkitExample-umbrella.h */,
+				4848EC8552812A88C470BB0B8F36C56A /* Pods-CardinalDebugToolkitExample.debug.xcconfig */,
+				4BFEF2957944C6C8C3542212FF544EC4 /* Pods-CardinalDebugToolkitExample.release.xcconfig */,
+			);
+			name = "Pods-CardinalDebugToolkitExample";
+			path = "Target Support Files/Pods-CardinalDebugToolkitExample";
+			sourceTree = "<group>";
+		};
+		D9A733E0B9B067E4BE244A66E62068DD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				002EEA680C4F8AE8A6E8B1F6B1A2A879 /* Debug.storyboard */,
+			);
+			name = Storyboards;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6158514DCBD6740F811BEC567D243FAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6ED205F02D5C893762A72B5793BFA48 /* KeychainAccess-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		704C9C75A3AE7F269BC2F711FDA631D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31AD0627F28AA16F9F0A27ECACA9FC08 /* CardinalDebugToolkit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C13721E1F2EFA123D0EF404BA721028 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8EA3C8C3219517552D6E3A0C05DEA23 /* Pods-CardinalDebugToolkitExample-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		044D42157580D7CC84F19E0C78CA1512 /* CardinalDebugToolkit-CardinalDebugToolkit-Storyboards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5CA581386EE164F9C973749CAC3AFD4 /* Build configuration list for PBXNativeTarget "CardinalDebugToolkit-CardinalDebugToolkit-Storyboards" */;
+			buildPhases = (
+				05E904A4A1E5E2F682D270038E756CDF /* Sources */,
+				6ECF7AA0BD3A107AF5373C1B23551514 /* Frameworks */,
+				11E7D1FFCFAA1DE7EEBA99088EFE4180 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CardinalDebugToolkit-CardinalDebugToolkit-Storyboards";
+			productName = "CardinalDebugToolkit-CardinalDebugToolkit-Storyboards";
+			productReference = 0E372187CB1FABE20B9E78808FF2EAC3 /* CardinalDebugToolkit-Storyboards.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		483320B76B953CABF295694DDC29A665 /* CardinalDebugToolkit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4B545533D8FA61190596D44FF8209CF /* Build configuration list for PBXNativeTarget "CardinalDebugToolkit" */;
+			buildPhases = (
+				FF46E5FEBC56451C8EF4DA6D19EDF3A6 /* Sources */,
+				0C854A80777481CB50FDDDD6618C5D86 /* Frameworks */,
+				5B8D4544D5AC4BC2AFBE8C0DBC9DE515 /* Resources */,
+				704C9C75A3AE7F269BC2F711FDA631D7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				649E2C4A048F72CD29BC7E2527556319 /* PBXTargetDependency */,
+				B88BCC28FA97EA140D2643487B2B434B /* PBXTargetDependency */,
+			);
+			name = CardinalDebugToolkit;
+			productName = CardinalDebugToolkit;
+			productReference = CD85FC5579747F4FDB4260657C77AFFC /* CardinalDebugToolkit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C08E2A42467EAECF84CB45A579F1893C /* KeychainAccess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF2587E38075850A6DB441BD935CE9C6 /* Build configuration list for PBXNativeTarget "KeychainAccess" */;
+			buildPhases = (
+				A09F4C7C9DD995A48E625F92C070706B /* Sources */,
+				199E0B5B1C5B0EC2D2A7DBC6022146C5 /* Frameworks */,
+				6158514DCBD6740F811BEC567D243FAE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeychainAccess;
+			productName = KeychainAccess;
+			productReference = FA578371B343ED3928D624D15F99928E /* KeychainAccess.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C79DBD808F2AF5D02CBBF16A0575875C /* Pods-CardinalDebugToolkitExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F47D169A4DB892D295F97F0067C78C9 /* Build configuration list for PBXNativeTarget "Pods-CardinalDebugToolkitExample" */;
+			buildPhases = (
+				1B8A725740B8B2077EF2F739207EC467 /* Sources */,
+				FC173545258F4E48C4247C7212FD43B6 /* Frameworks */,
+				8C13721E1F2EFA123D0EF404BA721028 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCE4C1E8C47092F296AA8D773A6B4EC3 /* PBXTargetDependency */,
+				ACC460D782C6D8CFB9B9628947888944 /* PBXTargetDependency */,
+			);
+			name = "Pods-CardinalDebugToolkitExample";
+			productName = "Pods-CardinalDebugToolkitExample";
+			productReference = DACCA258E1AE500F2BD2B2B2E7FBC0B6 /* Pods_CardinalDebugToolkitExample.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 49F308BBF6B6D63422DA7AFA7B57B8EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				483320B76B953CABF295694DDC29A665 /* CardinalDebugToolkit */,
+				044D42157580D7CC84F19E0C78CA1512 /* CardinalDebugToolkit-CardinalDebugToolkit-Storyboards */,
+				C08E2A42467EAECF84CB45A579F1893C /* KeychainAccess */,
+				C79DBD808F2AF5D02CBBF16A0575875C /* Pods-CardinalDebugToolkitExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		11E7D1FFCFAA1DE7EEBA99088EFE4180 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				579DE178D0100C4C8CC2BA4987333ABC /* Debug.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8D4544D5AC4BC2AFBE8C0DBC9DE515 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98CD37A96D666748B44BF79FB0E2DA95 /* CardinalDebugToolkit-Storyboards.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05E904A4A1E5E2F682D270038E756CDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B8A725740B8B2077EF2F739207EC467 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				923E17EF8DDD799D1F847ECE813B07CC /* Pods-CardinalDebugToolkitExample-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A09F4C7C9DD995A48E625F92C070706B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16AB0190752DBF4D4D27CFC3712D5193 /* Keychain.swift in Sources */,
+				BCB7833D73D4906E14E356D09663820A /* KeychainAccess-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF46E5FEBC56451C8EF4DA6D19EDF3A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54807C04C207D434D8346A654AE07EBD /* CardinalDebugToolkit-dummy.m in Sources */,
+				84759D7FA23FB8EC59D91B4059B61892 /* DebugDataViewController.swift in Sources */,
+				FB3EA47B3687F5C73EDBF56087294542 /* DebugKeychainItemPropertyCell.swift in Sources */,
+				7F951C307FF0119EE76E658BBC92D73F /* DebugKeychainItemViewController.swift in Sources */,
+				D6E7DAF4E4A770983579B63B71EEBE8C /* DebugKeychainListViewController.swift in Sources */,
+				809D26F4F90D2E4033AE467A267A553B /* DebugLogListViewController.swift in Sources */,
+				E6A9A113DA6BE2F3EBE2FA07B0DCB3E5 /* DebugLogViewController.swift in Sources */,
+				E36416C007A3345444D9767C67EECC19 /* DebugViewController.swift in Sources */,
+				0807D04A2BACA832337B23288190DE67 /* DebugViewToggleCell.swift in Sources */,
+				269C1294B600ED2FB1161F92E38B5776 /* Log.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		649E2C4A048F72CD29BC7E2527556319 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CardinalDebugToolkit-CardinalDebugToolkit-Storyboards";
+			target = 044D42157580D7CC84F19E0C78CA1512 /* CardinalDebugToolkit-CardinalDebugToolkit-Storyboards */;
+			targetProxy = 5E3121C8F9CC5F7930494D174CD803FA /* PBXContainerItemProxy */;
+		};
+		ACC460D782C6D8CFB9B9628947888944 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KeychainAccess;
+			target = C08E2A42467EAECF84CB45A579F1893C /* KeychainAccess */;
+			targetProxy = 6039A3902EDFC6A51A7F8E1438F56A0C /* PBXContainerItemProxy */;
+		};
+		B88BCC28FA97EA140D2643487B2B434B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KeychainAccess;
+			target = C08E2A42467EAECF84CB45A579F1893C /* KeychainAccess */;
+			targetProxy = AAAC3FC5A6EB6686C6A74314E3693577 /* PBXContainerItemProxy */;
+		};
+		FCE4C1E8C47092F296AA8D773A6B4EC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CardinalDebugToolkit;
+			target = 483320B76B953CABF295694DDC29A665 /* CardinalDebugToolkit */;
+			targetProxy = 03B67DFE4DBCBABC4CE076FB28171252 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4E487F173E6C9664F4E9E26B9635D23C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		94CB74D521E5C32210DF507EDFCBDB88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5E753C3A4DA5BDF0C2334D4B04B696C /* CardinalDebugToolkit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CardinalDebugToolkit/CardinalDebugToolkit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CardinalDebugToolkit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CardinalDebugToolkit/CardinalDebugToolkit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CardinalDebugToolkit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A1D293939CFEA1944578BF98A41CD695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5E753C3A4DA5BDF0C2334D4B04B696C /* CardinalDebugToolkit.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CardinalDebugToolkit";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/CardinalDebugToolkit/ResourceBundle-CardinalDebugToolkit-Storyboards-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = "CardinalDebugToolkit-Storyboards";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		B9402C2450C510254A2BFA69999720A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5E753C3A4DA5BDF0C2334D4B04B696C /* CardinalDebugToolkit.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CardinalDebugToolkit";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/CardinalDebugToolkit/ResourceBundle-CardinalDebugToolkit-Storyboards-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = "CardinalDebugToolkit-Storyboards";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		BA3B439585388BA999EC2F303A1C4D82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5E753C3A4DA5BDF0C2334D4B04B696C /* CardinalDebugToolkit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CardinalDebugToolkit/CardinalDebugToolkit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CardinalDebugToolkit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CardinalDebugToolkit/CardinalDebugToolkit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CardinalDebugToolkit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BC66FC44E0E9B1B3F241FE836CA06B1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BFEF2957944C6C8C3542212FF544EC4 /* Pods-CardinalDebugToolkitExample.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CardinalDebugToolkitExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CardinalDebugToolkitExample/Pods-CardinalDebugToolkitExample.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CardinalDebugToolkitExample;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BDD0139D6EB93FA375F887ABD62DAB2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E34CE5A1AFB880C611E9844DB8F7DCC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 628FBFFDBB12BE39FFE4643FAF71461A /* KeychainAccess.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KeychainAccess/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KeychainAccess/KeychainAccess.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = KeychainAccess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EDAED4E8E30E87A92D6F3081CA13128D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 628FBFFDBB12BE39FFE4643FAF71461A /* KeychainAccess.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KeychainAccess/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KeychainAccess/KeychainAccess.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KeychainAccess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FEB09BAF1C366B0FAA56C8FC8499DE42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4848EC8552812A88C470BB0B8F36C56A /* Pods-CardinalDebugToolkitExample.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CardinalDebugToolkitExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CardinalDebugToolkitExample/Pods-CardinalDebugToolkitExample.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CardinalDebugToolkitExample;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E487F173E6C9664F4E9E26B9635D23C /* Debug */,
+				BDD0139D6EB93FA375F887ABD62DAB2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F47D169A4DB892D295F97F0067C78C9 /* Build configuration list for PBXNativeTarget "Pods-CardinalDebugToolkitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEB09BAF1C366B0FAA56C8FC8499DE42 /* Debug */,
+				BC66FC44E0E9B1B3F241FE836CA06B1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4B545533D8FA61190596D44FF8209CF /* Build configuration list for PBXNativeTarget "CardinalDebugToolkit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA3B439585388BA999EC2F303A1C4D82 /* Debug */,
+				94CB74D521E5C32210DF507EDFCBDB88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5CA581386EE164F9C973749CAC3AFD4 /* Build configuration list for PBXNativeTarget "CardinalDebugToolkit-CardinalDebugToolkit-Storyboards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9402C2450C510254A2BFA69999720A6 /* Debug */,
+				A1D293939CFEA1944578BF98A41CD695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF2587E38075850A6DB441BD935CE9C6 /* Build configuration list for PBXNativeTarget "KeychainAccess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDAED4E8E30E87A92D6F3081CA13128D /* Debug */,
+				E34CE5A1AFB880C611E9844DB8F7DCC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

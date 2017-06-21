@@ -1,0 +1,6 @@
+framework module CardinalDebugToolkit {
+  umbrella header "CardinalDebugToolkit-umbrella.h"
+
+  export *
+  module * { export * }
+}
