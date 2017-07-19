@@ -1,5 +1,5 @@
 PODS:
-  - CardinalDebugToolkit (1.0.0):
+  - CardinalDebugToolkit (1.0.1):
     - KeychainAccess (~> 3.0)
   - KeychainAccess (3.0.2)
 
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CardinalDebugToolkit: 97d803f14ffc0f303ac048e02cd6cd04fd92bb73
+  CardinalDebugToolkit: 5eb1c7004a940dfb7bb3f2352fb663fd36b014ec
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
 
 PODFILE CHECKSUM: 5629ba56f1c1dfb682cde2aeb201c97a76cdf5fb
