@@ -15,3 +15,31 @@ Among its features are:
 - Launch additional app provided debug screens, if you need to go beyond what's provided by CardinalDebugToolkit
 
 Please see the included example project for usage instructions.
+
+## Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate CardinalDebugToolkit into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+platform :ios, '10.0'
+
+target '<Your Target Name>' do
+    use_frameworks!
+
+    pod 'CardinalDebugToolkit'
+end
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
