@@ -64,9 +64,10 @@ public struct DebugSection: DebugSectionProtocol {
 /// General debug item type.
 public struct DebugItem: DebugItemProtocol {
     public enum Kind {
-        case toggle(Bool)
         case action
         case info(String?)
+        case stepper(Double, Double, Double, Double)
+        case toggle(Bool)
     }
 
     /// Identifier of this item. The identifier will be passed to the delegate 
@@ -88,6 +89,12 @@ public struct DebugItem: DebugItemProtocol {
     public init(id: String, kind: Kind, title: String) {
         self.id = id
         self.kind = kind
+        self.title = title
+    }
+
+    public init(stepperWithId id: String, title: String, value: Double, min: Double, max: Double, step: Double) {
+        self.id = id
+        self.kind = .stepper(value, min, max, step)
         self.title = title
     }
 }
@@ -154,6 +161,8 @@ public protocol DebugViewControllerDelegate: class {
     ///   - NSAttributedString
     ///   - String
     func didSelectAction(withId id: String) -> Any?
+    /// This method is called when an item of type DebugItem and Kind stepper has its value changed.
+    func didChangeStepper(withId id: String, to value: Double)
 }
 
 /// Responsible for displaying the debug interface as defined by section property.
@@ -252,11 +261,23 @@ public extension DebugViewController {
                 cell.detailTextLabel?.text = infoString
 
                 return cell
+            case .stepper(let value, let min, let max, let step):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "stepperCell", for: indexPath) as! DebugViewStepperCell
+                cell.itemId = item.id
+                cell.delegate = delegate
+                cell.textLabel?.text = item.title
+                cell.valueTextField.text = String(value)
+                cell.stepper.value = value
+                cell.stepper.minimumValue = min
+                cell.stepper.maximumValue = max
+                cell.stepper.stepValue = step
+
+                return cell
             case .toggle(let isOn):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "toggleCell", for: indexPath) as! DebugViewToggleCell
-                cell.textLabel?.text = item.title
-                cell.delegate = delegate
                 cell.itemId = item.id
+                cell.delegate = delegate
+                cell.textLabel?.text = item.title
                 cell.toggleView.isOn = isOn
 
                 return cell
@@ -277,6 +298,8 @@ public extension DebugViewController {
 // MARK: - UITableViewDelegate
 public extension DebugViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
+
         if indexPath.section == sections.count {
             if indexPath.row == 0 {
                 let vc = DebugLogListViewController()
@@ -309,8 +332,6 @@ public extension DebugViewController {
                     default:
                         break
                     }
-                case .toggle(_):
-                    break
                 case .info(let infoString):
                     if let copyString = infoString {
                         UIPasteboard.general.string = copyString
@@ -319,6 +340,10 @@ public extension DebugViewController {
                             tableView.reloadRows(at: [indexPath], with: .automatic)
                         })
                     }
+                case .stepper(_):
+                    break
+                case .toggle(_):
+                    break
                 }
             } else if let item = item as? DebugMultiChoiceItem {
                 var section = (sections[indexPath.section] as! DebugMultiChoiceSection)

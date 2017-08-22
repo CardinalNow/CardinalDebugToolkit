@@ -68,6 +68,7 @@ class DebugHandler: DebugViewControllerDelegate {
     private func updateDebugSections() {
         let toggle1 = UserDefaults.standard.bool(forKey: "toggle1")
         let toggle2 = UserDefaults.standard.bool(forKey: "toggle2")
+        let stepper1 = UserDefaults.standard.double(forKey: "stepper1")
 
         let selectedItemId = UserDefaults.standard.string(forKey: "multiChoice")
 
@@ -75,6 +76,9 @@ class DebugHandler: DebugViewControllerDelegate {
             DebugSection(title: "Toggles", items: [
                 DebugItem(id: "toggle1", kind: .toggle(toggle1), title: "Toggle 1"),
                 DebugItem(id: "toggle2", kind: .toggle(toggle2), title: "Toggle 2")
+            ]),
+            DebugSection(title: "Other", items: [
+                DebugItem(stepperWithId: "stepper1", title: "Value stepper", value: stepper1, min: -10, max: 10, step: 0.5),
             ]),
             DebugMultiChoiceSection(id: "multiChoice", title: "Mutliple Choice", items: [
                 DebugMultiChoiceItem(id: "mc1", title: "Choice 1"),
@@ -125,5 +129,9 @@ class DebugHandler: DebugViewControllerDelegate {
         }
 
         return nil
+    }
+
+    func didChangeStepper(withId id: String, to value: Double) {
+        UserDefaults.standard.set(value, forKey: id)
     }
 }
