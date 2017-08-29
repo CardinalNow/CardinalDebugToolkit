@@ -1,5 +1,5 @@
 //
-//  DebugLogListViewController.swift
+//  DebugLogBufferViewController.swift
 //  CardinalDebugToolkit
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
@@ -25,53 +25,50 @@
 
 import Foundation
 import UIKit
+import MobileCoreServices
 
-public class DebugLogListViewController: UITableViewController {
-    fileprivate var logFileURLs: [URL] = []
-
-    // MARK: - lifecycle
+public class DebugLogBufferViewController: UIViewController {
+    @IBOutlet var textView: UITextView!
+    public var filteredLogBuffer: FilteredLogBuffer?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "default")
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(title: "Copy", style: .plain, target: self, action: #selector(copyData)),
+            UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clear)),
+        ]
+
+        if let filteredLogBuffer = filteredLogBuffer {
+            textView.text = filteredLogBuffer.buffer.reversed().joined(separator: "\n")
+        }
     }
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        logFileURLs = Log.consoleLogFileURLs().reversed()
-        tableView.reloadData()
-    }
-}
-
-// MARK: - UITableViewDataSource
-public extension DebugLogListViewController {
-    public override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if let nvc = navigationController, nvc.viewControllers.count == 1 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSelf))
+        }
     }
 
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return logFileURLs.count
+    // MARK: - private methods
+
+    @objc
+    private func dismissSelf() {
+        dismiss(animated: true, completion: nil)
     }
 
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath)
-
-        cell.textLabel?.text = logFileURLs[indexPath.row].lastPathComponent
-
-        return cell
+    @objc
+    private func copyData() {
+        if !textView.text.isEmpty {
+            UIPasteboard.general.string = textView.text
+        }
     }
-}
 
-// MARK: - UITableViewDelegate
-public extension DebugLogListViewController {
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        let vc = DebugToolkitStoryboard.logViewController()
-        vc.logFileURL = logFileURLs[indexPath.row]
-
-        show(vc, sender: self)
+    @objc
+    private func clear() {
+        textView.text = ""
+        filteredLogBuffer?.buffer.removeAll()
     }
 }

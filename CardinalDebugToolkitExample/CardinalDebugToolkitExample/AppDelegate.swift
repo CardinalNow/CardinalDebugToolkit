@@ -29,6 +29,8 @@ import CardinalDebugToolkit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    let debugWindow = DebugOverlayWindow()
+    let debugOverlayDelegate = DbgOveralayDelegate()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -37,6 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let _ = Log.startLoggingConsoleToFile()
         NSLog("test")
+
+        Log.shared.filteredLogBuffers.append(FilteredLogBuffer(tag: "test"))
+        Log.shared.critical("Test 1", tag: "test")
+        Log.shared.critical("Test 2", tag: "test")
+
+        DebugOverlayWindow.delegate = debugOverlayDelegate
 
         return true
     }
@@ -61,5 +69,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+}
+
+class DbgOveralayDelegate: DebugOverlayDelegate {
+    func actions() -> [DebugOverlayAction] {
+        return [
+            DebugOverlayAction(id: "filteredLog", title: "Show log buffer")
+        ]
+    }
+
+    func didSelectAction(withId id: String) -> UIViewController? {
+        if id == "filteredLog" {
+            let vc = DebugToolkitStoryboard.logBufferViewController()
+            vc.filteredLogBuffer = Log.shared.filteredLogBuffers.first
+            let nvc = UINavigationController(rootViewController: vc)
+
+            return nvc
+        }
+
+        return nil
     }
 }

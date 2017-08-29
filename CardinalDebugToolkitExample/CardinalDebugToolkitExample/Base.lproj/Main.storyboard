@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TZb-aN-Lgk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TZb-aN-Lgk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,20 +22,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-a3-eBf">
-                                <rect key="frame" x="115" y="253.5" width="144" height="160"/>
+                                <rect key="frame" x="111" y="188.5" width="152" height="290"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4np-zV-9eu">
-                                        <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
                                         <state key="normal" title="Present Debug Panel"/>
                                         <connections>
                                             <action selector="presentDebugPanelTapped:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Se3-ko-TZe"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ond-1i-WnY">
-                                        <rect key="frame" x="0.0" y="130" width="144" height="30"/>
+                                        <rect key="frame" x="0.0" y="130" width="152" height="30"/>
                                         <state key="normal" title="Push Debug Panel"/>
                                         <connections>
                                             <action selector="pushDebugPanelTapped:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="IYz-GT-QA0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znL-z2-e8w">
+                                        <rect key="frame" x="0.0" y="260" width="152" height="30"/>
+                                        <state key="normal" title="Toggle Debug Overlay"/>
+                                        <connections>
+                                            <action selector="toggleDebugOverlayTapped:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="wf7-fx-a8Q"/>
                                         </connections>
                                     </button>
                                 </subviews>

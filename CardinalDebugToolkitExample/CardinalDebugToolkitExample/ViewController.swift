@@ -52,6 +52,10 @@ class ViewController: UIViewController {
 
         show(dbgVC, sender: self)
     }
+
+    @IBAction func toggleDebugOverlayTapped(_ sender: UIButton) {
+        DebugOverlayWindow.toggle()
+    }
 }
 
 class DebugHandler: DebugViewControllerDelegate {

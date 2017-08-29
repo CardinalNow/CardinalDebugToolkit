@@ -72,9 +72,9 @@ public extension DebugKeychainListViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let itemVC = DebugViewController.getStoryboard().instantiateViewController(withIdentifier: "keychainItemViewController") as! DebugKeychainItemViewController
-        itemVC.item = items[indexPath.row]
+        let vc = DebugToolkitStoryboard.keychainItemViewController()
+        vc.item = items[indexPath.row]
 
-        show(itemVC, sender: self)
+        show(vc, sender: self)
     }
 }

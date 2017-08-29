@@ -177,14 +177,7 @@ public class DebugViewController: UITableViewController {
 
     /// Create an instance of this view controller.
     public static func newInstance() -> DebugViewController {
-        return getStoryboard().instantiateInitialViewController() as! DebugViewController
-    }
-
-    internal static func getStoryboard() -> UIStoryboard {
-        let frameworkBundle = Bundle(identifier: "org.cocoapods.CardinalDebugToolkit")!
-        let resourceBundle = Bundle(url: frameworkBundle.url(forResource: "CardinalDebugToolkit-Storyboards", withExtension: "bundle")!)
-
-        return UIStoryboard(name: "Debug", bundle: resourceBundle)
+        return DebugToolkitStoryboard.debugViewController()
     }
 
     // MARK: - lifecycle
@@ -305,7 +298,7 @@ public extension DebugViewController {
                 let vc = DebugLogListViewController()
                 show(vc, sender: self)
             } else {
-                let vc = DebugViewController.getStoryboard().instantiateViewController(withIdentifier: "keychainListViewController")
+                let vc = DebugToolkitStoryboard.keychainListViewController()
                 show(vc, sender: self)
             }
         } else {
@@ -319,7 +312,7 @@ public extension DebugViewController {
                     case .some(let viewController as UIViewController):
                         show(viewController, sender: self)
                     case .some(let data):
-                        let vc = DebugViewController.getStoryboard().instantiateViewController(withIdentifier: "debugDataViewController") as! DebugDataViewController
+                        let vc = DebugToolkitStoryboard.dataViewController()
 
                         if let attributedString = data as? NSAttributedString {
                             vc.dataAttributedString = attributedString

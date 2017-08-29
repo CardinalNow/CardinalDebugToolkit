@@ -12,7 +12,7 @@
         <!--Debug-->
         <scene sceneID="gUJ-5M-zDK">
             <objects>
-                <tableViewController storyboardIdentifier="debugController" title="Debug" id="0LN-Hm-tW5" customClass="DebugViewController" customModule="CardinalDebugToolkit" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="debugViewController" title="Debug" id="0LN-Hm-tW5" customClass="DebugViewController" customModule="CardinalDebugToolkit" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Tte-4j-Oy8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,6 +329,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTT-gE-ekc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2875" y="125"/>
+        </scene>
+        <!--Debug Log Buffer View Controller-->
+        <scene sceneID="1Pj-ji-MPm">
+            <objects>
+                <viewController storyboardIdentifier="debugLogBufferViewController" id="HNw-uy-zo4" customClass="DebugLogBufferViewController" customModule="CardinalDebugToolkit" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6dP-DP-205"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jae-4Y-vCE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sjj-3e-E5P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Bdc-7b-5TN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Bdc-7b-5TN" secondAttribute="bottom" id="CTb-1W-iee"/>
+                            <constraint firstItem="Bdc-7b-5TN" firstAttribute="leading" secondItem="Sjj-3e-E5P" secondAttribute="leading" id="WCo-KW-673"/>
+                            <constraint firstItem="Bdc-7b-5TN" firstAttribute="top" secondItem="Sjj-3e-E5P" secondAttribute="topMargin" id="mnu-8d-1lz"/>
+                            <constraint firstAttribute="trailing" secondItem="Bdc-7b-5TN" secondAttribute="trailing" id="pLc-m6-sW5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="Bdc-7b-5TN" id="bot-M1-t48"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fYa-Ii-moB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3555" y="125"/>
         </scene>
     </scenes>
 </document>

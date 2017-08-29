@@ -38,6 +38,7 @@ open class Log {
 
     open var isLoggingEnabled = true
     open var logLevel: LogLevel
+    public var filteredLogBuffers: [FilteredLogBuffer] = []
 
     public static func pruneConsoleLogFiles(maxNum: Int) throws {
         guard maxNum >= 0 else { return }
@@ -101,55 +102,66 @@ open class Log {
         self.logLevel = logLevel
     }
 
-    open func debug(_ message: String) {
-        log(message, level: .debug)
+    open func debug(_ message: String, tag: String? = nil) {
+        log(message, level: .debug, tag: tag)
     }
 
-    open func debug(_ error: Error) {
-        log(error, level: .debug)
+    open func debug(_ error: Error, tag: String? = nil) {
+        log(error, level: .debug, tag: tag)
     }
 
-    open func info(_ message: String) {
-        log(message, level: .info)
+    open func info(_ message: String, tag: String? = nil) {
+        log(message, level: .info, tag: tag)
     }
 
-    open func info(_ error: Error) {
-        log(error, level: .info)
+    open func info(_ error: Error, tag: String? = nil) {
+        log(error, level: .info, tag: tag)
     }
 
-    open func warning(_ message: String) {
-        log(message, level: .warning)
+    open func warning(_ message: String, tag: String? = nil) {
+        log(message, level: .warning, tag: tag)
     }
 
-    open func warning(_ error: Error) {
-        log(error, level: .warning)
+    open func warning(_ error: Error, tag: String? = nil) {
+        log(error, level: .warning, tag: tag)
     }
 
-    open func error(_ message: String) {
-        log(message, level: .error)
+    open func error(_ message: String, tag: String? = nil) {
+        log(message, level: .error, tag: tag)
     }
 
-    open func error(_ error: Error) {
-        log(error, level: .error)
+    open func error(_ error: Error, tag: String? = nil) {
+        log(error, level: .error, tag: tag)
     }
 
-    open func critical(_ message: String) {
-        log(message, level: .critical)
+    open func critical(_ message: String, tag: String? = nil) {
+        log(message, level: .critical, tag: tag)
     }
 
-    open func critical(_ error: Error) {
-        log(error, level: .critical)
+    open func critical(_ error: Error, tag: String? = nil) {
+        log(error, level: .critical, tag: tag)
     }
 
-    open func log(_ error: Error, level: LogLevel) {
-        log("\(error)", level: level)
+    open func log(_ error: Error, level: LogLevel, tag: String? = nil) {
+        log("\(error)", level: level, tag: tag)
     }
 
-    open func log(_ message: String, level: LogLevel) {
+    open func log(_ message: String, level: LogLevel, tag: String? = nil) {
         guard isLoggingEnabled && logLevel.rawValue <= level.rawValue else {
             return
         }
 
-        NSLog(message)
+        let formattedMessage: String
+        if let tag = tag {
+            formattedMessage = "[\(tag)] \(message)"
+        } else {
+            formattedMessage = message
+        }
+
+        NSLog(formattedMessage)
+
+        for bufffer in filteredLogBuffers {
+            bufffer.log(formattedMessage: formattedMessage, message: message, tag: tag)
+        }
     }
 }
