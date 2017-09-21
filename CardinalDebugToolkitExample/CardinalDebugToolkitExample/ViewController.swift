@@ -119,7 +119,7 @@ class DebugHandler: DebugViewControllerDelegate {
             return "Example string\nbroken up\nover\nmultiple lines"
         case "viewAttrStr":
             return NSAttributedString(string: "Example string in a large, bold font", attributes: [
-                NSFontAttributeName: UIFont.boldSystemFont(ofSize: 32)
+                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 32)
             ])
         case "viewVC":
             return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exampleViewController")

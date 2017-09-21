@@ -49,10 +49,17 @@ public class DebugDataViewController: UIViewController {
     private func copyData() {
         if let dataAttributedString = dataAttributedString {
             do {
+            #if swift(>=3.2)
+                let rtf = try dataAttributedString.data(
+                    from: NSMakeRange(0, dataAttributedString.length),
+                    documentAttributes: [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.rtf]
+                )
+            #else
                 let rtf = try dataAttributedString.data(
                     from: NSMakeRange(0, dataAttributedString.length),
                     documentAttributes: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType]
                 )
+            #endif
                 if let encodedString = NSString(data: rtf, encoding: String.Encoding.utf8.rawValue) {
                     UIPasteboard.general.items = [[
                         kUTTypeRTF as String: encodedString,
