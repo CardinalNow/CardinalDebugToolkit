@@ -76,6 +76,8 @@ class DebugHandler: DebugViewControllerDelegate {
 
         let selectedItemId = UserDefaults.standard.string(forKey: "multiChoice")
 
+        let selectedPickerIndex = UserDefaults.standard.integer(forKey: "picker1")
+
         debugController.sections = [
             DebugSection(title: "Toggles", items: [
                 DebugItem(id: "toggle1", kind: .toggle(toggle1), title: "Toggle 1"),
@@ -83,6 +85,7 @@ class DebugHandler: DebugViewControllerDelegate {
             ]),
             DebugSection(title: "Other", items: [
                 DebugItem(stepperWithId: "stepper1", title: "Value stepper", value: stepper1, min: -10, max: 10, step: 0.5),
+                DebugItem(pickerWithId: "picker1", title: "Picker", currentIndex: selectedPickerIndex, values: ["First Item", "Second Item"]),
             ]),
             DebugMultiChoiceSection(id: "multiChoice", title: "Mutliple Choice", items: [
                 DebugMultiChoiceItem(id: "mc1", title: "Choice 1"),
@@ -137,5 +140,9 @@ class DebugHandler: DebugViewControllerDelegate {
 
     func didChangeStepper(withId id: String, to value: Double) {
         UserDefaults.standard.set(value, forKey: id)
+    }
+
+    func didSelectPickerValue(withIndex index: Int, forItemWithId id: String) {
+        UserDefaults.standard.set(index, forKey: "picker1")
     }
 }

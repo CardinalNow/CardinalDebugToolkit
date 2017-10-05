@@ -24,6 +24,7 @@
 		923E17EF8DDD799D1F847ECE813B07CC /* Pods-CardinalDebugToolkitExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3F093C34684554A63B3F6F48AA5B24 /* Pods-CardinalDebugToolkitExample-dummy.m */; };
 		A6AEAB80C77216C4FAA2A5C07324EFE1 /* DebugOverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5198B1703D304110DADEF12B9B85941 /* DebugOverlayWindow.swift */; };
 		A7D25A71338DA66F5977F8539A685977 /* FilteredLogBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103A196C2FA6FBCC3001660FBD7BC099 /* FilteredLogBuffer.swift */; };
+		BE0034C01F86750C00C803EA /* DebugViewPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0034BF1F86750C00C803EA /* DebugViewPickerCell.swift */; };
 		C2D470621413799DAD93B815A95F4FC1 /* KeychainAccess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C0FBF620376E73922C9CBB598A1376A /* KeychainAccess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD448F068D61F569D0E40DB9B57DEDA3 /* DebugViewStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1DE86D1943DC32E47A35EF2547A5A /* DebugViewStepperCell.swift */; };
 		CFBD1CFD124C228FB5F5BACCBC4AD549 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FDC0D6DC265F0A753008ABAAB304D /* Keychain.swift */; };
@@ -103,6 +104,7 @@
 		A96024E9628D80F8834AF5BA3236446C /* CardinalDebugToolkit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CardinalDebugToolkit.xcconfig; sourceTree = "<group>"; };
 		AFE540790289439EBCDA322E09A73343 /* DebugDataViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugDataViewController.swift; sourceTree = "<group>"; };
 		B3E5B8D3FBAD95E935A423D2BE5B6217 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE0034BF1F86750C00C803EA /* DebugViewPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewPickerCell.swift; sourceTree = "<group>"; };
 		CD85FC5579747F4FDB4260657C77AFFC /* CardinalDebugToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CardinalDebugToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D157198F1E105F129821720C80B956E1 /* CardinalDebugToolkit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CardinalDebugToolkit-umbrella.h"; sourceTree = "<group>"; };
 		D15D20E19194A1A802EB26557F2EEB6F /* Pods-CardinalDebugToolkitExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CardinalDebugToolkitExample-umbrella.h"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				7CE81A376DC0FCC0488BD6A2D949F3CF /* DebugKeychainItemPropertyCell.swift */,
 				D5198B1703D304110DADEF12B9B85941 /* DebugOverlayWindow.swift */,
+				BE0034BF1F86750C00C803EA /* DebugViewPickerCell.swift */,
 				46A1DE86D1943DC32E47A35EF2547A5A /* DebugViewStepperCell.swift */,
 				454E01A8B9821FC69F71F48828539C52 /* DebugViewToggleCell.swift */,
 			);
@@ -513,6 +516,7 @@
 				39429B4DD8018307A5369EF10B13A122 /* DebugKeychainItemViewController.swift in Sources */,
 				4FDD8D2C61AA747575D43BEB26F0279E /* DebugKeychainListViewController.swift in Sources */,
 				DBF2C2C7535DC9E735AAFA15F170B74A /* DebugLogBufferViewController.swift in Sources */,
+				BE0034C01F86750C00C803EA /* DebugViewPickerCell.swift in Sources */,
 				E5964B1D15C311732983A39E1A4FA697 /* DebugLogListViewController.swift in Sources */,
 				86989E6CFE9A2969CE9B9CFE382C0A27 /* DebugLogViewController.swift in Sources */,
 				80804F6C944D3E9972822240DC30BFCF /* DebugOverlayViewController.swift in Sources */,

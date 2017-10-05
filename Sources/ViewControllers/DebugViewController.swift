@@ -66,6 +66,7 @@ public struct DebugItem: DebugItemProtocol {
     public enum Kind {
         case action
         case info(String?)
+        case picker(Int, [String])
         case stepper(Double, Double, Double, Double)
         case toggle(Bool)
     }
@@ -95,6 +96,12 @@ public struct DebugItem: DebugItemProtocol {
     public init(stepperWithId id: String, title: String, value: Double, min: Double, max: Double, step: Double) {
         self.id = id
         self.kind = .stepper(value, min, max, step)
+        self.title = title
+    }
+
+    public init(pickerWithId id: String, title: String, currentIndex: Int, values: [String]) {
+        self.id = id
+        self.kind = .picker(currentIndex, values)
         self.title = title
     }
 }
@@ -163,6 +170,8 @@ public protocol DebugViewControllerDelegate: class {
     func didSelectAction(withId id: String) -> Any?
     /// This method is called when an item of type DebugItem and Kind stepper has its value changed.
     func didChangeStepper(withId id: String, to value: Double)
+    /// This method is called when an item of type DebugItem and Kind picker has its value changed.
+    func didSelectPickerValue(withIndex index: Int, forItemWithId id: String)
 }
 
 /// Responsible for displaying the debug interface as defined by section property.
@@ -254,6 +263,12 @@ public extension DebugViewController {
                 cell.detailTextLabel?.text = infoString
 
                 return cell
+            case .picker(let currentIndex, let values):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell", for: indexPath) as! DebugViewPickerCell
+                cell.delegate = delegate
+                cell.configure(withItemId: item.id, title: item.title, selectedIndex: currentIndex, values: values)
+
+                return cell
             case .stepper(let value, let min, let max, let step):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "stepperCell", for: indexPath) as! DebugViewStepperCell
                 cell.itemId = item.id
@@ -333,6 +348,8 @@ public extension DebugViewController {
                             tableView.reloadRows(at: [indexPath], with: .automatic)
                         })
                     }
+                case .picker(_, _):
+                    tableView.cellForRow(at: indexPath)?.becomeFirstResponder()
                 case .stepper(_):
                     break
                 case .toggle(_):
