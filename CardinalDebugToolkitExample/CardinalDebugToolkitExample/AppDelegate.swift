@@ -25,6 +25,7 @@
 
 import UIKit
 import CardinalDebugToolkit
+import KeychainAccess
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Log.shared.critical("Test 1", tag: "test")
         Log.shared.critical("Test 2", tag: "test")
 
+        //
+        Keychain()["testKey"] = "testValue"
+
+        //
         DebugOverlayWindow.delegate = debugOverlayDelegate
 
         return true

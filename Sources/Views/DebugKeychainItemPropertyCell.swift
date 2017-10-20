@@ -27,5 +27,24 @@ import Foundation
 import UIKit
 
 public class DebugKeychainItemPropertyCell: UITableViewCell {
-    @IBOutlet var propertyValueLabel: UILabel!
+    public override var textLabel: UILabel? {
+        return titleLabel
+    }
+
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
+
+    // MARK: - lifecycle
+
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+
+        if #available(iOS 11.0, *) {
+        } else {
+            titleLabelLeadingConstraint.isActive = false
+            let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0)
+            constraint.isActive = true
+            titleLabelLeadingConstraint = constraint
+        }
+    }
 }

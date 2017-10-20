@@ -86,10 +86,10 @@ public extension DebugKeychainItemViewController {
             propertyString = "\(value ?? "")"
         }
 
-        if propertyString.characters.count > 1000 {
-            cell.propertyValueLabel.text = String(propertyString.characters.prefix(1000)) + "…"
+        if propertyString.count > 1000 {
+            cell.textLabel?.text = String(propertyString.prefix(1000)) + "…"
         } else {
-            cell.propertyValueLabel.text = propertyString
+            cell.textLabel?.text = propertyString
         }
 
         return cell
@@ -100,5 +100,20 @@ public extension DebugKeychainItemViewController {
 public extension DebugKeychainItemViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        let sectionKey = keys[indexPath.section]
+        let value = item[keys[indexPath.section]]
+
+        var propertyString: String
+        if sectionKey == "value", let value = value as? Data, let unarchivedString = NSKeyedUnarchiver.unarchiveObject(with: value) as? String {
+            propertyString = unarchivedString
+        } else {
+            propertyString = "\(value ?? "")"
+        }
+
+        let vc = DebugToolkitStoryboard.dataViewController()
+        vc.dataString = propertyString
+
+        show(vc, sender: self)
     }
 }

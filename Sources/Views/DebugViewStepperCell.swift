@@ -26,19 +26,34 @@
 import Foundation
 
 class DebugViewStepperCell: UITableViewCell {
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var valueTextField: UITextField!
-    @IBOutlet var stepper: UIStepper!
-
-    public var itemId: String?
-
-    public weak var delegate: DebugViewControllerDelegate?
-
     public override var textLabel: UILabel? {
         return titleLabel
     }
 
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var valueTextField: UITextField!
+    @IBOutlet var stepper: UIStepper!
+
+    public var itemId: String?
+    public weak var delegate: DebugViewControllerDelegate?
+
     // MARK: - lifecycle
+
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+
+        if #available(iOS 11.0, *) {
+        } else {
+            titleLabelLeadingConstraint.isActive = false
+            let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0)
+            constraint.isActive = true
+            titleLabelLeadingConstraint = constraint
+        }
+
+        valueTextField.addTarget(self, action: #selector(textFieldValueChanged(sender:)), for: .editingChanged)
+        stepper.addTarget(self, action: #selector(stepperValueChanged(sender:)), for: .primaryActionTriggered)
+    }
 
     public override func prepareForReuse() {
         super.prepareForReuse()
@@ -49,13 +64,6 @@ class DebugViewStepperCell: UITableViewCell {
     }
 
     // MARK: - public methods
-
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-
-        valueTextField.addTarget(self, action: #selector(textFieldValueChanged(sender:)), for: .editingChanged)
-        stepper.addTarget(self, action: #selector(stepperValueChanged(sender:)), for: .primaryActionTriggered)
-    }
 
     // MARK: - private methods
 

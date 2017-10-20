@@ -27,18 +27,32 @@ import Foundation
 import UIKit
 
 public class DebugViewToggleCell: UITableViewCell {
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var toggleView: UISwitch!
-
-    public var itemId: String?
-
-    public weak var delegate: DebugViewControllerDelegate?
-
     public override var textLabel: UILabel? {
         return titleLabel
     }
 
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var toggleView: UISwitch!
+
+    public var itemId: String?
+    public weak var delegate: DebugViewControllerDelegate?
+
     // MARK: - lifecycle
+
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+
+        if #available(iOS 11.0, *) {
+        } else {
+            titleLabelLeadingConstraint.isActive = false
+            let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0)
+            constraint.isActive = true
+            titleLabelLeadingConstraint = constraint
+        }
+
+        toggleView.addTarget(self, action: #selector(switchToggled(sender:)), for: .primaryActionTriggered)
+    }
 
     public override func prepareForReuse() {
         super.prepareForReuse()
@@ -49,12 +63,6 @@ public class DebugViewToggleCell: UITableViewCell {
     }
 
     // MARK: - public methods
-
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-
-        toggleView.addTarget(self, action: #selector(switchToggled(sender:)), for: .primaryActionTriggered)
-    }
 
     // MARK: - private methods
 
