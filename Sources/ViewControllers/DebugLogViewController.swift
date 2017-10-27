@@ -64,11 +64,13 @@ public class DebugLogViewController: UIViewController {
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if let tempFileURL = URLForTempLogFile(isFiltered: true) {
-            try? FileManager.default.removeItem(at: tempFileURL)
-        }
-        if let tempFileURL = URLForTempLogFile(isFiltered: false) {
-            try? FileManager.default.removeItem(at: tempFileURL)
+        if isBeingDismissed {
+            if let tempFileURL = URLForTempLogFile(isFiltered: true) {
+                try? FileManager.default.removeItem(at: tempFileURL)
+            }
+            if let tempFileURL = URLForTempLogFile(isFiltered: false) {
+                try? FileManager.default.removeItem(at: tempFileURL)
+            }
         }
     }
 
