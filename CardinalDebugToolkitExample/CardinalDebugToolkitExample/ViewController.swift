@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         dbgVC.delegate = DebugHandler(debugController: dbgVC)
 
         let nvc = UINavigationController(rootViewController: dbgVC)
+        nvc.navigationBar.isTranslucent = false
         show(nvc, sender: self)
     }
 

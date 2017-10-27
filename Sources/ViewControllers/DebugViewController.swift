@@ -310,7 +310,7 @@ public extension DebugViewController {
 
         if indexPath.section == sections.count {
             if indexPath.row == 0 {
-                let vc = DebugLogListViewController()
+                let vc = DebugToolkitStoryboard.logListViewController()
                 show(vc, sender: self)
             } else {
                 let vc = DebugToolkitStoryboard.keychainListViewController()

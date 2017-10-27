@@ -47,6 +47,13 @@ public struct DebugToolkitStoryboard {
         return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.keychainItemViewController.rawValue) as! DebugKeychainItemViewController
     }
 
+    public static func logListViewController() -> DebugLogListViewController {
+        let vc = DebugLogListViewController()
+        vc.extendedLayoutIncludesOpaqueBars = true
+
+        return vc
+    }
+
     public static func logViewController() -> DebugLogViewController {
         return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.logViewController.rawValue) as! DebugLogViewController
     }

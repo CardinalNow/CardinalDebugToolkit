@@ -25,7 +25,6 @@
 
 import Foundation
 import UIKit
-import MobileCoreServices
 
 public class DebugLogBufferViewController: UIViewController {
     @IBOutlet var textView: UITextView!
