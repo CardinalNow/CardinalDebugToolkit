@@ -76,7 +76,11 @@ open class Log {
             return false
         }
 
-        let logFileName = Date().description.replacingOccurrences(of: " ", with: "_")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd_HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+
+        let logFileName = dateFormatter.string(from: Date())
         let logFileURL = logDirURL.appendingPathComponent("\(logFileName).log", isDirectory: false)
 
         freopen(logFileURL.path.cString(using: .ascii), "a+", stderr)
