@@ -25,43 +25,67 @@
 
 import Foundation
 import UIKit
-import KeychainAccess
 
 public class DebugKeychainListViewController: UITableViewController {
     // MARK: - lifecycle
 
-    public var items: [[String: Any]] = []
+    private var sectionTitles: [String] = []
+    public var sections: [[[String: Any]]] = []
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        items = Keychain.allItems(.genericPassword) + Keychain.allItems(.internetPassword)
+        for itemClass in [ItemClass.certificate, ItemClass.genericPassword, ItemClass.identity, ItemClass.internetPassword, ItemClass.key] {
+            let items = Keychain.allItems(forItemClass: itemClass)
+            if !items.isEmpty {
+                sectionTitles.append(itemClass.description)
+                sections.append(items)
+            }
+        }
     }
 }
 
 // MARK: - UITableViewDataSource
 public extension DebugKeychainListViewController {
     public override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return sections[section].count
+    }
+
+    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.row]
+        let item = sections[indexPath.section][indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "keychainEntryCell", for: indexPath)
-        if let key = item["key"] as? String {
-            cell.textLabel?.text = key
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 17.0)
-        } else {
-            cell.textLabel?.text = "(no key)"
-            cell.textLabel?.font = UIFont.italicSystemFont(ofSize: 17.0)
+
+        var title: [String] = []
+        for key in ["account", "generic"] {
+            if let value = item[key] as? String {
+                if !value.isEmpty {
+                    title.append(value)
+                }
+            } else if let valueData = item[key] as? Data, let value = String(data: valueData, encoding: .utf8) {
+                if !value.isEmpty {
+                    title.append(value)
+                }
+            }
         }
 
-        cell.detailTextLabel?.text = "\(item["class"] ?? "") - \(item["service"] ?? "")"
+        if title.isEmpty {
+            cell.textLabel?.text = "(no key)"
+            cell.textLabel?.font = UIFont.italicSystemFont(ofSize: 17.0)
+        } else {
+            cell.textLabel?.text = title.joined(separator: " - ")
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17.0)
+        }
+
+        cell.detailTextLabel?.text = "\(item["service"] ?? "") - \(item["accessGroup"] ?? "")"
 
         return cell
     }
@@ -73,7 +97,7 @@ public extension DebugKeychainListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let vc = DebugToolkitStoryboard.keychainItemViewController()
-        vc.item = items[indexPath.row]
+        vc.item = sections[indexPath.section][indexPath.row]
 
         show(vc, sender: self)
     }

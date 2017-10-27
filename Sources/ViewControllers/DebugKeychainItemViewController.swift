@@ -35,11 +35,15 @@ public class DebugKeychainItemViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 64
 
         title = item["key"] as? String
 
         keys = item.keys.sorted()
+        if let index = keys.index(of: "generic") {
+            keys.remove(at: index)
+            keys.insert("generic", at: 0)
+        }
         if let index = keys.index(of: "class") {
             keys.remove(at: index)
             keys.insert("class", at: 0)
@@ -52,44 +56,67 @@ public class DebugKeychainItemViewController: UITableViewController {
             keys.remove(at: index)
             keys.insert("value", at: 0)
         }
-        if let index = keys.index(of: "key") {
+        if let index = keys.index(of: "account") {
             keys.remove(at: index)
-            keys.insert("key", at: 0)
+            keys.insert("account", at: 0)
         }
+    }
+
+    private func stringRepresentation(key: String, value: Any, full: Bool) -> String {
+        var propertyString: String
+        if let data = value as? Data {
+            if let unarchivedString = NSKeyedUnarchiver.unarchiveObject(with: data) as? String {
+                propertyString = unarchivedString
+            } else if !data.isEmpty, let string = String(data: data, encoding: .utf8) {
+                propertyString = string
+            } else if key == "sha1" {
+                propertyString = data.map({ String(format: "%02hhx", $0) }).joined()
+            } else {
+                if full {
+                    propertyString = (data as NSData).description
+                } else {
+                    propertyString = data.description
+                }
+            }
+        } else if let date = value as? Date {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .short
+            propertyString = formatter.string(from: date)
+        } else {
+            propertyString = "\(value)"
+        }
+
+        return propertyString
     }
 }
 
 // MARK: - UITableViewDataSource
 public extension DebugKeychainItemViewController {
     public override func numberOfSections(in tableView: UITableView) -> Int {
-        return keys.count
-    }
-
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return keys[section]
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return keys.count
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "keychainItemPropertyCell", for: indexPath) as! DebugKeychainItemPropertyCell
 
-        let sectionKey = keys[indexPath.section]
-        let value = item[keys[indexPath.section]]
+        let key = keys[indexPath.row]
+        cell.textLabel?.text = key
 
-        var propertyString: String
-        if sectionKey == "value", let value = value as? Data, let unarchivedString = NSKeyedUnarchiver.unarchiveObject(with: value) as? String {
-            propertyString = unarchivedString
-        } else {
-            propertyString = "\(value ?? "")"
-        }
+        if let value = item[key] {
+            let propertyString = stringRepresentation(key: key, value: value, full: false)
 
-        if propertyString.count > 1000 {
-            cell.textLabel?.text = String(propertyString.prefix(1000)) + "…"
+            if propertyString.count > 128 {
+                cell.detailTextLabel?.text = String(propertyString.prefix(128)) + "…"
+            } else {
+                cell.detailTextLabel?.text = propertyString
+            }
         } else {
-            cell.textLabel?.text = propertyString
+            cell.detailTextLabel?.text = nil
         }
 
         return cell
@@ -101,18 +128,12 @@ public extension DebugKeychainItemViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let sectionKey = keys[indexPath.section]
-        let value = item[keys[indexPath.section]]
-
-        var propertyString: String
-        if sectionKey == "value", let value = value as? Data, let unarchivedString = NSKeyedUnarchiver.unarchiveObject(with: value) as? String {
-            propertyString = unarchivedString
-        } else {
-            propertyString = "\(value ?? "")"
-        }
+        let key = keys[indexPath.row]
 
         let vc = DebugToolkitStoryboard.dataViewController()
-        vc.dataString = propertyString
+        if let value = item[key] {
+            vc.dataString = stringRepresentation(key: key, value: value, full: true)
+        }
 
         show(vc, sender: self)
     }

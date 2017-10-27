@@ -30,9 +30,13 @@ public class DebugKeychainItemPropertyCell: UITableViewCell {
     public override var textLabel: UILabel? {
         return titleLabel
     }
+    public override var detailTextLabel: UILabel? {
+        return valueLabel
+    }
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var valueLabel: UILabel!
 
     // MARK: - lifecycle
 
