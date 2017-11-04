@@ -11,9 +11,8 @@ DESC
   s.author = { "Robin Kunde" => "rkunde@cardinalsolutions.com" }
   s.platform = :ios, "9.0"
   s.source = { :git => "https://github.com/CardinalNow/CardinalDebugToolkit.git", :tag => "#{s.version}" }
-  s.source_files = "Sources/**/*.swift"
+  s.source_files = "Sources/**/*.{h,m,swift}"
   s.resource_bundles = {
     'CardinalDebugToolkit-Storyboards' => ['Storyboards/**/*.{storyboard,xib}']
   }
-  s.dependency "KeychainAccess", "~> 3.0"
 end

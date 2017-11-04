@@ -33,6 +33,8 @@ public struct DebugToolkitStoryboard {
         case keychainItemViewController
         case debugDataViewController
         case debugLogBufferViewController
+        case userDefaultsListViewController
+        case userDefaultsScopeListViewController
     }
 
     public static func debugViewController() -> DebugViewController {
@@ -45,6 +47,14 @@ public struct DebugToolkitStoryboard {
 
     public static func keychainItemViewController() -> DebugKeychainItemViewController {
         return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.keychainItemViewController.rawValue) as! DebugKeychainItemViewController
+    }
+
+    public static func userDefaultsListViewController() -> DebugUserDefaultsListViewController {
+        return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.userDefaultsListViewController.rawValue) as! DebugUserDefaultsListViewController
+    }
+
+    public static func userDefaultsScopeListViewController() -> DebugUserDefaultsScopeListViewController {
+        return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.userDefaultsScopeListViewController.rawValue) as! DebugUserDefaultsScopeListViewController
     }
 
     public static func logListViewController() -> DebugLogListViewController {
@@ -67,8 +77,13 @@ public struct DebugToolkitStoryboard {
     }
 
     public static func newInstance() -> UIStoryboard {
-        let frameworkBundle = Bundle(identifier: "org.cocoapods.CardinalDebugToolkit")!
-        let resourceBundle = Bundle(url: frameworkBundle.url(forResource: "CardinalDebugToolkit-Storyboards", withExtension: "bundle")!)
+        let resourceBundle: Bundle
+        // Cocoapods
+        if let frameworkBundle = Bundle(identifier: "org.cocoapods.CardinalDebugToolkit") {
+            resourceBundle = Bundle(url: frameworkBundle.url(forResource: "CardinalDebugToolkit-Storyboards", withExtension: "bundle")!)!
+        } else {
+            resourceBundle = Bundle(identifier: "com.cardinalsolutions.CardinalDebugToolkit")!
+        }
 
         return UIStoryboard(name: "Debug", bundle: resourceBundle)
     }

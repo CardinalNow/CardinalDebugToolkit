@@ -61,34 +61,6 @@ public class DebugKeychainItemViewController: UITableViewController {
             keys.insert("account", at: 0)
         }
     }
-
-    private func stringRepresentation(key: String, value: Any, full: Bool) -> String {
-        var propertyString: String
-        if let data = value as? Data {
-            if let unarchivedString = NSKeyedUnarchiver.unarchiveObject(with: data) as? String {
-                propertyString = unarchivedString
-            } else if !data.isEmpty, let string = String(data: data, encoding: .utf8) {
-                propertyString = string
-            } else if key == "sha1" {
-                propertyString = data.map({ String(format: "%02hhx", $0) }).joined()
-            } else {
-                if full {
-                    propertyString = (data as NSData).description
-                } else {
-                    propertyString = data.description
-                }
-            }
-        } else if let date = value as? Date {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            formatter.timeStyle = .short
-            propertyString = formatter.string(from: date)
-        } else {
-            propertyString = "\(value)"
-        }
-
-        return propertyString
-    }
 }
 
 // MARK: - UITableViewDataSource
@@ -108,7 +80,19 @@ public extension DebugKeychainItemViewController {
         cell.textLabel?.text = key
 
         if let value = item[key] {
-            let propertyString = stringRepresentation(key: key, value: value, full: false)
+            let propertyString: String
+            if key == "sha1", let data = value as? Data {
+                propertyString = data.map({ String(format: "%02hhx", $0) }).joined()
+            } else {
+                switch stringRepresentation(value: value, fullDescription: false) {
+                case .full(_, let description):
+                    cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 17.0)
+                    propertyString = description
+                case .summary(let description):
+                    cell.detailTextLabel?.font = UIFont.italicSystemFont(ofSize: 17.0)
+                    propertyString = description
+                }
+            }
 
             if propertyString.count > 128 {
                 cell.detailTextLabel?.text = String(propertyString.prefix(128)) + "…"
@@ -132,7 +116,14 @@ public extension DebugKeychainItemViewController {
 
         let vc = DebugToolkitStoryboard.dataViewController()
         if let value = item[key] {
-            vc.dataString = stringRepresentation(key: key, value: value, full: true)
+            if key == "sha1", let data = value as? Data {
+                vc.dataString = data.map({ String(format: "%02hhx", $0) }).joined()
+            } else {
+                switch stringRepresentation(value: value, fullDescription: true) {
+                case .full(_, let description): vc.dataString = description
+                case .summary(_): break
+                }
+            }
         }
 
         show(vc, sender: self)

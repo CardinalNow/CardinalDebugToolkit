@@ -58,6 +58,7 @@ public extension DebugLogListViewController {
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath)
 
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = logFileURLs[indexPath.row].lastPathComponent
 
         return cell

@@ -224,7 +224,7 @@ public extension DebugViewController {
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == sections.count {
-            return 2
+            return 3
         }
 
         return sections[section].items.count
@@ -243,6 +243,8 @@ public extension DebugViewController {
         if indexPath.section == sections.count {
             if indexPath.row == 0 {
                 item = DebugItem(id: "view_debug_log", kind: .action, title: "View Debug Log")
+            } else if indexPath.row == 1 {
+                item = DebugItem(id: "view_debug_log", kind: .action, title: "View UserDefaults")
             } else {
                 item = DebugItem(id: "view_keychain", kind: .action, title: "View Keychain Items")
             }
@@ -311,6 +313,9 @@ public extension DebugViewController {
         if indexPath.section == sections.count {
             if indexPath.row == 0 {
                 let vc = DebugToolkitStoryboard.logListViewController()
+                show(vc, sender: self)
+            } else if indexPath.row == 1 {
+                let vc = DebugToolkitStoryboard.userDefaultsListViewController()
                 show(vc, sender: self)
             } else {
                 let vc = DebugToolkitStoryboard.keychainListViewController()
