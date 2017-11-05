@@ -229,6 +229,7 @@
 				BE4015261FACB55100E706E9 /* Frameworks */,
 				BE4015271FACB55100E706E9 /* Headers */,
 				BE4015281FACB55100E706E9 /* Resources */,
+				BE42A2D61FAEBC100018EAC3 /* Check Storyboard Module Inheritance */,
 			);
 			buildRules = (
 			);
@@ -312,6 +313,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BE42A2D61FAEBC100018EAC3 /* Check Storyboard Module Inheritance */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Storyboard Module Inheritance";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "errCount=0\nfor linenumber in $(sed -n '/customModuleProvider=\"target\"/=' \"${SRCROOT}/Storyboards/Debug.storyboard\"); do\n  echo \"${SRCROOT}/Storyboards/Debug.storyboard:$linenumber: error : Storyboard object at line $linenumber contains module inheritence from target\" >&2\n  ((errCount+=1))\ndone\n\nif [ $errCount != 0 ] ; then\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE4015251FACB55100E706E9 /* Sources */ = {
