@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func toggleDebugOverlayTapped(_ sender: UIButton) {
-        DebugOverlayWindow.toggle()
+        (UIApplication.shared.delegate as! AppDelegate).debugOverlay.toggle()
     }
 }
 
@@ -123,22 +123,32 @@ class DebugHandler: DebugViewControllerDelegate {
         debugController.reloadSections()
     }
 
-    func didToggleItem(withId id: String, to isOn: Bool) {
+    func changedMultiChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool) {
         UserDefaults.standard.set(isOn, forKey: id)
     }
 
-    func didToggleChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool) {
+    func changedPicker(withId id: String, toIndex index: Int) {
+        UserDefaults.standard.set(index, forKey: "picker1")
+    }
+
+    func changedStepper(withId id: String, to value: Double) {
+        UserDefaults.standard.set(value, forKey: id)
+    }
+
+    func changedToggle(withId id: String, to isOn: Bool) {
         UserDefaults.standard.set(isOn, forKey: id)
     }
 
-    func didSelectAction(withId id: String) -> Any? {
+    func selectedAction(withId id: String) -> Any? {
         switch id {
+        case "crash":
+            abort()
         case "requestPush":
             let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             UIApplication.shared.registerUserNotificationSettings(settings)
             UIApplication.shared.registerForRemoteNotifications()
-        case "crash":
-            abort()
+        case "subSectionAction1", "subSectionAction2", "subSectionAction3", "subSectionAction4":
+            break
         case "viewString":
             return "Example string\nbroken up\nover\nmultiple lines"
         case "viewAttrStr":
@@ -158,13 +168,5 @@ class DebugHandler: DebugViewControllerDelegate {
         }
 
         return nil
-    }
-
-    func didChangeStepper(withId id: String, to value: Double) {
-        UserDefaults.standard.set(value, forKey: id)
-    }
-
-    func didSelectPickerValue(withIndex index: Int, forItemWithId id: String) {
-        UserDefaults.standard.set(index, forKey: "picker1")
     }
 }

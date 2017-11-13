@@ -77,7 +77,7 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
         if let text = sender.text, let value = Double(text) {
             stepper.value = value
             if let itemId = itemId {
-                delegate?.didChangeStepper(withId: itemId, to: value)
+                delegate?.changedStepper(withId: itemId, to: value)
             }
         }
     }
@@ -85,7 +85,7 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         valueTextField.text = String(sender.value)
         if let itemId = itemId {
-            delegate?.didChangeStepper(withId: itemId, to: sender.value)
+            delegate?.changedStepper(withId: itemId, to: sender.value)
         }
     }
 }

@@ -26,13 +26,17 @@
 import Foundation
 import UIKit
 
-/// Types adopting the `DebugViewControllerDelegate` protocol can be used to handle user interactions
-/// with items that are shown in the Debug view.
+/// Types adopting the `DebugViewControllerDelegate` protocol can be used to handle
+/// user interactions with items that are shown in the Debug view.
 public protocol DebugViewControllerDelegate: class {
-    /// This method is called when an item of type DebugItem and Kind toggle is switched on or off.
-    func didToggleItem(withId id: String, to isOn: Bool)
     /// This method is called when an item of type DebugMultiChoiceItem is selected.
-    func didToggleChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool)
+    func changedMultiChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool)
+    /// This method is called when an item of type DebugItem and Kind picker has its value changed.
+    func changedPicker(withId id: String, toIndex index: Int)
+    /// This method is called when an item of type DebugItem and Kind stepper has its value changed.
+    func changedStepper(withId id: String, to value: Double)
+    /// This method is called when an item of type DebugItem and Kind toggle is switched on or off.
+    func changedToggle(withId id: String, to isOn: Bool)
     /// This method is called when an item of type DebugItem and Kind action is selected.
     /// If the return value is of a type that DebugViewController can handle, it will
     /// display the returned data in the appropriate fashion.
@@ -40,11 +44,7 @@ public protocol DebugViewControllerDelegate: class {
     ///   - UIViewController (including UINavigationController)
     ///   - NSAttributedString
     ///   - String
-    func didSelectAction(withId id: String) -> Any?
-    /// This method is called when an item of type DebugItem and Kind stepper has its value changed.
-    func didChangeStepper(withId id: String, to value: Double)
-    /// This method is called when an item of type DebugItem and Kind picker has its value changed.
-    func didSelectPickerValue(withIndex index: Int, forItemWithId id: String)
+    func selectedAction(withId id: String) -> Any?
 }
 
 /// Responsible for displaying the debug interface as defined by section property.
@@ -54,7 +54,7 @@ public class DebugViewController: UITableViewController {
     public var delegate: DebugViewControllerDelegate?
     /// The user-defined sections that make up the debug interface.
     public var sections: [DebugMenuSection] = []
-
+    /// Determines whether built-in tools will be added to the generated menu.
     public var showBuiltInTools = true
 
     // MARK: - class methods
@@ -197,7 +197,7 @@ public extension DebugViewController {
             let item = sections[indexPath.section].items[indexPath.row]
 
             if let actionItem = item as? DebugMenuActionItem {
-                let result = delegate?.didSelectAction(withId: actionItem.id)
+                let result = delegate?.selectedAction(withId: actionItem.id)
                 switch result {
                 case .some(let viewController as UIViewController):
                     show(viewController, sender: self)
@@ -218,6 +218,7 @@ public extension DebugViewController {
             } else if let infoItem = item as? DebugMenuInfoItem {
                 if let copyString = infoItem.info {
                     UIPasteboard.general.string = copyString
+                    // TODO: do this in a way that's compatible with cell reuse
                     tableView.cellForRow(at: indexPath)?.detailTextLabel?.text = "Copied"
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                         tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -226,7 +227,7 @@ public extension DebugViewController {
             } else if let multiChoiceItem = item as? DebugMenuMultiChoiceItem {
                 let section = sections[indexPath.section]
                 multiChoiceItem.isSelected = !multiChoiceItem.isSelected
-                delegate?.didToggleChoice(withId: multiChoiceItem.id, inSectionWithId: section.id, to: multiChoiceItem.isSelected)
+                delegate?.changedMultiChoice(withId: multiChoiceItem.id, inSectionWithId: section.id, to: multiChoiceItem.isSelected)
                 tableView.reloadSections([indexPath.section], with: .automatic)
             } else if let _ = item as? DebugMenuPickerItem {
                 tableView.cellForRow(at: indexPath)?.becomeFirstResponder()

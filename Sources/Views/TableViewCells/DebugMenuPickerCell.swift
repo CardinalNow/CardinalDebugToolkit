@@ -108,6 +108,6 @@ extension DebugMenuPickerCell: UIPickerViewDelegate {
 
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         detailTextLabel?.text = values[row]
-        delegate?.didSelectPickerValue(withIndex: row, forItemWithId: itemId)
+        delegate?.changedPicker(withId: itemId, toIndex: row)
     }
 }

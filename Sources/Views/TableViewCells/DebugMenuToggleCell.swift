@@ -71,6 +71,6 @@ public class DebugMenuToggleCell: DebugMenuBaseCell {
         case .userDefault(let key):
             UserDefaults.standard.set(toggleView.isOn, forKey: key)
         }
-        delegate?.didToggleItem(withId: toggleItem.id, to: toggleView.isOn)
+        delegate?.changedToggle(withId: toggleItem.id, to: toggleView.isOn)
     }
 }

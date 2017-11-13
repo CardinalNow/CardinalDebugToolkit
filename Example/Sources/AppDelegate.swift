@@ -29,7 +29,7 @@ import CardinalDebugToolkit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    let debugWindow = DebugOverlayWindow()
+    let debugOverlay = DebugOverlay()
     let debugOverlayDelegate = DbgOveralayDelegate()
 
     var deviceToken = ""
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         populateUserDefaults()
 
         //
-        DebugOverlayWindow.delegate = debugOverlayDelegate
+        debugOverlay.delegate = debugOverlayDelegate
 
         return true
     }
@@ -122,13 +122,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 class DbgOveralayDelegate: DebugOverlayDelegate {
-    func actions() -> [DebugOverlayAction] {
+    var debugOverlayActionItems: [DebugOverlayActionItem] {
         return [
-            DebugOverlayAction(id: "filteredLog", title: "Show log buffer")
+            DebugOverlayActionItem(id: "filteredLog", title: "Show log buffer")
         ]
     }
 
-    func didSelectAction(withId id: String) -> UIViewController? {
+    func debugOverlayShouldDisplayHideAction(_ overlay: DebugOverlay) -> Bool {
+        return true
+    }
+
+    func debugOverlay(_ overlay: DebugOverlay, selectedActionWithId id: String) -> UIViewController? {
         if id == "filteredLog" {
             let vc = DebugToolkitStoryboard.logBufferViewController()
             vc.filteredLogBuffer = Log.shared.filteredLogBuffers.first

@@ -25,58 +25,14 @@
 
 import Foundation
 
-public struct DebugOverlayAction {
-    public let id: String
-    public let title: String
-
-    public init(id: String, title: String) {
-        self.id = id
-        self.title = title
-    }
-}
-
-public protocol DebugOverlayDelegate: class {
-    func actions() -> [DebugOverlayAction]
-    func didSelectAction(withId id: String) -> UIViewController?
-}
-
 public class DebugOverlayWindow: UIWindow {
-    public weak static var delegate: DebugOverlayDelegate?
-    public static var showHideAction = true
-    public static var toolbarBackgroundColor: UIColor?
-    public static var toolbarTintColor: UIColor?
-
-    private static var window: DebugOverlayWindow?
-
-    private let overlayViewController = DebugOverlayViewController()
-
-    // MARK: - static methods
-
-    public static func show() {
-        if DebugOverlayWindow.window == nil {
-            let window = DebugOverlayWindow()
-            window.isHidden = false
-            DebugOverlayWindow.window = window
-        }
-    }
-
-    public static func hide() {
-        DebugOverlayWindow.window = nil
-    }
-
-    public static func toggle() {
-        if DebugOverlayWindow.window == nil {
-            DebugOverlayWindow.show()
-        } else {
-            DebugOverlayWindow.hide()
-        }
-    }
+    internal weak var debugOverlay: DebugOverlay?
+    internal let overlayViewController = DebugOverlayViewController()
 
     // MARK: - lifecycle
 
     convenience init() {
         self.init(frame: UIScreen.main.bounds)
-        self.overlayViewController.delegate = DebugOverlayWindow.delegate
     }
 
     public override init(frame: CGRect) {

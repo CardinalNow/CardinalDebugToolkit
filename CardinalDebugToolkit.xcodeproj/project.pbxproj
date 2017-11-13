@@ -34,6 +34,7 @@
 		BE40157F1FACBA7E00E706E9 /* NSUserDefaultsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = BE4015721FACB6F600E706E9 /* NSUserDefaultsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE8A1F521FB4C0E6006394E8 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A1F511FB4C0E6006394E8 /* Menu.swift */; };
 		BE8A1F551FB538F9006394E8 /* DebugMenuBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */; };
+		BE9A16F11FBA20E800E6F744 /* DebugOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A16F01FBA20E700E6F744 /* DebugOverlay.swift */; };
 		BED145A51FACC4A6003EA3D8 /* StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */; };
 		BED145A71FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED145A61FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		BE4015731FACB6F600E706E9 /* NSUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsHelper.m; sourceTree = "<group>"; };
 		BE8A1F511FB4C0E6006394E8 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuBaseCell.swift; sourceTree = "<group>"; };
+		BE9A16F01FBA20E700E6F744 /* DebugOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOverlay.swift; sourceTree = "<group>"; };
 		BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRepresentation.swift; sourceTree = "<group>"; };
 		BED145A61FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUserDefaultItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 		BE4015441FACB67800E706E9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BE9A16F01FBA20E700E6F744 /* DebugOverlay.swift */,
 				BE4015451FACB67800E706E9 /* DebugToolkitStoryboard.swift */,
 				BE4015461FACB67800E706E9 /* KeychainUtils.swift */,
 				BE8A1F511FB4C0E6006394E8 /* Menu.swift */,
@@ -374,6 +377,7 @@
 				BE40156B1FACB67800E706E9 /* DebugViewController.swift in Sources */,
 				BE40155C1FACB67800E706E9 /* KeychainUtils.swift in Sources */,
 				BE4015691FACB67800E706E9 /* DebugUserDefaultsScopeListViewController.swift in Sources */,
+				BE9A16F11FBA20E800E6F744 /* DebugOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

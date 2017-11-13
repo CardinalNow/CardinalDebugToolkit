@@ -26,7 +26,7 @@
 import Foundation
 
 public class DebugOverlayViewController: UIViewController {
-    internal weak var delegate: DebugOverlayDelegate?
+    internal weak var debugOverlay: DebugOverlay?
     private var toolbarFrameBeforeDragging = CGRect(x: 0, y: 0, width: 0, height: 0)
     private let toolbar = UIView(frame: CGRect(x: 0, y: 20, width: 50, height: 50))
 
@@ -39,19 +39,32 @@ public class DebugOverlayViewController: UIViewController {
 
         let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleToolbarPanGesture(_:)))
         toolbar.addGestureRecognizer(gestureRecognizer)
-        toolbar.backgroundColor = DebugOverlayWindow.toolbarBackgroundColor ?? UIColor.black
+        toolbar.backgroundColor = debugOverlay?.toolbarBackgroundColor ?? UIColor.black
         toolbar.layer.cornerRadius = 6.0
 
         let button = UIButton(type: .system)
         button.frame = CGRect(x: 5, y: 5, width: 40, height: 40)
         button.setTitle("Debug", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-        button.tintColor = DebugOverlayWindow.toolbarTintColor ?? UIColor.red
+        button.tintColor = debugOverlay?.toolbarTintColor ?? UIColor.red
         button.addTarget(self, action: #selector(showActions), for: .primaryActionTriggered)
 
         toolbar.addSubview(button)
 
         view.addSubview(toolbar)
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        clampToolbarToSafeArea()
+    }
+
+    @available(iOS 11.0, *)
+    public override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+
+        clampToolbarToSafeArea()
     }
 
     // MARK: - internal methods
@@ -69,6 +82,26 @@ public class DebugOverlayViewController: UIViewController {
 
     // MARK: - private methods
 
+    private func clampToolbarToSafeArea() {
+        let safeAreaInsets: UIEdgeInsets
+        if #available(iOS 11.0, *) {
+            safeAreaInsets = view.safeAreaInsets
+        } else {
+            safeAreaInsets = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.height, left: 0, bottom: 0, right: 0)
+        }
+
+        let maxX = view.bounds.width - safeAreaInsets.right - toolbar.frame.width
+        toolbar.frame.origin.x = max(
+            min(maxX, toolbar.frame.origin.x),
+            safeAreaInsets.left
+        )
+        let maxY = view.bounds.height - safeAreaInsets.bottom - toolbar.frame.height
+        toolbar.frame.origin.y = max(
+            min(maxY, toolbar.frame.origin.y),
+            safeAreaInsets.top
+        )
+    }
+
     @objc
     private func handleToolbarPanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
         func updateToolbarPosition(with gestureRecognizer: UIPanGestureRecognizer) {
@@ -76,19 +109,9 @@ public class DebugOverlayViewController: UIViewController {
             var newFrame = self.toolbarFrameBeforeDragging
             newFrame.origin.x += localPoint.x
             newFrame.origin.y += localPoint.y
-
-            if newFrame.minX < 0.0 {
-                newFrame.origin.x = 0.0
-            } else if newFrame.maxX > self.view.bounds.width {
-                newFrame.origin.x = self.view.bounds.width - newFrame.size.width
-            }
-            if newFrame.minY < 0.0 {
-                newFrame.origin.y = 0.0
-            } else if newFrame.maxY > self.view.bounds.height {
-                newFrame.origin.y = self.view.bounds.height - newFrame.size.height
-            }
-
             self.toolbar.frame = newFrame
+
+            clampToolbarToSafeArea()
         }
 
         switch gestureRecognizer.state {
@@ -104,20 +127,20 @@ public class DebugOverlayViewController: UIViewController {
 
     @objc
     private func showActions() {
+        guard let debugOverlay = debugOverlay, let delegate = debugOverlay.delegate else { return }
+
         let vc = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        if let actions = delegate?.actions() {
-            for action in actions {
-                vc.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
-                    let vc = self.delegate?.didSelectAction(withId: action.id)
-                    if let vc = vc {
-                        self.show(vc, sender: self)
-                    }
-                }))
-            }
+        for action in delegate.debugOverlayActionItems {
+            vc.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
+                let vc = delegate.debugOverlay(debugOverlay, selectedActionWithId: action.id)
+                if let vc = vc {
+                    self.show(vc, sender: self)
+                }
+            }))
         }
-        if DebugOverlayWindow.showHideAction {
+        if delegate.debugOverlayShouldDisplayHideAction(debugOverlay) {
             vc.addAction(UIAlertAction(title: "Hide Overlay", style: .destructive, handler: { (_) in
-                DebugOverlayWindow.hide()
+                debugOverlay.hide()
             }))
         }
         vc.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
