@@ -1,5 +1,5 @@
 //
-//  DebugUserDefaultCell.swift
+//  DebugUserDefaultItemCell.swift
 //  CardinalDebugToolkit
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
@@ -26,29 +26,16 @@
 import Foundation
 import UIKit
 
-public class DebugUserDefaultCell: UITableViewCell {
-    public override var textLabel: UILabel? {
-        return titleLabel
-    }
+public class DebugUserDefaultItemCell: DebugMenuBaseCell {
     public override var detailTextLabel: UILabel? {
         return valueLabel
     }
 
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var valueLabel: UILabel!
 
     // MARK: - lifecycle
 
     public override func awakeFromNib() {
         super.awakeFromNib()
-
-        if #available(iOS 11.0, *) {
-        } else {
-            titleLabelLeadingConstraint.isActive = false
-            let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0)
-            constraint.isActive = true
-            titleLabelLeadingConstraint = constraint
-        }
     }
 }

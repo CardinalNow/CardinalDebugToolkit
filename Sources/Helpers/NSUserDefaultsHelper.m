@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 
 NSArray<NSString*>* persistentUserDefaultsDomains() {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return NSUserDefaults.standardUserDefaults.persistentDomainNames;
+#pragma clang diagnostic pop
 }
 
 NSArray<NSString*>* volatileUserDefaultsDomains() {

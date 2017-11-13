@@ -27,14 +27,17 @@ import Foundation
 import UIKit
 
 public class DebugLogListViewController: UITableViewController {
-    fileprivate var logFileURLs: [URL] = []
+    private var logFileURLs: [URL] = []
+    private let filesizeFormatter: ByteCountFormatter = {
+        let formatter = ByteCountFormatter()
+        formatter.countStyle = .file
 
+        return formatter
+    }()
     // MARK: - lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "default")
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -56,10 +59,16 @@ public extension DebugLogListViewController {
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath)
+        let url = logFileURLs[indexPath.row]
 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath)
+        cell.textLabel?.text = url.lastPathComponent
+        if let filesize = (try? url.resourceValues(forKeys: [.fileSizeKey]))?.fileSize {
+            cell.detailTextLabel?.text = filesizeFormatter.string(fromByteCount: Int64(filesize))
+        } else {
+            cell.detailTextLabel?.text = nil
+        }
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = logFileURLs[indexPath.row].lastPathComponent
 
         return cell
     }

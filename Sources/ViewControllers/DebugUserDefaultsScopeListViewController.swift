@@ -26,6 +26,13 @@
 import Foundation
 import UIKit
 
+public enum UserDefaultsScope {
+    case all
+    case global
+    case persistent(String)
+    case volatile(String)
+}
+
 public class DebugUserDefaultsScopeListViewController: UITableViewController {
     private var persistentDomains = persistentUserDefaultsDomains()
     private var volatileDomains = volatileUserDefaultsDomains()

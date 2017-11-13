@@ -14,9 +14,9 @@
 		BE40155C1FACB67800E706E9 /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4015461FACB67800E706E9 /* KeychainUtils.swift */; };
 		BE40155D1FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4015481FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift */; };
 		BE40155E1FACB67800E706E9 /* DebugOverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4015491FACB67800E706E9 /* DebugOverlayWindow.swift */; };
-		BE40155F1FACB67800E706E9 /* DebugViewPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154A1FACB67800E706E9 /* DebugViewPickerCell.swift */; };
-		BE4015601FACB67800E706E9 /* DebugViewStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154B1FACB67800E706E9 /* DebugViewStepperCell.swift */; };
-		BE4015611FACB67800E706E9 /* DebugViewToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154C1FACB67800E706E9 /* DebugViewToggleCell.swift */; };
+		BE40155F1FACB67800E706E9 /* DebugMenuPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154A1FACB67800E706E9 /* DebugMenuPickerCell.swift */; };
+		BE4015601FACB67800E706E9 /* DebugMenuStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154B1FACB67800E706E9 /* DebugMenuStepperCell.swift */; };
+		BE4015611FACB67800E706E9 /* DebugMenuToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154C1FACB67800E706E9 /* DebugMenuToggleCell.swift */; };
 		BE4015621FACB67800E706E9 /* DebugDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154E1FACB67800E706E9 /* DebugDataViewController.swift */; };
 		BE4015631FACB67800E706E9 /* DebugKeychainItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40154F1FACB67800E706E9 /* DebugKeychainItemViewController.swift */; };
 		BE4015641FACB67800E706E9 /* DebugKeychainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4015501FACB67800E706E9 /* DebugKeychainListViewController.swift */; };
@@ -32,8 +32,10 @@
 		BE4015701FACB68800E706E9 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE40156F1FACB68800E706E9 /* Debug.storyboard */; };
 		BE4015751FACB6F600E706E9 /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4015731FACB6F600E706E9 /* NSUserDefaultsHelper.m */; };
 		BE40157F1FACBA7E00E706E9 /* NSUserDefaultsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = BE4015721FACB6F600E706E9 /* NSUserDefaultsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE8A1F521FB4C0E6006394E8 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A1F511FB4C0E6006394E8 /* Menu.swift */; };
+		BE8A1F551FB538F9006394E8 /* DebugMenuBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */; };
 		BED145A51FACC4A6003EA3D8 /* StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */; };
-		BED145A71FACC66B003EA3D8 /* DebugUserDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED145A61FACC66B003EA3D8 /* DebugUserDefaultCell.swift */; };
+		BED145A71FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED145A61FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,9 +59,9 @@
 		BE4015461FACB67800E706E9 /* KeychainUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainUtils.swift; sourceTree = "<group>"; };
 		BE4015481FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugKeychainItemPropertyCell.swift; sourceTree = "<group>"; };
 		BE4015491FACB67800E706E9 /* DebugOverlayWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOverlayWindow.swift; sourceTree = "<group>"; };
-		BE40154A1FACB67800E706E9 /* DebugViewPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewPickerCell.swift; sourceTree = "<group>"; };
-		BE40154B1FACB67800E706E9 /* DebugViewStepperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewStepperCell.swift; sourceTree = "<group>"; };
-		BE40154C1FACB67800E706E9 /* DebugViewToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewToggleCell.swift; sourceTree = "<group>"; };
+		BE40154A1FACB67800E706E9 /* DebugMenuPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuPickerCell.swift; sourceTree = "<group>"; };
+		BE40154B1FACB67800E706E9 /* DebugMenuStepperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuStepperCell.swift; sourceTree = "<group>"; };
+		BE40154C1FACB67800E706E9 /* DebugMenuToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuToggleCell.swift; sourceTree = "<group>"; };
 		BE40154E1FACB67800E706E9 /* DebugDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugDataViewController.swift; sourceTree = "<group>"; };
 		BE40154F1FACB67800E706E9 /* DebugKeychainItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugKeychainItemViewController.swift; sourceTree = "<group>"; };
 		BE4015501FACB67800E706E9 /* DebugKeychainListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugKeychainListViewController.swift; sourceTree = "<group>"; };
@@ -75,8 +77,10 @@
 		BE40156F1FACB68800E706E9 /* Debug.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		BE4015721FACB6F600E706E9 /* NSUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsHelper.h; sourceTree = "<group>"; };
 		BE4015731FACB6F600E706E9 /* NSUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsHelper.m; sourceTree = "<group>"; };
+		BE8A1F511FB4C0E6006394E8 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuBaseCell.swift; sourceTree = "<group>"; };
 		BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRepresentation.swift; sourceTree = "<group>"; };
-		BED145A61FACC66B003EA3D8 /* DebugUserDefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUserDefaultCell.swift; sourceTree = "<group>"; };
+		BED145A61FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUserDefaultItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 			children = (
 				BE4015451FACB67800E706E9 /* DebugToolkitStoryboard.swift */,
 				BE4015461FACB67800E706E9 /* KeychainUtils.swift */,
+				BE8A1F511FB4C0E6006394E8 /* Menu.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -152,12 +157,8 @@
 		BE4015471FACB67800E706E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BE4015481FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift */,
+				BE8A1F531FB5387F006394E8 /* TableViewCells */,
 				BE4015491FACB67800E706E9 /* DebugOverlayWindow.swift */,
-				BE40154A1FACB67800E706E9 /* DebugViewPickerCell.swift */,
-				BE40154B1FACB67800E706E9 /* DebugViewStepperCell.swift */,
-				BE40154C1FACB67800E706E9 /* DebugViewToggleCell.swift */,
-				BED145A61FACC66B003EA3D8 /* DebugUserDefaultCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +205,19 @@
 				BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BE8A1F531FB5387F006394E8 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				BE4015481FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift */,
+				BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */,
+				BE40154A1FACB67800E706E9 /* DebugMenuPickerCell.swift */,
+				BED145A61FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift */,
+				BE40154B1FACB67800E706E9 /* DebugMenuStepperCell.swift */,
+				BE40154C1FACB67800E706E9 /* DebugMenuToggleCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,19 +351,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE4015621FACB67800E706E9 /* DebugDataViewController.swift in Sources */,
-				BE4015601FACB67800E706E9 /* DebugViewStepperCell.swift in Sources */,
+				BE4015601FACB67800E706E9 /* DebugMenuStepperCell.swift in Sources */,
 				BE4015661FACB67800E706E9 /* DebugLogListViewController.swift in Sources */,
 				BE40156C1FACB67800E706E9 /* FilteredLogBuffer.swift in Sources */,
-				BED145A71FACC66B003EA3D8 /* DebugUserDefaultCell.swift in Sources */,
+				BED145A71FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift in Sources */,
 				BE4015641FACB67800E706E9 /* DebugKeychainListViewController.swift in Sources */,
 				BE4015751FACB6F600E706E9 /* NSUserDefaultsHelper.m in Sources */,
 				BE40155E1FACB67800E706E9 /* DebugOverlayWindow.swift in Sources */,
-				BE40155F1FACB67800E706E9 /* DebugViewPickerCell.swift in Sources */,
+				BE40155F1FACB67800E706E9 /* DebugMenuPickerCell.swift in Sources */,
+				BE8A1F551FB538F9006394E8 /* DebugMenuBaseCell.swift in Sources */,
 				BE4015651FACB67800E706E9 /* DebugLogBufferViewController.swift in Sources */,
 				BE4015671FACB67800E706E9 /* DebugLogViewController.swift in Sources */,
-				BE4015611FACB67800E706E9 /* DebugViewToggleCell.swift in Sources */,
+				BE4015611FACB67800E706E9 /* DebugMenuToggleCell.swift in Sources */,
 				BE40155D1FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift in Sources */,
 				BE40155B1FACB67800E706E9 /* DebugToolkitStoryboard.swift in Sources */,
+				BE8A1F521FB4C0E6006394E8 /* Menu.swift in Sources */,
 				BE4015631FACB67800E706E9 /* DebugKeychainItemViewController.swift in Sources */,
 				BE4015681FACB67800E706E9 /* DebugOverlayViewController.swift in Sources */,
 				BE40156D1FACB67800E706E9 /* Log.swift in Sources */,

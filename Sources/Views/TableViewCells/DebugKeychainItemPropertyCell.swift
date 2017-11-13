@@ -1,5 +1,5 @@
 //
-//  DebugViewToggleCell.swift
+//  DebugKeychainItemPropertyCell.swift
 //  CardinalDebugToolkit
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
@@ -24,19 +24,14 @@
 //
 
 import Foundation
+import UIKit
 
-class DebugViewStepperCell: UITableViewCell {
-    public override var textLabel: UILabel? {
-        return titleLabel
+public class DebugKeychainItemPropertyCell: DebugMenuBaseCell {
+    public override var detailTextLabel: UILabel? {
+        return valueLabel
     }
 
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var valueTextField: UITextField!
-    @IBOutlet var stepper: UIStepper!
-
-    public var itemId: String?
-    public weak var delegate: DebugViewControllerDelegate?
+    @IBOutlet var valueLabel: UILabel!
 
     // MARK: - lifecycle
 
@@ -49,39 +44,6 @@ class DebugViewStepperCell: UITableViewCell {
             let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0)
             constraint.isActive = true
             titleLabelLeadingConstraint = constraint
-        }
-
-        valueTextField.addTarget(self, action: #selector(textFieldValueChanged(sender:)), for: .editingChanged)
-        stepper.addTarget(self, action: #selector(stepperValueChanged(sender:)), for: .primaryActionTriggered)
-    }
-
-    public override func prepareForReuse() {
-        super.prepareForReuse()
-
-        delegate = nil
-        itemId = nil
-        valueTextField.text = nil
-    }
-
-    // MARK: - public methods
-
-    // MARK: - private methods
-
-    @objc
-    private func textFieldValueChanged(sender: UITextField) {
-        if let text = sender.text, let value = Double(text) {
-            stepper.value = value
-            if let itemId = itemId {
-                delegate?.didChangeStepper(withId: itemId, to: value)
-            }
-        }
-    }
-
-    @objc
-    private func stepperValueChanged(sender: UIStepper) {
-        valueTextField.text = String(sender.value)
-        if let itemId = itemId {
-            delegate?.didChangeStepper(withId: itemId, to: sender.value)
         }
     }
 }

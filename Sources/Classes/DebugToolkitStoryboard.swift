@@ -28,6 +28,7 @@ import Foundation
 public struct DebugToolkitStoryboard {
     private enum StoryboardIdentifier: String {
         case debugViewController
+        case logListViewController
         case logViewController
         case keychainListViewController
         case keychainItemViewController
@@ -58,10 +59,7 @@ public struct DebugToolkitStoryboard {
     }
 
     public static func logListViewController() -> DebugLogListViewController {
-        let vc = DebugLogListViewController()
-        vc.extendedLayoutIncludesOpaqueBars = true
-
-        return vc
+        return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.logListViewController.rawValue) as! DebugLogListViewController
     }
 
     public static func logViewController() -> DebugLogViewController {

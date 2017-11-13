@@ -95,7 +95,7 @@ open class Log {
 
         let libDirURL = URL(fileURLWithPath: libDir, isDirectory: true).appendingPathComponent("consoleLogs", isDirectory: true)
 
-        if let fileURLs = try? FileManager.default.contentsOfDirectory(at: libDirURL, includingPropertiesForKeys: [.creationDateKey], options: .skipsHiddenFiles) {
+        if let fileURLs = try? FileManager.default.contentsOfDirectory(at: libDirURL, includingPropertiesForKeys: [.creationDateKey, .fileSizeKey], options: .skipsHiddenFiles) {
             return fileURLs.filter({ $0.isFileURL && $0.pathExtension == "log" })
         } else {
             return []

@@ -1,5 +1,5 @@
 //
-//  DebugViewPickerCell.swift
+//  DebugMenuPickerCell.swift
 //  CardinalDebugToolkit
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
@@ -26,7 +26,25 @@
 import Foundation
 import UIKit
 
-public class DebugViewPickerCell: UITableViewCell {
+public class DebugMenuPickerCell: DebugMenuBaseCell {
+    public override var detailTextLabel: UILabel? {
+        return valueLabel
+    }
+
+    public override var canBecomeFirstResponder: Bool {
+        return true
+    }
+
+    public override var inputView: UIView? {
+        return pickerView
+    }
+
+    public override var inputAccessoryView: UIView? {
+        return toolbar
+    }
+
+    @IBOutlet var valueLabel: UILabel!
+
     private var itemId = ""
     private var values: [String] = []
 
@@ -42,19 +60,9 @@ public class DebugViewPickerCell: UITableViewCell {
         return toolbar
     }()
 
-    public override var canBecomeFirstResponder: Bool {
-        return true
-    }
-
-    public override var inputView: UIView? {
-        return pickerView
-    }
-
-    public override var inputAccessoryView: UIView? {
-        return toolbar
-    }
-
     weak var delegate: DebugViewControllerDelegate?
+
+    // MARK: - lifecycle
 
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +70,8 @@ public class DebugViewPickerCell: UITableViewCell {
         pickerView.dataSource = self
         pickerView.delegate = self
     }
+
+    // MARK: - public methods
 
     public func configure(withItemId itemId: String, title: String, selectedIndex: Int, values: [String]) {
         self.itemId = itemId
@@ -73,10 +83,14 @@ public class DebugViewPickerCell: UITableViewCell {
             pickerView.selectRow(selectedIndex, inComponent: 0, animated: false)
         }
     }
+
+    public func configure(withMenuPickerItem pickerItem: DebugMenuPickerItem) {
+        configure(withItemId: pickerItem.id, title: pickerItem.title, selectedIndex: pickerItem.selectedIndex, values: pickerItem.values)
+    }
 }
 
 // MARK: - UIPickerViewDatasource
-extension DebugViewPickerCell: UIPickerViewDataSource {
+extension DebugMenuPickerCell: UIPickerViewDataSource {
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -87,7 +101,7 @@ extension DebugViewPickerCell: UIPickerViewDataSource {
 }
 
 // MARK: - UIPickerViewDelegate
-extension DebugViewPickerCell: UIPickerViewDelegate {
+extension DebugMenuPickerCell: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return values[row]
     }

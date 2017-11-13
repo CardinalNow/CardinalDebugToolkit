@@ -85,7 +85,7 @@ public extension DebugKeychainListViewController {
             cell.textLabel?.font = UIFont.systemFont(ofSize: 17.0)
         }
 
-        cell.detailTextLabel?.text = "\(item["service"] ?? "") - \(item["accessGroup"] ?? "")"
+        cell.detailTextLabel?.text = "\(item["service"] ?? "")"
 
         return cell
     }

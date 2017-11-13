@@ -1,5 +1,5 @@
 //
-//  DebugViewToggleCell.swift
+//  DebugMenuBaseCell.swift
 //  CardinalDebugToolkit
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
@@ -26,17 +26,13 @@
 import Foundation
 import UIKit
 
-public class DebugViewToggleCell: UITableViewCell {
+public class DebugMenuBaseCell: UITableViewCell {
     public override var textLabel: UILabel? {
         return titleLabel
     }
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var toggleView: UISwitch!
-
-    public var itemId: String?
-    public weak var delegate: DebugViewControllerDelegate?
 
     // MARK: - lifecycle
 
@@ -46,30 +42,13 @@ public class DebugViewToggleCell: UITableViewCell {
         if #available(iOS 11.0, *) {
         } else {
             titleLabelLeadingConstraint.isActive = false
-            let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0)
+
+            let leadingMargin: CGFloat = (UIScreen.main.bounds.width == 414.0) ? 20.0 : 16.0
+            let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingMargin)
             constraint.isActive = true
             titleLabelLeadingConstraint = constraint
-        }
 
-        toggleView.addTarget(self, action: #selector(switchToggled(sender:)), for: .primaryActionTriggered)
-    }
-
-    public override func prepareForReuse() {
-        super.prepareForReuse()
-
-        delegate = nil
-        itemId = nil
-        toggleView.isOn = false
-    }
-
-    // MARK: - public methods
-
-    // MARK: - private methods
-
-    @objc
-    private func switchToggled(sender: UISwitch) {
-        if let itemId = itemId {
-            delegate?.didToggleItem(withId: itemId, to: toggleView.isOn)
+            setNeedsLayout()
         }
     }
 }

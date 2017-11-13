@@ -26,15 +26,9 @@
 import Foundation
 import UIKit
 
-public enum UserDefaultsScope {
-    case all
-    case global
-    case persistent(String)
-    case volatile(String)
-}
-
 public class DebugUserDefaultsListViewController: UITableViewController {
     @IBOutlet var searchBar: UISearchBar!
+    private var defaults: [String: Any] = [:]
     private var defaultsKeys: [String] = []
     var scope: UserDefaultsScope = .all {
         didSet {
@@ -59,20 +53,24 @@ public class DebugUserDefaultsListViewController: UITableViewController {
     private func refresh() {
         switch scope {
         case .all:
-            defaultsKeys = Array(UserDefaults.standard.dictionaryRepresentation().keys)
+            defaults = UserDefaults.standard.dictionaryRepresentation()
         case .global:
-            let defaults = UserDefaults(suiteName: "global")?.dictionaryRepresentation() ?? [:]
-            defaultsKeys = Array(defaults.keys)
+            defaults = UserDefaults(suiteName: UserDefaults.globalDomain)?.dictionaryRepresentation() ?? [:]
         case .persistent(let domain):
-            let defaults = UserDefaults.standard.persistentDomain(forName: domain) ?? [:]
-            defaultsKeys = Array(defaults.keys)
+            defaults = UserDefaults.standard.persistentDomain(forName: domain) ?? [:]
         case .volatile(let domain):
-            defaultsKeys = Array(UserDefaults.standard.volatileDomain(forName: domain).keys)
+            defaults = UserDefaults.standard.volatileDomain(forName: domain)
         }
-        if let searchTerm = searchBar.text, !searchTerm.isEmpty {
-            defaultsKeys = defaultsKeys.filter({ $0.contains(searchTerm) })
-        }
+        defaultsKeys = Array(defaults.keys)
         defaultsKeys.sort()
+
+        applyFilter()
+    }
+
+    private func applyFilter() {
+        if let searchTerm = searchBar.text?.lowercased(), !searchTerm.isEmpty {
+            defaultsKeys = defaultsKeys.filter({ $0.lowercased().contains(searchTerm) })
+        }
 
         tableView.reloadData()
     }
@@ -102,10 +100,10 @@ extension DebugUserDefaultsListViewController {
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userDefaultCell", for: indexPath) as! DebugUserDefaultCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userDefaultCell", for: indexPath) as! DebugUserDefaultItemCell
 
         cell.textLabel?.text = defaultsKeys[indexPath.row]
-        if let object = UserDefaults.standard.object(forKey: defaultsKeys[indexPath.row]) {
+        if let object = defaults[defaultsKeys[indexPath.row]] {
             switch stringRepresentation(value: object, fullDescription: false) {
             case .full(_, let description):
                 cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 17.0)
@@ -114,6 +112,8 @@ extension DebugUserDefaultsListViewController {
                 cell.detailTextLabel?.font = UIFont.italicSystemFont(ofSize: 17.0)
                 cell.detailTextLabel?.text = description
             }
+        } else {
+            cell.detailTextLabel?.text = nil
         }
 
         return cell
@@ -123,14 +123,18 @@ extension DebugUserDefaultsListViewController {
 // MARK: - UITableViewDelegate
 extension DebugUserDefaultsListViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.resignFirstResponder()
         tableView.deselectRow(at: indexPath, animated: true)
 
         let vc = DebugToolkitStoryboard.dataViewController()
-        if let object = UserDefaults.standard.object(forKey: defaultsKeys[indexPath.row]) {
+        if let object = defaults[defaultsKeys[indexPath.row]] {
             switch stringRepresentation(value: object, fullDescription: true) {
             case .full(let type, let description):
-                vc.dataString = "\(type):\n\(description)"
-            case .summary(_): break
+                vc.dataType = type
+                vc.dataString = description
+            case .summary(_):
+                assertionFailure("This case should not occur")
+                break
             }
         }
 
@@ -140,17 +144,19 @@ extension DebugUserDefaultsListViewController {
 
 extension DebugUserDefaultsListViewController: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        refresh()
+        applyFilter()
     }
 
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
         searchBar.resignFirstResponder()
 
-        refresh()
+        applyFilter()
     }
 
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+
+        applyFilter()
     }
 }

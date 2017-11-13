@@ -71,37 +71,53 @@ class DebugHandler: DebugViewControllerDelegate {
     }
 
     private func updateDebugSections() {
-        let toggle1 = UserDefaults.standard.bool(forKey: "toggle1")
-        let toggle2 = UserDefaults.standard.bool(forKey: "toggle2")
+        let featureSwitch1 = UserDefaults.standard.bool(forKey: "featureSwitch1")
         let stepper1 = UserDefaults.standard.double(forKey: "stepper1")
 
-        let selectedItemId = UserDefaults.standard.string(forKey: "multiChoice")
+        let multiChoice1Selected = UserDefaults.standard.bool(forKey: "mc1")
+        let multiChoice2Selected = UserDefaults.standard.bool(forKey: "mc2")
 
         let selectedPickerIndex = UserDefaults.standard.integer(forKey: "picker1")
 
+        let deviceToken = (UIApplication.shared.delegate as! AppDelegate).deviceToken
+
         debugController.sections = [
-            DebugSection(title: "Toggles", items: [
-                DebugItem(id: "toggle1", kind: .toggle(toggle1), title: "Toggle 1"),
-                DebugItem(id: "toggle2", kind: .toggle(toggle2), title: "Toggle 2")
+            DebugMenuSection(id: "exampleToggles", title: "Example Toggles", items: [
+                DebugMenuToggleItem(id: "featureSwitch1", title: "Feature Switch", isOn: featureSwitch1),
+                DebugMenuToggleItem(id: "featureSwitch2", title: "Switch backed by UserDefaults key", userDefaultKey: "featureSwitch2"),
             ]),
-            DebugSection(title: "Other", items: [
-                DebugItem(stepperWithId: "stepper1", title: "Value stepper", value: stepper1, min: -10, max: 10, step: 0.5),
-                DebugItem(pickerWithId: "picker1", title: "Picker", currentIndex: selectedPickerIndex, values: ["First Item", "Second Item"]),
+            DebugMenuSection(id: "exampleOther", title: "Other", items: [
+                DebugMenuStepperItem(id: "stepper1", title: "Analytics batch length (seconds)", value: stepper1, min: 0.0, max: 300.0, step: 10.0),
+                DebugMenuPickerItem(id: "picker1", title: "API environment", values: ["Production", "Staging", "Development"], selectedIndex: selectedPickerIndex),
+                DebugMenuSubSectionItem(id: "subMenu1", title: "Sub Menu with 2 actions", items: [
+                    DebugMenuActionItem(id: "subSectionAction1", title: "Other action"),
+                    DebugMenuActionItem(id: "subSectionAction2", title: "Yet another action"),
+                ]),
+                DebugMenuSubSectionItem(id: "subMenu2", title: "Sub Menu with 2 sections", sections: [
+                    DebugMenuSection(id: "subSection1", title: "Sometimes you have so many actions", items: [
+                        DebugMenuActionItem(id: "subSectionAction3", title: "You need to put them"),
+                    ]),
+                    DebugMenuSection(id: "subSection1", title: "On their own screen", items: [
+                        DebugMenuActionItem(id: "subSectionAction3", title: "Just to keep organized"),
+                    ]),
+                ])
             ]),
-            DebugMultiChoiceSection(id: "multiChoice", title: "Mutliple Choice", items: [
-                DebugMultiChoiceItem(id: "mc1", title: "Choice 1"),
-                DebugMultiChoiceItem(id: "mc2", title: "Choice 2")
-            ], selectedItemId: selectedItemId),
-            DebugSection(title: "Simple Data", items: [
-                DebugItem(id: "userID", kind: .info("000000001"), title: "User ID"),
+            DebugMenuMultiChoiceSection(id: "multiChoiceSection1", title: "Multiple Choice Section", items: [
+                DebugMenuMultiChoiceItem(id: "mc1", title: "Item 1", isSelected: multiChoice1Selected),
+                DebugMenuMultiChoiceItem(id: "mc2", title: "Item 2", isSelected: multiChoice2Selected),
             ]),
-            DebugSection(title: "Actions", items: [
-                DebugItem(id: "crash", kind: .action, title: "Crash the app"),
-                DebugItem(id: "viewString", kind: .action, title: "View String Data"),
-                DebugItem(id: "viewAttrStr", kind: .action, title: "View Attributed String Data"),
-                DebugItem(id: "viewVC", kind: .action, title: "View VC"),
-                DebugItem(id: "viewNVC", kind: .action, title: "View NVC")
-            ])
+            DebugMenuSection(id: "simpleData", title: "Simple Data (tap to copy)", items: [
+                DebugMenuInfoItem(id: "userId", title: "User ID", info: "0000001"),
+                DebugMenuInfoItem(id: "pushToken", title: "APNS Device Token", info: deviceToken),
+            ]),
+            DebugMenuSection(id: "actions", title: "Actions", items: [
+                DebugMenuActionItem(id: "requestPush", title: "Request push notification permission"),
+                DebugMenuActionItem(id: "crash", title: "Crash the app"),
+                DebugMenuActionItem(id: "viewString", title: "View String Data"),
+                DebugMenuActionItem(id: "viewAttrStr", title: "View Attributed String Data"),
+                DebugMenuActionItem(id: "viewVC", title: "View VC"),
+                DebugMenuActionItem(id: "viewNVC", title: "View NVC"),
+            ]),
         ]
 
         debugController.reloadSections()
@@ -111,19 +127,23 @@ class DebugHandler: DebugViewControllerDelegate {
         UserDefaults.standard.set(isOn, forKey: id)
     }
 
-    func didSelectChoice(withId id: String, inSectionWithId sectionId: String) {
-        UserDefaults.standard.set(id, forKey: sectionId)
+    func didToggleChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool) {
+        UserDefaults.standard.set(isOn, forKey: id)
     }
 
     func didSelectAction(withId id: String) -> Any? {
         switch id {
+        case "requestPush":
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+            UIApplication.shared.registerForRemoteNotifications()
         case "crash":
             abort()
         case "viewString":
             return "Example string\nbroken up\nover\nmultiple lines"
         case "viewAttrStr":
             return NSAttributedString(string: "Example string in a large, bold font", attributes: [
-                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 32)
+                .font: UIFont.boldSystemFont(ofSize: 32)
             ])
         case "viewVC":
             return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exampleViewController")
@@ -133,6 +153,7 @@ class DebugHandler: DebugViewControllerDelegate {
 
             return nvc
         default:
+            assertionFailure("Unimplemented action")
             return nil
         }
 

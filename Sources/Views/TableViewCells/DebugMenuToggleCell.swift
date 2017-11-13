@@ -1,5 +1,5 @@
 //
-//  DebugKeychainItemPropertyCell.swift
+//  DebugMenuToggleCell.swift
 //  CardinalDebugToolkit
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
@@ -26,29 +26,51 @@
 import Foundation
 import UIKit
 
-public class DebugKeychainItemPropertyCell: UITableViewCell {
-    public override var textLabel: UILabel? {
-        return titleLabel
-    }
-    public override var detailTextLabel: UILabel? {
-        return valueLabel
-    }
+public class DebugMenuToggleCell: DebugMenuBaseCell {
+    @IBOutlet var toggleView: UISwitch!
 
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var titleLabelLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var valueLabel: UILabel!
+    private var toggleItem: DebugMenuToggleItem?
+
+    public weak var delegate: DebugViewControllerDelegate?
 
     // MARK: - lifecycle
 
     public override func awakeFromNib() {
         super.awakeFromNib()
+    }
 
-        if #available(iOS 11.0, *) {
-        } else {
-            titleLabelLeadingConstraint.isActive = false
-            let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0)
-            constraint.isActive = true
-            titleLabelLeadingConstraint = constraint
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        delegate = nil
+        toggleItem = nil
+        toggleView.isOn = false
+    }
+
+    // MARK: - public methods
+
+    public func configure(withMenuToggleItem toggleItem: DebugMenuToggleItem) {
+        self.toggleItem = toggleItem
+        textLabel?.text = toggleItem.title
+
+        switch toggleItem.toggleType {
+        case .normal(let isOn):
+            toggleView.isOn = isOn
+        case .userDefault(let key):
+            toggleView.isOn = UserDefaults.standard.bool(forKey: key)
         }
+    }
+
+    // MARK: - IBActions
+
+    @IBAction func switchToggled(_ sender: UISwitch) {
+        guard let toggleItem = toggleItem else { return }
+
+        switch toggleItem.toggleType {
+        case .normal: break
+        case .userDefault(let key):
+            UserDefaults.standard.set(toggleView.isOn, forKey: key)
+        }
+        delegate?.didToggleItem(withId: toggleItem.id, to: toggleView.isOn)
     }
 }

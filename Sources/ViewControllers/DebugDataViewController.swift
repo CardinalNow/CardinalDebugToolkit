@@ -28,8 +28,12 @@ import UIKit
 import MobileCoreServices
 
 public class DebugDataViewController: UIViewController {
+    @IBOutlet var dataTypeLabel: UILabel!
+    @IBOutlet var borderView: UIView!
     @IBOutlet var textView: UITextView!
+    @IBOutlet var textViewTopConstraint: NSLayoutConstraint!
 
+    var dataType: String?
     var dataString: String?
     var dataAttributedString: NSAttributedString?
 
@@ -37,6 +41,17 @@ public class DebugDataViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Copy", style: .plain, target: self, action: #selector(copyData))
+
+        if let dataType = dataType {
+            dataTypeLabel.text = "Data type: \(dataType)"
+        } else {
+            dataTypeLabel.isHidden = true
+            borderView.isHidden = true
+
+            textViewTopConstraint.isActive = false
+            textViewTopConstraint = textView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
+            textViewTopConstraint.isActive = true
+        }
 
         if let dataAttributedString = dataAttributedString {
             textView.attributedText = dataAttributedString
@@ -52,7 +67,7 @@ public class DebugDataViewController: UIViewController {
             #if swift(>=3.2)
                 let rtf = try dataAttributedString.data(
                     from: NSMakeRange(0, dataAttributedString.length),
-                    documentAttributes: [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.rtf]
+                    documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf]
                 )
             #else
                 let rtf = try dataAttributedString.data(

@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let debugWindow = DebugOverlayWindow()
     let debugOverlayDelegate = DbgOveralayDelegate()
 
+    var deviceToken = ""
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -82,6 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func populateUserDefaults() {
         let defaults = UserDefaults.standard
+
+        defaults.register(defaults: ["testDefault": true])
+        defaults.set(false, forKey: "testDefault")
         defaults.set(true, forKey: "testBool")
         defaults.set(-100, forKey: "testInt")
         defaults.set(NSArray(array: ["testEntry"]), forKey: "testArray")
@@ -109,6 +114,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        self.deviceToken = deviceToken.reduce("", { $0 + String(format: "%02X", $1) })
     }
 }
 
