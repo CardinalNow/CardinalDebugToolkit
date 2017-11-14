@@ -65,11 +65,13 @@ public func stringRepresentation(value: Any, fullDescription: Bool) -> StringRep
         } else {
             return .summary("Dictionary")
         }
+    } else if let url = decodedValue as? URL {
+        return .full("URL", url.description)
     } else if isUnarchived {
         if fullDescription {
-            return .full("Unarchived Object (\(type(of: decodedValue)))", "\(decodedValue)")
+            return .full("\(type(of: decodedValue)) (archived)", "\(decodedValue)")
         } else {
-            return .summary("Unarchived Object (\(type(of: decodedValue)))")
+            return .summary("\(type(of: decodedValue)) (archived)")
         }
     } else {
         if fullDescription {

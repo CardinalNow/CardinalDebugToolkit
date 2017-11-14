@@ -43,7 +43,7 @@ public class DebugDataViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Copy", style: .plain, target: self, action: #selector(copyData))
 
         if let dataType = dataType {
-            dataTypeLabel.text = "Data type: \(dataType)"
+            dataTypeLabel.text = "Type: \(dataType)"
         } else {
             dataTypeLabel.isHidden = true
             borderView.isHidden = true

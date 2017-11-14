@@ -92,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.set(NSArray(array: ["testEntry"]), forKey: "testArray")
         defaults.set(NSDictionary(dictionary: ["testKey": "testValue"]), forKey: "testDict")
         defaults.set(Date(), forKey: "testDate")
+        defaults.set(URL(string: "https://www.apple.com/")!, forKey: "testURL")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
