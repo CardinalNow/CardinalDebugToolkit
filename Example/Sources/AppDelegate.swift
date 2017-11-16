@@ -88,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.register(defaults: ["testDefault": true])
         defaults.set(false, forKey: "testDefault")
         defaults.set(true, forKey: "testBool")
+        defaults.set(true, forKey: "testSuperLongKeyThatWillTakeUpALotOfSpaceAndShouldBeTruncatedOrWrap")
         defaults.set(-100, forKey: "testInt")
         defaults.set(NSArray(array: ["testEntry"]), forKey: "testArray")
         defaults.set(NSDictionary(dictionary: ["testKey": "testValue"]), forKey: "testDict")

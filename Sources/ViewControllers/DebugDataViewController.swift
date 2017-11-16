@@ -28,24 +28,25 @@ import UIKit
 import MobileCoreServices
 
 public class DebugDataViewController: UIViewController {
-    @IBOutlet var dataTypeLabel: UILabel!
+    
+    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var borderView: UIView!
     @IBOutlet var textView: UITextView!
     @IBOutlet var textViewTopConstraint: NSLayoutConstraint!
 
-    var dataType: String?
+    var dataDescription: String?
     var dataString: String?
     var dataAttributedString: NSAttributedString?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Copy", style: .plain, target: self, action: #selector(copyData))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(actionButtonTapped))
 
-        if let dataType = dataType {
-            dataTypeLabel.text = "Type: \(dataType)"
+        if let dataDescription = dataDescription {
+            descriptionLabel.text = dataDescription
         } else {
-            dataTypeLabel.isHidden = true
+            descriptionLabel.isHidden = true
             borderView.isHidden = true
 
             textViewTopConstraint.isActive = false
@@ -61,29 +62,34 @@ public class DebugDataViewController: UIViewController {
     }
 
     @objc
-    private func copyData() {
+    private func actionButtonTapped() {
+        let activityItems: [Any]
         if let dataAttributedString = dataAttributedString {
-            do {
-            #if swift(>=3.2)
-                let rtf = try dataAttributedString.data(
-                    from: NSMakeRange(0, dataAttributedString.length),
-                    documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf]
-                )
-            #else
-                let rtf = try dataAttributedString.data(
-                    from: NSMakeRange(0, dataAttributedString.length),
-                    documentAttributes: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType]
-                )
-            #endif
-                if let encodedString = NSString(data: rtf, encoding: String.Encoding.utf8.rawValue) {
-                    UIPasteboard.general.items = [[
-                        kUTTypeRTF as String: encodedString,
-                        kUTTypeUTF8PlainText as String: dataAttributedString.string
-                    ]]
-                }
-            } catch {}
-        } else if let dataString = dataString {
-            UIPasteboard.general.string = dataString
+            let attrString = NSMutableAttributedString(string: "")
+            if let dataDescription = dataDescription {
+                attrString.append(NSAttributedString(string: dataDescription))
+                attrString.append(NSAttributedString(string: "\n"))
+            }
+            attrString.append(dataAttributedString)
+
+            activityItems = [attrString]
+        } else if var dataString = dataString {
+            if let dataDescription = dataDescription {
+                dataString = dataDescription + "\n" + dataString
+            }
+
+            activityItems = [dataString]
+        } else {
+            return
         }
+
+        let vc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+        let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        vc.setValue("Data from \(appDisplayName ?? appName ?? "") \(version ?? "") (\(build ?? ""))", forKey: "subject")
+
+        present(vc, animated: true, completion: nil)
     }
 }

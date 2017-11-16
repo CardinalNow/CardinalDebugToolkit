@@ -117,12 +117,12 @@ public extension DebugKeychainItemViewController {
         let vc = DebugToolkitStoryboard.dataViewController()
         if let value = item[key] {
             if key == "sha1", let data = value as? Data {
-                vc.dataType = "Data"
+                vc.dataDescription = "Key: \(key)\nType: Data"
                 vc.dataString = data.map({ String(format: "%02hhx", $0) }).joined()
             } else {
                 switch stringRepresentation(value: value, fullDescription: true) {
                 case .full(let type, let description):
-                    vc.dataType = type
+                    vc.dataDescription = "Key: \(key)\nType: \(type)"
                     vc.dataString = description
                 case .summary(_):
                     assertionFailure("This case should not occur")

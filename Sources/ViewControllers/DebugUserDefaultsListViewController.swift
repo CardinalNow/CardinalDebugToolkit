@@ -55,7 +55,7 @@ public class DebugUserDefaultsListViewController: UITableViewController {
         case .all:
             defaults = UserDefaults.standard.dictionaryRepresentation()
         case .global:
-            defaults = UserDefaults(suiteName: UserDefaults.globalDomain)?.dictionaryRepresentation() ?? [:]
+            defaults = UserDefaults.standard.persistentDomain(forName: UserDefaults.globalDomain) ?? [:]
         case .persistent(let domain):
             defaults = UserDefaults.standard.persistentDomain(forName: domain) ?? [:]
         case .volatile(let domain):
@@ -130,7 +130,7 @@ extension DebugUserDefaultsListViewController {
         if let object = defaults[defaultsKeys[indexPath.row]] {
             switch stringRepresentation(value: object, fullDescription: true) {
             case .full(let type, let description):
-                vc.dataType = type
+                vc.dataDescription = "Key: \(defaultsKeys[indexPath.row])\nType: \(type)"
                 vc.dataString = description
             case .summary(_):
                 assertionFailure("This case should not occur")
