@@ -14,7 +14,6 @@ class MyDebugMenuViewController: DebugMenuViewController {
         super.viewDidLoad()
 
         updateDebugSections()
-        delegate = self
     }
 
     private func updateDebugSections() {
@@ -68,19 +67,18 @@ class MyDebugMenuViewController: DebugMenuViewController {
             ]),
         ]
     }
-}
 
-// MARK: - DebugMenuDelegate
-extension MyDebugMenuViewController: DebugMenuDelegate {
-    func changedMultiChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool) {
+    // MARK: - DebugMenuDelegate
+
+    override func debugMenu(_ debugMenu: DebugMenuViewController, changedMultiChoiceWithId id: String, inSectionWithId sectionId: String, to isOn: Bool) {
         UserDefaults.standard.set(isOn, forKey: id)
     }
 
-    func changedPicker(withId id: String, toIndex index: Int) {
+    override func debugMenu(_ debugMenu: DebugMenuViewController, changedPickerWithId id: String, toIndex index: Int) {
         UserDefaults.standard.set(index, forKey: "picker1")
     }
 
-    func changedStepper(withId id: String, to value: Double) {
+    override func debugMenu(_ debugMenu: DebugMenuViewController, changedStepperWithId id: String, to value: Double) {
         switch id {
         case "stepper1":
             UserDefaults.standard.set(value, forKey: "stepper1")
@@ -88,7 +86,7 @@ extension MyDebugMenuViewController: DebugMenuDelegate {
         }
     }
 
-    func changedToggle(withId id: String, to isOn: Bool) {
+    override func debugMenu(_ debugMenu: DebugMenuViewController, changedToggleWithId id: String, to isOn: Bool) {
         switch id {
         case "featureSwitch1":
             UserDefaults.standard.set(isOn, forKey: "featureSwitch1")
@@ -96,7 +94,7 @@ extension MyDebugMenuViewController: DebugMenuDelegate {
         }
     }
 
-    func selectedAction(withId id: String) -> Any? {
+    override func debugMenu(_ debugMenu: DebugMenuViewController, selectedActionWithId id: String) -> Any? {
         switch id {
         case "crash":
             abort()
@@ -127,7 +125,7 @@ extension MyDebugMenuViewController: DebugMenuDelegate {
         return nil
     }
 
-    func logFileUrls() -> [URL] {
-        return []
+    override func logFileUrlsForDebugMenu(_ debugMenu: DebugMenuViewController) -> [URL] {
+        return CardinalLogger.consoleLogFileURLs().reversed()
     }
 }

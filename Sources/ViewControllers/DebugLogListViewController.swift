@@ -34,19 +34,17 @@ public class DebugLogListViewController: UITableViewController {
 
         return formatter
     }()
+    internal weak var debugMenuViewController: DebugMenuViewController?
     internal weak var delegate: DebugMenuDelegate?
 
     // MARK: - lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-    }
 
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        logFileURLs = delegate?.logFileUrls() ?? []
-        tableView.reloadData()
+        if let debugMenuViewController = debugMenuViewController {
+            logFileURLs = delegate?.logFileUrlsForDebugMenu(debugMenuViewController) ?? []
+        }
     }
 }
 

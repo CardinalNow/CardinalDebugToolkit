@@ -110,16 +110,16 @@
 			isa = PBXGroup;
 			children = (
 				BE49E8AA1EF991BB00210F44 /* AppDelegate.swift */,
-				BE28BA381F1FFBAF0082F770 /* ExampleViewController.swift */,
-				BE49E8AC1EF991BB00210F44 /* ViewController.swift */,
 				BE49E8B11EF991BB00210F44 /* Assets.xcassets */,
+				BE30AE431FBF847D00054670 /* CardinalLogBuffer.swift */,
+				BE30AE451FBF849000054670 /* CardinalLogBufferViewController.swift */,
+				BE30AE401FBF846300054670 /* CardinalLogger.swift */,
+				BE28BA381F1FFBAF0082F770 /* ExampleViewController.swift */,
 				BE49E8B61EF991BB00210F44 /* Info.plist */,
 				BE49E8B31EF991BB00210F44 /* LaunchScreen.storyboard */,
 				BE49E8AE1EF991BB00210F44 /* Main.storyboard */,
-				BE30AE401FBF846300054670 /* CardinalLogger.swift */,
-				BE30AE431FBF847D00054670 /* CardinalLogBuffer.swift */,
-				BE30AE451FBF849000054670 /* CardinalLogBufferViewController.swift */,
 				BE64168A1FC337EF00496610 /* MyDebugMenuViewController.swift */,
+				BE49E8AC1EF991BB00210F44 /* ViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

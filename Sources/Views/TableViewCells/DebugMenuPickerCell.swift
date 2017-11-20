@@ -60,7 +60,8 @@ public class DebugMenuPickerCell: DebugMenuBaseCell {
         return toolbar
     }()
 
-    weak var delegate: DebugMenuDelegate?
+    public weak var debugMenuViewController: DebugMenuViewController?
+    public weak var delegate: DebugMenuDelegate?
 
     // MARK: - lifecycle
 
@@ -108,6 +109,9 @@ extension DebugMenuPickerCell: UIPickerViewDelegate {
 
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         detailTextLabel?.text = values[row]
-        delegate?.changedPicker(withId: itemId, toIndex: row)
+
+        if let debugMenuViewController = debugMenuViewController {
+            delegate?.debugMenu(debugMenuViewController, changedPickerWithId: itemId, toIndex: row)
+        }
     }
 }

@@ -40,12 +40,13 @@ open class CardinalLogBufferViewController: UIViewController {
             UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clear)),
         ]
 
+        textView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(textView)
-        textView.addConstraints([
+        view.addConstraints([
             textView.topAnchor.constraint(equalTo: view.topAnchor),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
 
         if let logBuffer = logBuffer {

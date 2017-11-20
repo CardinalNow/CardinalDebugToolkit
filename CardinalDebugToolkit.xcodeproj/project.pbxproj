@@ -179,10 +179,10 @@
 				BE4015501FACB67800E706E9 /* DebugKeychainListViewController.swift */,
 				BE4015521FACB67800E706E9 /* DebugLogListViewController.swift */,
 				BE4015531FACB67800E706E9 /* DebugLogViewController.swift */,
-				BE4015541FACB67800E706E9 /* DebugOverlayViewController.swift */,
-				BE4015551FACB67800E706E9 /* DebugUserDefaultsScopeListViewController.swift */,
-				BE4015561FACB67800E706E9 /* DebugUserDefaultsListViewController.swift */,
 				BE4015571FACB67800E706E9 /* DebugMenuViewController.swift */,
+				BE4015541FACB67800E706E9 /* DebugOverlayViewController.swift */,
+				BE4015561FACB67800E706E9 /* DebugUserDefaultsListViewController.swift */,
+				BE4015551FACB67800E706E9 /* DebugUserDefaultsScopeListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

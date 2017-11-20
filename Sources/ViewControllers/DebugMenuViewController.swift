@@ -30,13 +30,13 @@ import UIKit
 /// user interactions with items that are shown in the Debug menu.
 public protocol DebugMenuDelegate: class {
     /// This method is called when an item of type DebugMultiChoiceItem is selected.
-    func changedMultiChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool)
+    func debugMenu(_ debugMenu: DebugMenuViewController, changedMultiChoiceWithId id: String, inSectionWithId sectionId: String, to isOn: Bool)
     /// This method is called when an item of type DebugItem and Kind picker has its value changed.
-    func changedPicker(withId id: String, toIndex index: Int)
+    func debugMenu(_ debugMenu: DebugMenuViewController, changedPickerWithId id: String, toIndex index: Int)
     /// This method is called when an item of type DebugItem and Kind stepper has its value changed.
-    func changedStepper(withId id: String, to value: Double)
+    func debugMenu(_ debugMenu: DebugMenuViewController, changedStepperWithId id: String, to value: Double)
     /// This method is called when an item of type DebugItem and Kind toggle is switched on or off.
-    func changedToggle(withId id: String, to isOn: Bool)
+    func debugMenu(_ debugMenu: DebugMenuViewController, changedToggleWithId id: String, to isOn: Bool)
     /// This method is called when an item of type DebugItem and Kind action is selected.
     /// If the return value is of a type that DebugViewController can handle, it will
     /// display the returned data in the appropriate fashion.
@@ -44,13 +44,13 @@ public protocol DebugMenuDelegate: class {
     ///   - UIViewController (including UINavigationController)
     ///   - NSAttributedString
     ///   - String
-    func selectedAction(withId id: String) -> Any?
+    func debugMenu(_ debugMenu: DebugMenuViewController, selectedActionWithId id: String) -> Any?
 
-    func logFileUrls() -> [URL]
+    func logFileUrlsForDebugMenu(_ debugMenu: DebugMenuViewController) -> [URL]
 }
 
 /// Responsible for displaying the debug interface as defined by section property.
-open class DebugMenuViewController: UITableViewController {
+open class DebugMenuViewController: UITableViewController, DebugMenuDelegate {
     /// Delegate object that handles user interactions with sections and items.
     open weak var delegate: DebugMenuDelegate?
     /// The user-defined sections that make up the debug interface.
@@ -62,10 +62,14 @@ open class DebugMenuViewController: UITableViewController {
 
     public init() {
         super.init(style: .grouped)
+
+        delegate = self
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        delegate = self
     }
 
     // MARK: - lifecycle
@@ -164,12 +168,14 @@ open class DebugMenuViewController: UITableViewController {
             returnedCell = cell
         } else if let pickerItem = item as? DebugMenuPickerItem {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell", for: indexPath) as! DebugMenuPickerCell
+            cell.debugMenuViewController = self
             cell.delegate = delegate
             cell.configure(withMenuPickerItem: pickerItem)
 
             returnedCell = cell
         } else if let stepperItem = item as? DebugMenuStepperItem {
             let cell = tableView.dequeueReusableCell(withIdentifier: "stepperCell", for: indexPath) as! DebugMenuStepperCell
+            cell.debugMenuViewController = self
             cell.delegate = delegate
             cell.configure(withMenuStepperItem: stepperItem)
 
@@ -181,6 +187,7 @@ open class DebugMenuViewController: UITableViewController {
             returnedCell = cell
         } else if let toggleItem = item as? DebugMenuToggleItem {
             let cell = tableView.dequeueReusableCell(withIdentifier: "toggleCell", for: indexPath) as! DebugMenuToggleCell
+            cell.debugMenuViewController = self
             cell.delegate = delegate
             cell.configure(withMenuToggleItem: toggleItem)
 
@@ -201,6 +208,8 @@ open class DebugMenuViewController: UITableViewController {
         if showBuiltInTools && indexPath.section == sections.count {
             if indexPath.row == 0 {
                 let vc = DebugToolkitStoryboard.logListViewController()
+                vc.debugMenuViewController = self
+                vc.delegate = self
                 show(vc, sender: self)
             } else if indexPath.row == 1 {
                 let vc = DebugToolkitStoryboard.userDefaultsListViewController()
@@ -213,7 +222,7 @@ open class DebugMenuViewController: UITableViewController {
             let item = sections[indexPath.section].items[indexPath.row]
 
             if let actionItem = item as? DebugMenuActionItem {
-                let result = delegate?.selectedAction(withId: actionItem.id)
+                let result = delegate?.debugMenu(self, selectedActionWithId: actionItem.id)
                 switch result {
                 case .some(let viewController as UIViewController):
                     show(viewController, sender: self)
@@ -243,7 +252,7 @@ open class DebugMenuViewController: UITableViewController {
             } else if let multiChoiceItem = item as? DebugMenuMultiChoiceItem {
                 let section = sections[indexPath.section]
                 multiChoiceItem.isSelected = !multiChoiceItem.isSelected
-                delegate?.changedMultiChoice(withId: multiChoiceItem.id, inSectionWithId: section.id, to: multiChoiceItem.isSelected)
+                delegate?.debugMenu(self, changedMultiChoiceWithId: multiChoiceItem.id, inSectionWithId: section.id, to: multiChoiceItem.isSelected)
                 tableView.reloadSections([indexPath.section], with: .automatic)
             } else if let _ = item as? DebugMenuPickerItem {
                 tableView.cellForRow(at: indexPath)?.becomeFirstResponder()
@@ -262,5 +271,27 @@ open class DebugMenuViewController: UITableViewController {
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    // MARK: - DebugMenuDelegate
+
+    open func debugMenu(_ debugMenu: DebugMenuViewController, changedMultiChoiceWithId id: String, inSectionWithId sectionId: String, to isOn: Bool) {
+    }
+
+    open func debugMenu(_ debugMenu: DebugMenuViewController, changedPickerWithId id: String, toIndex index: Int) {
+    }
+
+    open func debugMenu(_ debugMenu: DebugMenuViewController, changedStepperWithId id: String, to value: Double) {
+    }
+
+    open func debugMenu(_ debugMenu: DebugMenuViewController, changedToggleWithId id: String, to isOn: Bool) {
+    }
+
+    open func debugMenu(_ debugMenu: DebugMenuViewController, selectedActionWithId id: String) -> Any? {
+        return nil
+    }
+
+    open func logFileUrlsForDebugMenu(_ debugMenu: DebugMenuViewController) -> [URL] {
+        return []
     }
 }

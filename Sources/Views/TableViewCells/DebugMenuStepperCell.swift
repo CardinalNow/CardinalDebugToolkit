@@ -41,6 +41,7 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
     }()
 
     public var stepperItem: DebugMenuStepperItem?
+    public weak var debugMenuViewController: DebugMenuViewController?
     public weak var delegate: DebugMenuDelegate?
 
     // MARK: - lifecycle
@@ -105,6 +106,8 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
             UserDefaults.standard.set(value, forKey: key)
         }
 
-        delegate?.changedStepper(withId: stepperItem.id, to: value)
+        if let debugMenuViewController = debugMenuViewController {
+            delegate?.debugMenu(debugMenuViewController, changedStepperWithId: stepperItem.id, to: value)
+        }
     }
 }

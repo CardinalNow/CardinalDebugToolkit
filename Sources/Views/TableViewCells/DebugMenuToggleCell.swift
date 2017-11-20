@@ -31,6 +31,7 @@ public class DebugMenuToggleCell: DebugMenuBaseCell {
 
     private var toggleItem: DebugMenuToggleItem?
 
+    public weak var debugMenuViewController: DebugMenuViewController?
     public weak var delegate: DebugMenuDelegate?
 
     // MARK: - lifecycle
@@ -71,6 +72,8 @@ public class DebugMenuToggleCell: DebugMenuBaseCell {
         case .userDefault(let key):
             UserDefaults.standard.set(toggleView.isOn, forKey: key)
         }
-        delegate?.changedToggle(withId: toggleItem.id, to: toggleView.isOn)
+        if let debugMenuViewController = debugMenuViewController {
+            delegate?.debugMenu(debugMenuViewController, changedToggleWithId: toggleItem.id, to: toggleView.isOn)
+        }
     }
 }

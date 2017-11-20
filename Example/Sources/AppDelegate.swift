@@ -30,7 +30,7 @@ import CardinalDebugToolkit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let debugOverlay = DebugOverlay()
-    let debugOverlayDelegate = DbgOveralayDelegate()
+    let debugOverlayDelegate = MyDebugOveralayDelegate()
     let logger = CardinalLogger(logLevel: .debug)
 
     var deviceToken = ""
@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-class DbgOveralayDelegate: DebugOverlayDelegate {
+class MyDebugOveralayDelegate: DebugOverlayDelegate {
     var debugOverlayActionItems: [DebugOverlayActionItem] {
         return [
             DebugOverlayActionItem(id: "filteredLog", title: "Show log buffer")
