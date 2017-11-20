@@ -40,8 +40,8 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
         return toolbar
     }()
 
-    public var itemId: String?
-    public weak var delegate: DebugViewControllerDelegate?
+    public var stepperItem: DebugMenuStepperItem?
+    public weak var delegate: DebugMenuDelegate?
 
     // MARK: - lifecycle
 
@@ -55,17 +55,26 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
         super.prepareForReuse()
 
         delegate = nil
-        itemId = nil
+        stepperItem = nil
         valueTextField.text = nil
+        stepper.value = 0.0
     }
 
     // MARK: - public methods
 
     public func configure(withMenuStepperItem stepperItem: DebugMenuStepperItem) {
-        itemId = stepperItem.id
+        self.stepperItem = stepperItem
         textLabel?.text = stepperItem.title
-        valueTextField.text = String(stepperItem.value)
-        stepper.value = stepperItem.value
+
+        switch stepperItem.toggleType {
+        case .normal(let value):
+            stepper.value = value
+        case .userDefault(let key):
+            stepper.value = UserDefaults.standard.double(forKey: key)
+        }
+
+        valueTextField.text = String(stepper.value)
+
         stepper.minimumValue = stepperItem.min
         stepper.maximumValue = stepperItem.max
         stepper.stepValue = stepperItem.step
@@ -76,16 +85,26 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
     @IBAction func textFieldValueChanged(_ sender: UITextField) {
         if let text = sender.text, let value = Double(text) {
             stepper.value = value
-            if let itemId = itemId {
-                delegate?.changedStepper(withId: itemId, to: value)
-            }
+            handleValueChange(value: value)
         }
     }
 
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         valueTextField.text = String(sender.value)
-        if let itemId = itemId {
-            delegate?.changedStepper(withId: itemId, to: sender.value)
+        handleValueChange(value: sender.value)
+    }
+
+    // MARK: - private methods
+
+    private func handleValueChange(value: Double) {
+        guard let stepperItem = stepperItem else { return }
+
+        switch stepperItem.toggleType {
+        case .normal: break
+        case .userDefault(let key):
+            UserDefaults.standard.set(value, forKey: key)
         }
+
+        delegate?.changedStepper(withId: stepperItem.id, to: value)
     }
 }

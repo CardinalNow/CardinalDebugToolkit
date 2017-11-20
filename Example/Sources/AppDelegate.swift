@@ -31,20 +31,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let debugOverlay = DebugOverlay()
     let debugOverlayDelegate = DbgOveralayDelegate()
+    let logger = CardinalLogger(logLevel: .debug)
 
     var deviceToken = ""
+
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        try? Log.pruneConsoleLogFiles(maxNum: 4)
+        try? CardinalLogger.pruneConsoleLogFiles(maxNum: 4)
 
-        let _ = Log.startLoggingConsoleToFile()
+        let _ = CardinalLogger.startLoggingConsoleToFile()
         NSLog("test")
 
-        Log.shared.filteredLogBuffers.append(FilteredLogBuffer(tag: "test"))
-        Log.shared.critical("Test 1", tag: "test")
-        Log.shared.critical("Test 2", tag: "test")
+        logger.logBuffers.append(CardinalLogBuffer(tag: "test"))
+        logger.critical("Test 1", tag: "test")
+        logger.critical("Test 2", tag: "test")
 
         //
         populateKeychain()
@@ -136,8 +141,8 @@ class DbgOveralayDelegate: DebugOverlayDelegate {
 
     func debugOverlay(_ overlay: DebugOverlay, selectedActionWithId id: String) -> UIViewController? {
         if id == "filteredLog" {
-            let vc = DebugToolkitStoryboard.logBufferViewController()
-            vc.filteredLogBuffer = Log.shared.filteredLogBuffers.first
+            let vc = CardinalLogBufferViewController()
+            vc.logBuffer = AppDelegate.shared.logger.logBuffers.first
             let nvc = UINavigationController(rootViewController: vc)
 
             return nvc

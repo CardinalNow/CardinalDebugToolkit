@@ -13,6 +13,6 @@ DESC
   s.source = { :git => "https://github.com/CardinalNow/CardinalDebugToolkit.git", :tag => "#{s.version}" }
   s.source_files = "Sources/**/*.{h,m,swift}"
   s.resource_bundles = {
-    'CardinalDebugToolkit-Storyboards' => ['Storyboards/**/*.{storyboard,xib}']
+    'CardinalDebugToolkit-Resources' => ['Storyboards/**/*.{storyboard,xib}', 'Sources/Views/**/*.xib']
   }
 end

@@ -60,7 +60,7 @@ public class DebugMenuPickerCell: DebugMenuBaseCell {
         return toolbar
     }()
 
-    weak var delegate: DebugViewControllerDelegate?
+    weak var delegate: DebugMenuDelegate?
 
     // MARK: - lifecycle
 

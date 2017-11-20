@@ -1,6 +1,6 @@
 //
-//  FilteredLogBuffer.swift
-//  CardinalDebugToolkit
+//  CardinalLogBuffer.swift
+//  CardinalLogger
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
 //
@@ -25,10 +25,10 @@
 
 import Foundation
 
-public class FilteredLogBuffer {
-    public var buffer: [String] = []
-    public var filterTag = ""
-    public var filterTerm = ""
+open class CardinalLogBuffer {
+    open var buffer: [String] = []
+    open var filterTag = ""
+    open var filterTerm = ""
 
     public convenience init(tag: String) {
         self.init(tag: tag, term: "")
@@ -43,7 +43,7 @@ public class FilteredLogBuffer {
         self.filterTerm = term
     }
 
-    public func log(formattedMessage: String, message: String, tag: String?) {
+    open func log(formattedMessage: String, message: String, tag: String?) {
         let tagMatches = !filterTag.isEmpty && (tag == filterTag)
         var shouldLogToBuffer = false
         if filterTerm.isEmpty {

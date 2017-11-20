@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stepperCell" rowHeight="81" id="vdy-36-PSx" customClass="DebugMenuStepperCell" customModule="CardinalDebugToolkit">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vdy-36-PSx" id="RA4-wl-scv">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9D4-oR-QQY">
+                        <rect key="frame" x="20" y="11" width="374" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6TU-e9-KgO">
+                        <rect key="frame" x="20" y="39.5" width="272" height="30.5"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                        <connections>
+                            <action selector="textFieldValueChanged:" destination="vdy-36-PSx" eventType="editingChanged" id="YpG-gX-b3O"/>
+                        </connections>
+                    </textField>
+                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-ne-cZC">
+                        <rect key="frame" x="300" y="41" width="94" height="29"/>
+                        <connections>
+                            <action selector="stepperValueChanged:" destination="vdy-36-PSx" eventType="primaryActionTriggered" id="adp-q1-rsV"/>
+                        </connections>
+                    </stepper>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="HX4-ne-cZC" secondAttribute="bottom" id="1ry-dF-b4s"/>
+                    <constraint firstItem="6TU-e9-KgO" firstAttribute="leading" secondItem="9D4-oR-QQY" secondAttribute="leading" id="Gfj-eY-qyC"/>
+                    <constraint firstItem="9D4-oR-QQY" firstAttribute="leading" secondItem="RA4-wl-scv" secondAttribute="leadingMargin" id="IUd-C7-NdE"/>
+                    <constraint firstItem="9D4-oR-QQY" firstAttribute="top" secondItem="RA4-wl-scv" secondAttribute="topMargin" id="OjW-UR-lLs"/>
+                    <constraint firstItem="HX4-ne-cZC" firstAttribute="leading" secondItem="6TU-e9-KgO" secondAttribute="trailing" constant="8" id="bfn-PG-PJf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HX4-ne-cZC" secondAttribute="trailing" id="fZy-ac-3xp"/>
+                    <constraint firstItem="6TU-e9-KgO" firstAttribute="top" secondItem="9D4-oR-QQY" secondAttribute="bottom" constant="8" id="rL8-cU-IjV"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="6TU-e9-KgO" secondAttribute="bottom" id="rqr-MO-k9x"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="9D4-oR-QQY" secondAttribute="trailing" id="wg7-2C-bXh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="stepper" destination="HX4-ne-cZC" id="TgS-Gz-lZg"/>
+                <outlet property="titleLabel" destination="9D4-oR-QQY" id="1Bf-YS-Xp0"/>
+                <outlet property="titleLabelLeadingConstraint" destination="IUd-C7-NdE" id="jD3-ZG-5Qf"/>
+                <outlet property="valueTextField" destination="6TU-e9-KgO" id="zmC-Ir-WTT"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

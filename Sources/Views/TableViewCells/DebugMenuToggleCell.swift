@@ -31,7 +31,7 @@ public class DebugMenuToggleCell: DebugMenuBaseCell {
 
     private var toggleItem: DebugMenuToggleItem?
 
-    public weak var delegate: DebugViewControllerDelegate?
+    public weak var delegate: DebugMenuDelegate?
 
     // MARK: - lifecycle
 

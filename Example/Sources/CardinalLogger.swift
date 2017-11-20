@@ -1,6 +1,6 @@
 //
-//  Log.swift
-//  CardinalDebugToolkit
+//  CardinalLogger.swift
+//  CardinalLogger
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
 //
@@ -25,7 +25,7 @@
 
 import Foundation
 
-open class Log {
+open class CardinalLogger {
     public enum LogLevel: Int {
         case debug
         case info
@@ -34,13 +34,11 @@ open class Log {
         case critical
     }
 
-    open static let shared = Log(logLevel: .debug)
-
     open var isLoggingEnabled = true
     open var logLevel: LogLevel
-    public var filteredLogBuffers: [FilteredLogBuffer] = []
+    open var logBuffers: [CardinalLogBuffer] = []
 
-    public static func pruneConsoleLogFiles(maxNum: Int) throws {
+    open class func pruneConsoleLogFiles(maxNum: Int) throws {
         guard maxNum >= 0 else { return }
 
         var logFilesURLs = consoleLogFileURLs()
@@ -63,7 +61,7 @@ open class Log {
         }
     }
 
-    public static func startLoggingConsoleToFile() -> Bool {
+    open class func startLoggingConsoleToFile() -> Bool {
         guard let libDir = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first else {
             return false
         }
@@ -88,7 +86,7 @@ open class Log {
         return true
     }
 
-    public static func consoleLogFileURLs() -> [URL] {
+    open class func consoleLogFileURLs() -> [URL] {
         guard let libDir = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first else {
             return []
         }
@@ -164,7 +162,7 @@ open class Log {
 
         NSLog(formattedMessage)
 
-        for bufffer in filteredLogBuffers {
+        for bufffer in logBuffers {
             bufffer.log(formattedMessage: formattedMessage, message: message, tag: tag)
         }
     }

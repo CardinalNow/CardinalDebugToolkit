@@ -1,6 +1,6 @@
 //
-//  DebugLogBufferViewController.swift
-//  CardinalDebugToolkit
+//  CardinalLogBufferViewController.swift
+//  CardinalLogger
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
 //
@@ -26,11 +26,13 @@
 import Foundation
 import UIKit
 
-public class DebugLogBufferViewController: UIViewController {
-    @IBOutlet var textView: UITextView!
-    public var filteredLogBuffer: FilteredLogBuffer?
+open class CardinalLogBufferViewController: UIViewController {
+    open let textView = UITextView()
+    open var logBuffer: CardinalLogBuffer?
 
-    public override func viewDidLoad() {
+    // MARK: - lifecycle
+
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItems = [
@@ -38,12 +40,20 @@ public class DebugLogBufferViewController: UIViewController {
             UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clear)),
         ]
 
-        if let filteredLogBuffer = filteredLogBuffer {
-            textView.text = filteredLogBuffer.buffer.reversed().joined(separator: "\n")
+        view.addSubview(textView)
+        textView.addConstraints([
+            textView.topAnchor.constraint(equalTo: view.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        ])
+
+        if let logBuffer = logBuffer {
+            textView.text = logBuffer.buffer.reversed().joined(separator: "\n")
         }
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if let nvc = navigationController, nvc.viewControllers.count == 1 {
@@ -51,23 +61,23 @@ public class DebugLogBufferViewController: UIViewController {
         }
     }
 
-    // MARK: - private methods
+    // MARK: - open methods
 
     @objc
-    private func dismissSelf() {
+    open func dismissSelf() {
         dismiss(animated: true, completion: nil)
     }
 
     @objc
-    private func copyData() {
+    open func copyData() {
         if !textView.text.isEmpty {
             UIPasteboard.general.string = textView.text
         }
     }
 
     @objc
-    private func clear() {
+    open func clear() {
         textView.text = ""
-        filteredLogBuffer?.buffer.removeAll()
+        logBuffer?.buffer.removeAll()
     }
 }

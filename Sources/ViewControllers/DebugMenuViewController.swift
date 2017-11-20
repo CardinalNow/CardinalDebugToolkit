@@ -1,5 +1,5 @@
 //
-//  DebugViewController.swift
+//  DebugMenuViewController.swift
 //  CardinalDebugToolkit
 //
 //  Copyright (c) 2017 Cardinal Solutions (https://www.cardinalsolutions.com/)
@@ -26,9 +26,9 @@
 import Foundation
 import UIKit
 
-/// Types adopting the `DebugViewControllerDelegate` protocol can be used to handle
-/// user interactions with items that are shown in the Debug view.
-public protocol DebugViewControllerDelegate: class {
+/// Classes adopting this protocol can be used to handle
+/// user interactions with items that are shown in the Debug menu.
+public protocol DebugMenuDelegate: class {
     /// This method is called when an item of type DebugMultiChoiceItem is selected.
     func changedMultiChoice(withId id: String, inSectionWithId sectionId: String, to isOn: Bool)
     /// This method is called when an item of type DebugItem and Kind picker has its value changed.
@@ -45,28 +45,46 @@ public protocol DebugViewControllerDelegate: class {
     ///   - NSAttributedString
     ///   - String
     func selectedAction(withId id: String) -> Any?
+
+    func logFileUrls() -> [URL]
 }
 
 /// Responsible for displaying the debug interface as defined by section property.
-public class DebugViewController: UITableViewController {
-    /// Delegate object that handles all user interactions with sections and items.
-    /// This property retains object assigned to it.
-    public var delegate: DebugViewControllerDelegate?
+open class DebugMenuViewController: UITableViewController {
+    /// Delegate object that handles user interactions with sections and items.
+    open weak var delegate: DebugMenuDelegate?
     /// The user-defined sections that make up the debug interface.
-    public var sections: [DebugMenuSection] = []
+    open var sections: [DebugMenuSection] = []
     /// Determines whether built-in tools will be added to the generated menu.
-    public var showBuiltInTools = true
+    open var showBuiltInTools = true
 
-    // MARK: - class methods
+    // MARK: - initializer
 
-    /// Create an instance of this view controller.
-    public static func newInstance() -> DebugViewController {
-        return DebugToolkitStoryboard.debugViewController()
+    public init() {
+        super.init(style: .grouped)
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 
     // MARK: - lifecycle
 
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+
+        extendedLayoutIncludesOpaqueBars = true
+
+        let bundle = DebugToolkitStoryboard.bundle()
+        tableView.register(UINib(nibName: "DebugMenuActionCell", bundle: bundle), forCellReuseIdentifier: "actionCell")
+        tableView.register(UINib(nibName: "DebugMenuInfoCell", bundle: bundle), forCellReuseIdentifier: "infoCell")
+        tableView.register(UINib(nibName: "DebugMenuPickerCell", bundle: bundle), forCellReuseIdentifier: "pickerCell")
+        tableView.register(UINib(nibName: "DebugMenuSelectionCell", bundle: bundle), forCellReuseIdentifier: "selectionCell")
+        tableView.register(UINib(nibName: "DebugMenuStepperCell", bundle: bundle), forCellReuseIdentifier: "stepperCell")
+        tableView.register(UINib(nibName: "DebugMenuToggleCell", bundle: bundle), forCellReuseIdentifier: "toggleCell")
+    }
+
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if let nvc = navigationController, nvc.viewControllers.count == 1 {
@@ -77,7 +95,7 @@ public class DebugViewController: UITableViewController {
     // MARK: - public methods
 
     /// Call this method after updating the sections property to update the interface.
-    public func reloadSections() {
+    open func reloadSections() {
         guard isViewLoaded else { return }
 
         tableView.reloadData()
@@ -89,15 +107,14 @@ public class DebugViewController: UITableViewController {
     private func dismissSelf() {
         dismiss(animated: true, completion: nil)
     }
-}
 
-// MARK: - UITableViewDataSource
-public extension DebugViewController {
-    public override func numberOfSections(in tableView: UITableView) -> Int {
+    // MARK: - UITableViewDataSource
+
+    open override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count + (showBuiltInTools ? 1 : 0)
     }
 
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showBuiltInTools && section == sections.count {
             return 3
         }
@@ -105,7 +122,7 @@ public extension DebugViewController {
         return sections[section].items.count
     }
 
-    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    open override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if showBuiltInTools && section == sections.count {
             return nil
         }
@@ -113,7 +130,7 @@ public extension DebugViewController {
         return sections[section].title
     }
 
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item: DebugMenuItem
         if showBuiltInTools && indexPath.section == sections.count {
             if indexPath.row == 0 {
@@ -175,11 +192,10 @@ public extension DebugViewController {
 
         return returnedCell
     }
-}
 
-// MARK: - UITableViewDelegate
-public extension DebugViewController {
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // MARK: - UITableViewDelegate
+
+    open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
 
         if showBuiltInTools && indexPath.section == sections.count {
@@ -234,7 +250,7 @@ public extension DebugViewController {
             } else if let _ = item as? DebugMenuStepperItem {
 
             } else if let subSectionItem = item as? DebugMenuSubSectionItem {
-                let vc = DebugToolkitStoryboard.debugViewController()
+                let vc = DebugToolkitStoryboard.menuViewController()
                 vc.delegate = delegate
                 vc.showBuiltInTools = false
                 vc.sections = subSectionItem.sections

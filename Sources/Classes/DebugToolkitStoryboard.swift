@@ -27,7 +27,7 @@ import Foundation
 
 public struct DebugToolkitStoryboard {
     private enum StoryboardIdentifier: String {
-        case debugViewController
+        case debugMenuViewController
         case logListViewController
         case logViewController
         case keychainListViewController
@@ -38,12 +38,8 @@ public struct DebugToolkitStoryboard {
         case userDefaultsScopeListViewController
     }
 
-    public static func debugViewController() -> DebugViewController {
-        return DebugToolkitStoryboard.newInstance().instantiateInitialViewController() as! DebugViewController
-    }
-
-    public static func logBufferViewController() -> DebugLogBufferViewController {
-        return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.debugLogBufferViewController.rawValue) as! DebugLogBufferViewController
+    public static func menuViewController() -> DebugMenuViewController {
+        return DebugToolkitStoryboard.newInstance().instantiateInitialViewController() as! DebugMenuViewController
     }
 
     public static func keychainItemViewController() -> DebugKeychainItemViewController {
@@ -75,14 +71,18 @@ public struct DebugToolkitStoryboard {
     }
 
     public static func newInstance() -> UIStoryboard {
+        return UIStoryboard(name: "Debug", bundle: DebugToolkitStoryboard.bundle())
+    }
+
+    public static func bundle() -> Bundle {
         let resourceBundle: Bundle
         // Cocoapods
         if let frameworkBundle = Bundle(identifier: "org.cocoapods.CardinalDebugToolkit") {
-            resourceBundle = Bundle(url: frameworkBundle.url(forResource: "CardinalDebugToolkit-Storyboards", withExtension: "bundle")!)!
+            resourceBundle = Bundle(url: frameworkBundle.url(forResource: "CardinalDebugToolkit-Resources", withExtension: "bundle")!)!
         } else {
             resourceBundle = Bundle(identifier: "com.cardinalsolutions.CardinalDebugToolkit")!
         }
 
-        return UIStoryboard(name: "Debug", bundle: resourceBundle)
+        return resourceBundle
     }
 }

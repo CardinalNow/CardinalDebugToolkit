@@ -34,6 +34,8 @@ public class DebugLogListViewController: UITableViewController {
 
         return formatter
     }()
+    internal weak var delegate: DebugMenuDelegate?
+
     // MARK: - lifecycle
 
     public override func viewDidLoad() {
@@ -43,7 +45,7 @@ public class DebugLogListViewController: UITableViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        logFileURLs = Log.consoleLogFileURLs().reversed()
+        logFileURLs = delegate?.logFileUrls() ?? []
         tableView.reloadData()
     }
 }

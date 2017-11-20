@@ -29,7 +29,7 @@ import UIKit
 public class DebugKeychainListViewController: UITableViewController {
     // MARK: - lifecycle
 
-    private var sectionTitles: [String] = []
+    private var sectionTypes: [ItemClass] = []
     public var sections: [[[String: Any]]] = []
 
     public override func viewDidLoad() {
@@ -38,7 +38,7 @@ public class DebugKeychainListViewController: UITableViewController {
         for itemClass in [ItemClass.certificate, ItemClass.genericPassword, ItemClass.identity, ItemClass.internetPassword, ItemClass.key] {
             let items = Keychain.allItems(forItemClass: itemClass)
             if !items.isEmpty {
-                sectionTitles.append(itemClass.description)
+                sectionTypes.append(itemClass)
                 sections.append(items)
             }
         }
@@ -56,23 +56,30 @@ public extension DebugKeychainListViewController {
     }
 
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
+        return sectionTypes[section].description
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = sections[indexPath.section][indexPath.row]
+        let sectionType = sectionTypes[indexPath.section]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "keychainEntryCell", for: indexPath)
 
         var title: [String] = []
-        for key in ["account", "generic"] {
-            if let value = item[key] as? String {
-                if !value.isEmpty {
-                    title.append(value)
-                }
-            } else if let valueData = item[key] as? Data, let value = String(data: valueData, encoding: .utf8) {
-                if !value.isEmpty {
-                    title.append(value)
+        if sectionType == .key {
+            if let value = item["label"] as? String, !value.isEmpty {
+                title.append(value)
+            }
+        } else {
+            for key in ["generic", "account"] {
+                if let value = item[key] as? String {
+                    if !value.isEmpty, !title.contains(value) {
+                        title.append(value)
+                    }
+                } else if let valueData = item[key] as? Data, let value = String(data: valueData, encoding: .utf8) {
+                    if !value.isEmpty, !title.contains(value) {
+                        title.append(value)
+                    }
                 }
             }
         }

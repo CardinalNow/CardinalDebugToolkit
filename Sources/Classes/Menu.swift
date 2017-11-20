@@ -106,13 +106,29 @@ public class DebugMenuPickerItem: DebugMenuItem {
 }
 
 public class DebugMenuStepperItem: DebugMenuItem {
-    public var value: Double
+    public enum ToggleType {
+        case normal(Double)
+        case userDefault(String)
+    }
+    public var toggleType: ToggleType
+
     public let min: Double
     public let max: Double
     public let step: Double
 
     public init(id: String, title: String, value: Double, min: Double, max: Double, step: Double) {
-        self.value = value
+        self.toggleType = .normal(value)
+
+        self.min = min
+        self.max = max
+        self.step = step
+
+        super.init(id: id, title: title)
+    }
+
+    public init(id: String, title: String, userDefaultKey: String, min: Double, max: Double, step: Double) {
+        self.toggleType = .userDefault(userDefaultKey)
+
         self.min = min
         self.max = max
         self.step = step
