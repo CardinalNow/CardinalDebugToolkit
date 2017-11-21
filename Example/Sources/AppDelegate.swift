@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         try? CardinalLogger.pruneConsoleLogFiles(maxNum: 4)
 
-        let _ = CardinalLogger.startLoggingConsoleToFile()
+        CardinalLogger.startLoggingConsoleToFile()
         NSLog("test")
 
         logger.logBuffers.append(CardinalLogBuffer(tag: "test"))
@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 class MyDebugOveralayDelegate: DebugOverlayDelegate {
-    var debugOverlayActionItems: [DebugOverlayActionItem] {
+    func actionItemsForDebugOveray(_ overlay: DebugOverlay) -> [DebugOverlayActionItem] {
         return [
             DebugOverlayActionItem(id: "filteredLog", title: "Show log buffer")
         ]

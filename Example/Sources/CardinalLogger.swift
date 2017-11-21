@@ -61,6 +61,7 @@ open class CardinalLogger {
         }
     }
 
+    @discardableResult
     open class func startLoggingConsoleToFile() -> Bool {
         guard let libDir = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first else {
             return false
@@ -81,9 +82,9 @@ open class CardinalLogger {
         let logFileName = dateFormatter.string(from: Date())
         let logFileURL = logDirURL.appendingPathComponent("\(logFileName).log", isDirectory: false)
 
-        freopen(logFileURL.path.cString(using: .ascii), "a+", stderr)
+        let result = freopen(logFileURL.path.cString(using: .ascii), "a+", stderr)
 
-        return true
+        return (result != nil)
     }
 
     open class func consoleLogFileURLs() -> [URL] {

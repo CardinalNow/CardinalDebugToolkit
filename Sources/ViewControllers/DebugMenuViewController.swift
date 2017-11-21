@@ -259,7 +259,7 @@ open class DebugMenuViewController: UITableViewController, DebugMenuDelegate {
             } else if let _ = item as? DebugMenuStepperItem {
 
             } else if let subSectionItem = item as? DebugMenuSubSectionItem {
-                let vc = DebugToolkitStoryboard.menuViewController()
+                let vc = DebugMenuViewController()
                 vc.delegate = delegate
                 vc.showBuiltInTools = false
                 vc.sections = subSectionItem.sections

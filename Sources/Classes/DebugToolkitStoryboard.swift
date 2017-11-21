@@ -38,10 +38,6 @@ public struct DebugToolkitStoryboard {
         case userDefaultsScopeListViewController
     }
 
-    public static func menuViewController() -> DebugMenuViewController {
-        return DebugToolkitStoryboard.newInstance().instantiateInitialViewController() as! DebugMenuViewController
-    }
-
     public static func keychainItemViewController() -> DebugKeychainItemViewController {
         return DebugToolkitStoryboard.newInstance().instantiateViewController(withIdentifier: StoryboardIdentifier.keychainItemViewController.rawValue) as! DebugKeychainItemViewController
     }
