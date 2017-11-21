@@ -15,11 +15,11 @@ public enum StringRepresentation {
 public func stringRepresentation(value: Any, fullDescription: Bool) -> StringRepresentation {
     let decodedValue: Any
     var isUnarchived = false
-    if let data = value as? Data {
+    if let data = value as? Data, !data.isEmpty {
         if let unarchivedObject = NSKeyedUnarchiver.unarchiveObject(with: data) {
             isUnarchived = true
             decodedValue = unarchivedObject
-        } else if !data.isEmpty, let string = String(data: data, encoding: .utf8) {
+        } else if let string = String(data: data, encoding: .utf8) {
             decodedValue = string
         } else {
             decodedValue = data

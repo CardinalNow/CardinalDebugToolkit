@@ -19,7 +19,7 @@ public struct DebugOverlayActionItem {
 }
 
 public protocol DebugOverlayDelegate: class {
-    func actionItemsForDebugOveray(_ overlay: DebugOverlay) -> [DebugOverlayActionItem]
+    func actionItemsForDebugOverlay(_ overlay: DebugOverlay) -> [DebugOverlayActionItem]
     func debugOverlay(_ overlay: DebugOverlay, selectedActionWithId id: String) -> UIViewController?
     func debugOverlayShouldDisplayHideAction(_ overlay: DebugOverlay) -> Bool
 }

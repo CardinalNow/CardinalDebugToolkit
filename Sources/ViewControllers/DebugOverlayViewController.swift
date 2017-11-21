@@ -130,7 +130,7 @@ public class DebugOverlayViewController: UIViewController {
         guard let debugOverlay = debugOverlay, let delegate = debugOverlay.delegate else { return }
 
         let vc = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        for action in delegate.actionItemsForDebugOveray(debugOverlay) {
+        for action in delegate.actionItemsForDebugOverlay(debugOverlay) {
             vc.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
                 let vc = delegate.debugOverlay(debugOverlay, selectedActionWithId: action.id)
                 if let vc = vc {
