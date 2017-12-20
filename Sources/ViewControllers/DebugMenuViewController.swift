@@ -79,6 +79,9 @@ open class DebugMenuViewController: UITableViewController, DebugMenuDelegate {
 
         extendedLayoutIncludesOpaqueBars = true
 
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         let bundle = DebugToolkitStoryboard.bundle()
         tableView.register(UINib(nibName: "DebugMenuActionCell", bundle: bundle), forCellReuseIdentifier: "actionCell")
         tableView.register(UINib(nibName: "DebugMenuInfoCell", bundle: bundle), forCellReuseIdentifier: "infoCell")
