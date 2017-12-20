@@ -42,7 +42,7 @@ open class CardinalLogBufferViewController: UIViewController {
 
         textView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(textView)
-        view.addConstraints([
+        NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: view.topAnchor),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
