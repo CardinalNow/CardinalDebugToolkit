@@ -72,11 +72,21 @@ public class DebugMenuPickerCell: DebugMenuBaseCell {
         pickerView.delegate = self
     }
 
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        resignFirstResponder()
+        itemId = ""
+        values.removeAll()
+        pickerView.reloadAllComponents()
+    }
+
     // MARK: - public methods
 
     public func configure(withItemId itemId: String, title: String, selectedIndex: Int, values: [String]) {
         self.itemId = itemId
         self.values = values
+        pickerView.reloadAllComponents()
 
         textLabel?.text = title
         if selectedIndex < values.count {
