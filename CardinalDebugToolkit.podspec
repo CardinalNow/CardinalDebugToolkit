@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "CardinalDebugToolkit"
-  s.version = "2.0.1"
+  s.version = "2.0.2"
   s.summary = "iOS debug toolkit"
   s.description = <<-DESC
 iOS debug toolkit that lets you build a comprehensive debug panel to access from inside an app.
