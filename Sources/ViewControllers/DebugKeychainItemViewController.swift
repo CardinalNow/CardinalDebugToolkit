@@ -24,6 +24,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class DebugKeychainItemViewController: UITableViewController {
     public var item: [String: Any] = [:]

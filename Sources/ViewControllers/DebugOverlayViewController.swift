@@ -24,6 +24,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class DebugOverlayViewController: UIViewController {
     internal weak var debugOverlay: DebugOverlay?

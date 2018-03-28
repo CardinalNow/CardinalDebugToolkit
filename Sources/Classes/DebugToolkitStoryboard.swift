@@ -24,6 +24,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct DebugToolkitStoryboard {
     private enum StoryboardIdentifier: String {
