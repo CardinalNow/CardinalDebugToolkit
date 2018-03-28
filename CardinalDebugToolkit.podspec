@@ -15,4 +15,6 @@ DESC
   s.resource_bundles = {
     'CardinalDebugToolkit-Resources' => ['Storyboards/**/*.{storyboard,xib}', 'Sources/Views/**/*.xib']
   }
+  s.swift_version = "4.0"
+  s.static_framework = true
 end
