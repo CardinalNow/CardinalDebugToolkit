@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" textLabel="BtR-Lp-MNl" detailTextLabel="rFN-I0-wNu" style="IBUITableViewCellStyleValue1" id="VfF-aa-7yy">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" id="0pG-8y-hrG" customClass="DebugMenuInfoCell" customModule="CardinalDebugToolkit">
             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VfF-aa-7yy" id="ADk-5i-bGv">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0pG-8y-hrG" id="mj8-oR-Y35">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="BtR-Lp-MNl">
-                        <rect key="frame" x="20" y="12" width="36.5" height="20.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fvW-do-DR0">
+                        <rect key="frame" x="20" y="10.5" width="324" height="22"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="rFN-I0-wNu">
-                        <rect key="frame" x="350" y="12" width="44" height="20.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hSV-mF-nsX">
+                        <rect key="frame" x="352" y="10.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="hSV-mF-nsX" secondAttribute="trailing" id="8ef-ig-18Y"/>
+                    <constraint firstAttribute="bottom" secondItem="fvW-do-DR0" secondAttribute="bottom" constant="11" id="EPN-vo-7WI"/>
+                    <constraint firstItem="hSV-mF-nsX" firstAttribute="leading" secondItem="fvW-do-DR0" secondAttribute="trailing" constant="8" id="EUR-2f-sw8"/>
+                    <constraint firstItem="hSV-mF-nsX" firstAttribute="centerY" secondItem="mj8-oR-Y35" secondAttribute="centerY" id="hNU-c2-ChB"/>
+                    <constraint firstItem="fvW-do-DR0" firstAttribute="leading" secondItem="mj8-oR-Y35" secondAttribute="leadingMargin" id="wtF-4n-ZqA"/>
+                    <constraint firstItem="fvW-do-DR0" firstAttribute="top" secondItem="mj8-oR-Y35" secondAttribute="top" constant="11" id="xUB-nL-CAy"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="titleLabel" destination="fvW-do-DR0" id="Awh-07-Sap"/>
+                <outlet property="titleLabelLeadingConstraint" destination="wtF-4n-ZqA" id="JSW-Np-kE1"/>
+                <outlet property="valueLabel" destination="hSV-mF-nsX" id="LfK-Vu-CKR"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

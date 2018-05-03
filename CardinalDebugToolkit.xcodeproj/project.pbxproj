@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE3CA26F209B86BD0086C150 /* DebugMenuInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CA26E209B86BD0086C150 /* DebugMenuInfoCell.swift */; };
 		BE4015341FACB55200E706E9 /* CardinalDebugToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE40152A1FACB55100E706E9 /* CardinalDebugToolkit.framework */; };
 		BE4015391FACB55200E706E9 /* CardinalDebugToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4015381FACB55200E706E9 /* CardinalDebugToolkitTests.swift */; };
 		BE40153B1FACB55200E706E9 /* CardinalDebugToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = BE40152D1FACB55100E706E9 /* CardinalDebugToolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE3CA26E209B86BD0086C150 /* DebugMenuInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuInfoCell.swift; sourceTree = "<group>"; };
 		BE40152A1FACB55100E706E9 /* CardinalDebugToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CardinalDebugToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE40152D1FACB55100E706E9 /* CardinalDebugToolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardinalDebugToolkit.h; sourceTree = "<group>"; };
 		BE40152E1FACB55100E706E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				BE4015481FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift */,
 				BE74EF231FBF8C14008C69E8 /* DebugMenuActionCell.xib */,
 				BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */,
+				BE3CA26E209B86BD0086C150 /* DebugMenuInfoCell.swift */,
 				BE74EF271FBF8C44008C69E8 /* DebugMenuInfoCell.xib */,
 				BE40154A1FACB67800E706E9 /* DebugMenuPickerCell.swift */,
 				BE74EF1D1FBF8B94008C69E8 /* DebugMenuPickerCell.xib */,
@@ -373,6 +376,7 @@
 				BE4015611FACB67800E706E9 /* DebugMenuToggleCell.swift in Sources */,
 				BE40155D1FACB67800E706E9 /* DebugKeychainItemPropertyCell.swift in Sources */,
 				BE40155B1FACB67800E706E9 /* DebugToolkitStoryboard.swift in Sources */,
+				BE3CA26F209B86BD0086C150 /* DebugMenuInfoCell.swift in Sources */,
 				BE8A1F521FB4C0E6006394E8 /* Menu.swift in Sources */,
 				BE4015631FACB67800E706E9 /* DebugKeychainItemViewController.swift in Sources */,
 				BE4015681FACB67800E706E9 /* DebugOverlayViewController.swift in Sources */,

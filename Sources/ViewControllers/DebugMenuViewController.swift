@@ -158,9 +158,8 @@ open class DebugMenuViewController: UITableViewController, DebugMenuDelegate {
 
             returnedCell = cell
         } else if let infoItem = item as? DebugMenuInfoItem {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
-            cell.textLabel?.text = infoItem.title
-            cell.detailTextLabel?.text = infoItem.info
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! DebugMenuInfoCell
+            cell.configure(withTitle: infoItem.title, info: infoItem.info)
 
             returnedCell = cell
         } else if let multiChoiceItem = item as? DebugMenuMultiChoiceItem {
@@ -243,15 +242,8 @@ open class DebugMenuViewController: UITableViewController, DebugMenuDelegate {
                 default:
                     break
                 }
-            } else if let infoItem = item as? DebugMenuInfoItem {
-                if let copyString = infoItem.info {
-                    UIPasteboard.general.string = copyString
-                    // TODO: do this in a way that's compatible with cell reuse
-                    tableView.cellForRow(at: indexPath)?.detailTextLabel?.text = "Copied"
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                        tableView.reloadRows(at: [indexPath], with: .automatic)
-                    })
-                }
+            } else if let _ = item as? DebugMenuInfoItem {
+                // cell handles this directly
             } else if let multiChoiceItem = item as? DebugMenuMultiChoiceItem {
                 let section = sections[indexPath.section]
                 multiChoiceItem.isSelected = !multiChoiceItem.isSelected
