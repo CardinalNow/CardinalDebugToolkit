@@ -5,16 +5,15 @@
 //  Created by Robin Kunde on 11/3/17.
 //
 
-#import <CardinalDebugToolkit/CardinalDebugToolkit-Swift.h>
-#import <Foundation/Foundation.h>
+#import "NSUserDefaultsHelper.h"
 
-NSArray<NSString*>* persistentUserDefaultsDomains() {
+NSArray<NSString*>* _Nonnull persistentUserDefaultsDomains(void) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return NSUserDefaults.standardUserDefaults.persistentDomainNames;
 #pragma clang diagnostic pop
 }
 
-NSArray<NSString*>* volatileUserDefaultsDomains() {
+NSArray<NSString*>* _Nonnull volatileUserDefaultsDomains(void) {
     return NSUserDefaults.standardUserDefaults.volatileDomainNames;
 }
