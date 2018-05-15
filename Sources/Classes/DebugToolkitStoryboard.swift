@@ -73,9 +73,13 @@ public struct DebugToolkitStoryboard {
 
     public static func bundle() -> Bundle {
         let resourceBundle: Bundle
-        // Cocoapods
-        if let frameworkBundle = Bundle(identifier: "org.cocoapods.CardinalDebugToolkit") {
+        // Static lib
+        if let mainBundleResourceURL = Bundle.main.url(forResource: "CardinalDebugToolkit-Resources", withExtension: "bundle") {
+            resourceBundle = Bundle(url: mainBundleResourceURL)!
+        // Dynamic framework
+        } else if let frameworkBundle = Bundle(identifier: "org.cocoapods.CardinalDebugToolkit") {
             resourceBundle = Bundle(url: frameworkBundle.url(forResource: "CardinalDebugToolkit-Resources", withExtension: "bundle")!)!
+        // Example project
         } else {
             resourceBundle = Bundle(identifier: "com.cardinalsolutions.CardinalDebugToolkit")!
         }
