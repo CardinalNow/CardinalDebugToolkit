@@ -126,6 +126,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         self.deviceToken = deviceToken.reduce("", { $0 + String(format: "%02X", $1) })
     }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
+    }
 }
 
 class MyDebugOverlayDelegate: DebugOverlayDelegate {
