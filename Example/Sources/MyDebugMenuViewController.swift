@@ -54,7 +54,7 @@ class MyDebugMenuViewController: DebugMenuViewController {
                 DebugMenuMultiChoiceItem(id: "mc2", title: "Item 2", isSelected: multiChoice2Selected),
             ]),
             DebugMenuSection(id: "simpleData", title: "Simple Data (tap to copy)", items: [
-                DebugMenuInfoItem(id: "userId", title: "User ID", info: "0000001"),
+                DebugMenuInfoItem(id: "userId", title: "User ID", info: NSUUID().uuidString),
                 DebugMenuInfoItem(id: "pushToken", title: "APNS Device Token", info: deviceToken),
             ]),
             DebugMenuSection(id: "actions", title: "Actions", items: [
