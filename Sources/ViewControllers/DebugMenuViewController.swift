@@ -28,7 +28,7 @@ import UIKit
 
 /// Classes adopting this protocol can be used to handle
 /// user interactions with items that are shown in the Debug menu.
-public protocol DebugMenuDelegate: class {
+public protocol DebugMenuDelegate: AnyObject {
     /// This method is called when an item of type DebugMultiChoiceItem is selected.
     func debugMenu(_ debugMenu: DebugMenuViewController, changedMultiChoiceWithId id: String, inSectionWithId sectionId: String, to isOn: Bool)
     /// This method is called when an item of type DebugItem and Kind picker has its value changed.
