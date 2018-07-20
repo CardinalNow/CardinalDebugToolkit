@@ -45,6 +45,26 @@ public class DebugLogListViewController: UITableViewController {
         if let debugMenuViewController = debugMenuViewController {
             logFileURLs = delegate?.logFileUrlsForDebugMenu(debugMenuViewController) ?? []
         }
+
+        if !logFileURLs.isEmpty {
+            navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+            ]
+        }
+    }
+
+    // MARK: - private methods
+
+    @objc
+    private func share() {
+        let vc = UIActivityViewController(activityItems: logFileURLs, applicationActivities: nil)
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+        let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        vc.setValue("Log file from \(appDisplayName ?? appName ?? "") \(version ?? "") (\(build ?? ""))", forKey: "subject")
+
+        present(vc, animated: true, completion: nil)
     }
 }
 
