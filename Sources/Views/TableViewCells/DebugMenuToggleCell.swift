@@ -27,7 +27,7 @@ import Foundation
 import UIKit
 
 public class DebugMenuToggleCell: DebugMenuBaseCell {
-    @IBOutlet var toggleView: UISwitch!
+    private var toggleView = UISwitch()
 
     private var toggleItem: DebugMenuToggleItem?
 
@@ -38,6 +38,9 @@ public class DebugMenuToggleCell: DebugMenuBaseCell {
 
     public override func awakeFromNib() {
         super.awakeFromNib()
+
+        toggleView.addTarget(self, action: #selector(switchToggled(_:)), for: .primaryActionTriggered)
+        accessoryView = toggleView
     }
 
     public override func prepareForReuse() {
@@ -62,9 +65,10 @@ public class DebugMenuToggleCell: DebugMenuBaseCell {
         }
     }
 
-    // MARK: - IBActions
+    // MARK: - private methods
 
-    @IBAction func switchToggled(_ sender: UISwitch) {
+    @objc
+    private func switchToggled(_ sender: UISwitch) {
         guard let toggleItem = toggleItem else { return }
 
         switch toggleItem.toggleType {

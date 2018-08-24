@@ -1,52 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toggleCell" id="fL8-BL-ovT" customClass="DebugMenuToggleCell" customModule="CardinalDebugToolkit">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="toggleCell" textLabel="AuC-zZ-cHf" style="IBUITableViewCellStyleDefault" id="fL8-BL-ovT" customClass="DebugMenuToggleCell" customModule="CardinalDebugToolkit">
             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fL8-BL-ovT" id="ejO-Kw-Eno">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v3M-B1-4WB">
-                        <rect key="frame" x="20" y="11.5" width="317" height="21.5"/>
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AuC-zZ-cHf">
+                        <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UO-vr-nvX">
-                        <rect key="frame" x="345" y="11" width="51" height="22"/>
-                        <connections>
-                            <action selector="switchToggled:" destination="fL8-BL-ovT" eventType="primaryActionTriggered" id="y0W-fS-ok6"/>
-                        </connections>
-                    </switch>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="5UO-vr-nvX" firstAttribute="top" secondItem="ejO-Kw-Eno" secondAttribute="topMargin" id="2DG-bC-nOg"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="5UO-vr-nvX" secondAttribute="trailing" id="DcE-z1-W1n"/>
-                    <constraint firstItem="v3M-B1-4WB" firstAttribute="top" secondItem="ejO-Kw-Eno" secondAttribute="topMargin" id="KUj-q0-sVm"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="v3M-B1-4WB" secondAttribute="bottom" id="Ks8-3T-NvP"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="5UO-vr-nvX" secondAttribute="bottom" id="aAb-m0-igI"/>
-                    <constraint firstItem="v3M-B1-4WB" firstAttribute="leading" secondItem="ejO-Kw-Eno" secondAttribute="leadingMargin" id="haQ-ua-N7j"/>
-                    <constraint firstItem="5UO-vr-nvX" firstAttribute="leading" secondItem="v3M-B1-4WB" secondAttribute="trailing" constant="8" id="i2T-Ng-Mg0"/>
-                </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="titleLabel" destination="v3M-B1-4WB" id="H5C-pe-YBt"/>
-                <outlet property="titleLabelLeadingConstraint" destination="haQ-ua-N7j" id="Ofa-ZT-zqR"/>
-                <outlet property="toggleView" destination="5UO-vr-nvX" id="gNq-Wm-iHY"/>
-            </connections>
         </tableViewCell>
     </objects>
 </document>
