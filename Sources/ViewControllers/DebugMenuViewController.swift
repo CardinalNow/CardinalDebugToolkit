@@ -94,6 +94,8 @@ open class DebugMenuViewController: UITableViewController, DebugMenuDelegate {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+
         if let nvc = navigationController, nvc.viewControllers.count == 1 {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSelf))
         }
