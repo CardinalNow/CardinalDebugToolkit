@@ -27,7 +27,7 @@ import Foundation
 import UIKit
 
 open class CardinalLogBufferViewController: UIViewController {
-    open let textView = UITextView()
+    public let textView = UITextView()
     open var logBuffer: CardinalLogBuffer?
 
     // MARK: - lifecycle

@@ -28,7 +28,7 @@ import UIKit
 
 public class DebugMenuBaseCell: UITableViewCell {
     public override var textLabel: UILabel? {
-        return titleLabel
+        return titleLabel ?? super.textLabel
     }
 
     @IBOutlet var titleLabel: UILabel!
@@ -39,14 +39,17 @@ public class DebugMenuBaseCell: UITableViewCell {
     public override func awakeFromNib() {
         super.awakeFromNib()
 
+        textLabel?.adjustsFontSizeToFitWidth = true
+        textLabel?.minimumScaleFactor = 0.75
+
         if #available(iOS 11.0, *) {
-        } else {
+        } else if let titleLabelLeadingConstraint = titleLabelLeadingConstraint {
             titleLabelLeadingConstraint.isActive = false
 
             let leadingMargin: CGFloat = (UIScreen.main.bounds.width == 414.0) ? 20.0 : 16.0
             let constraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingMargin)
             constraint.isActive = true
-            titleLabelLeadingConstraint = constraint
+            self.titleLabelLeadingConstraint = constraint
 
             setNeedsLayout()
         }
