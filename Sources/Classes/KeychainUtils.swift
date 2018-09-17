@@ -50,6 +50,7 @@ internal final class Keychain {
         var translationDict: [String: String] = [
             AttributeAccessControl: "accessControl",
             AttributeAccessGroup: "accessGroup",
+            AttributeAccessGroupToken: "accessGroupToken",
             AttributeAccessible: "accessible",
             AttributeAccount: "account",
             AttributeApplicationLabel: "applicationLabel",
@@ -101,9 +102,6 @@ internal final class Keychain {
             ValueData: "value",
         ]
 
-        if #available(iOS 10.0, *) {
-            translationDict[AttributeAccessGroupToken] = "accessGroupToken"
-        }
         if #available(iOS 11.0, *) {
             translationDict[AttributePersistantReference] = "persistantReference"
             translationDict[AttributePersistentReference] = "persistentReference"
@@ -160,7 +158,6 @@ private let KeychainItemClass = String(kSecClass)
 //private let AttributeAccess = String(kSecAttrAccess)
 private let AttributeAccessControl = String(kSecAttrAccessControl)
 private let AttributeAccessGroup = String(kSecAttrAccessGroup)
-@available(iOS 10.0, *)
 private let AttributeAccessGroupToken = String(kSecAttrAccessGroupToken)
 private let AttributeAccessible = String(kSecAttrAccessible)
 private let AttributeAccount = String(kSecAttrAccount)
@@ -229,7 +226,6 @@ private let KeyClassSymmetric = String(kSecAttrKeyClassSymmetric)
 //private let KeyTypeDSA = String(kSecAttrKeyTypeDSA)
 private let KeyTypeEC = String(kSecAttrKeyTypeEC)
 //private let KeyTypeECDSA = String(kSecAttrKeyTypeECDSA)
-@available(iOS 10.0, *)
 private let KeyTypeECSECPrimeRandom = String(kSecAttrKeyTypeECSECPrimeRandom)
 //private let KeyTypeRC4 = String(kSecAttrKeyTypeRC4)
 //private let KeyTypeRC2 = String(kSecAttrKeyTypeRC2)
@@ -520,7 +516,7 @@ internal enum Accessibility {
     case whenUnlocked
     case afterFirstUnlock
     case always
-    @available(iOS 8.0, OSX 10.10, *)
+    @available(OSX 10.10, *)
     case whenPasscodeSetThisDeviceOnly
     case whenUnlockedThisDeviceOnly
     case afterFirstUnlockThisDeviceOnly

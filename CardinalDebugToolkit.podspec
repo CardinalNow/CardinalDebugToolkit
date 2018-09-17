@@ -9,7 +9,7 @@ DESC
   s.screenshots = "https://github.com/CardinalNow/CardinalDebugToolkit/raw/master/Documentation/Assets/screenshot.png"
   s.license = "MIT"
   s.author = { "Robin Kunde" => "rkunde@cardinalsolutions.com" }
-  s.platform = :ios, "9.0"
+  s.platform = :ios, "10.0"
   s.source = { :git => "https://github.com/CardinalNow/CardinalDebugToolkit.git", :tag => "#{s.version}" }
   s.source_files = "Sources/**/*.{h,m,swift}"
   s.resource_bundles = {

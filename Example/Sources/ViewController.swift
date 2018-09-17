@@ -37,15 +37,11 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-                (granted, error) in
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
             }
-        } else {
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: nil))
         }
     }
 

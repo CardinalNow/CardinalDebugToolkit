@@ -6,8 +6,9 @@
 //  Copyright © 2017 Cardinal Solutions. All rights reserved.
 //
 
-import Foundation
 import CardinalDebugToolkit
+import Foundation
+import UserNotifications
 
 class MyDebugMenuViewController: DebugMenuViewController {
     override func viewDidLoad() {
@@ -99,9 +100,12 @@ class MyDebugMenuViewController: DebugMenuViewController {
         case "crash":
             abort()
         case "requestPush":
-            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(settings)
-            UIApplication.shared.registerForRemoteNotifications()
+            let center  = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+                if error == nil{
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
         case "subSectionAction1", "subSectionAction2", "subSectionAction3", "subSectionAction4":
             break
         case "viewString":
