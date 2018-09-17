@@ -40,7 +40,7 @@ public class DebugOverlayWindow: UIWindow {
         super.init(frame: frame)
 
         self.rootViewController = self.overlayViewController
-        self.windowLevel = UIWindowLevelStatusBar + 100.0
+        self.windowLevel = UIWindow.Level.statusBar + 100.0
         self.backgroundColor = UIColor.clear
     }
 
