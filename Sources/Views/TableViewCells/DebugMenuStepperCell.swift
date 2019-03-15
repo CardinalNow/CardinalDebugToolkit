@@ -67,6 +67,10 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
         self.stepperItem = stepperItem
         textLabel?.text = stepperItem.title
 
+        stepper.minimumValue = stepperItem.min
+        stepper.maximumValue = stepperItem.max
+        stepper.stepValue = stepperItem.step
+
         switch stepperItem.toggleType {
         case .normal(let value):
             stepper.value = value
@@ -75,10 +79,6 @@ public class DebugMenuStepperCell: DebugMenuBaseCell {
         }
 
         valueTextField.text = String(stepper.value)
-
-        stepper.minimumValue = stepperItem.min
-        stepper.maximumValue = stepperItem.max
-        stepper.stepValue = stepperItem.step
     }
 
     // MARK: - IBActions
