@@ -15,3 +15,4 @@ FOUNDATION_EXPORT double CardinalDebugToolkitVersionNumber;
 FOUNDATION_EXPORT const unsigned char CardinalDebugToolkitVersionString[];
 
 #import "NSUserDefaultsHelper.h"
+#import "DebuggerHelper.h"

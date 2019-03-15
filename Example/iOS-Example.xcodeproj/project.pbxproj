@@ -17,33 +17,8 @@
 		BE49E8B21EF991BB00210F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE49E8B11EF991BB00210F44 /* Assets.xcassets */; };
 		BE49E8B51EF991BB00210F44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE49E8B31EF991BB00210F44 /* LaunchScreen.storyboard */; };
 		BE64168B1FC337EF00496610 /* MyDebugMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE64168A1FC337EF00496610 /* MyDebugMenuViewController.swift */; };
-		BEE6F8901FACD7D400288A02 /* CardinalDebugToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE6F88D1FACD7BE00288A02 /* CardinalDebugToolkit.framework */; };
-		BEE6F8911FACD7D400288A02 /* CardinalDebugToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEE6F88D1FACD7BE00288A02 /* CardinalDebugToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEAB0FB921669B48000945B5 /* CardinalDebugToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAB0FB821669B48000945B5 /* CardinalDebugToolkit.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BEE6F88C1FACD7BE00288A02 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BEE6F8871FACD7BE00288A02 /* CardinalDebugToolkit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BE40152A1FACB55100E706E9;
-			remoteInfo = CardinalDebugToolkit;
-		};
-		BEE6F88E1FACD7BE00288A02 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BEE6F8871FACD7BE00288A02 /* CardinalDebugToolkit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BE4015331FACB55200E706E9;
-			remoteInfo = CardinalDebugToolkitTests;
-		};
-		BEE6F8921FACD7D400288A02 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BEE6F8871FACD7BE00288A02 /* CardinalDebugToolkit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BE4015291FACB55100E706E9;
-			remoteInfo = CardinalDebugToolkit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BEE6F8941FACD7D400288A02 /* Embed Frameworks */ = {
@@ -52,7 +27,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BEE6F8911FACD7D400288A02 /* CardinalDebugToolkit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +47,7 @@
 		BE49E8B61EF991BB00210F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE64168A1FC337EF00496610 /* MyDebugMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDebugMenuViewController.swift; sourceTree = "<group>"; };
 		BE8A1F581FB642EB006394E8 /* iOS-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS-Example.entitlements"; sourceTree = "<group>"; };
-		BEE6F8871FACD7BE00288A02 /* CardinalDebugToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CardinalDebugToolkit.xcodeproj; path = ../CardinalDebugToolkit.xcodeproj; sourceTree = "<group>"; };
+		BEAB0FB821669B48000945B5 /* CardinalDebugToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CardinalDebugToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEE6F8901FACD7D400288A02 /* CardinalDebugToolkit.framework in Frameworks */,
+				BEAB0FB921669B48000945B5 /* CardinalDebugToolkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +68,7 @@
 				BE8A1F581FB642EB006394E8 /* iOS-Example.entitlements */,
 				BE49E8A91EF991BB00210F44 /* Sources */,
 				BE49E8A81EF991BB00210F44 /* Products */,
-				BEE6F8871FACD7BE00288A02 /* CardinalDebugToolkit.xcodeproj */,
+				BEAB0FB721669B48000945B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,13 +98,12 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		BEE6F8881FACD7BE00288A02 /* Products */ = {
+		BEAB0FB721669B48000945B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BEE6F88D1FACD7BE00288A02 /* CardinalDebugToolkit.framework */,
-				BEE6F88F1FACD7BE00288A02 /* CardinalDebugToolkitTests.xctest */,
+				BEAB0FB821669B48000945B5 /* CardinalDebugToolkit.framework */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +121,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BEE6F8931FACD7D400288A02 /* PBXTargetDependency */,
 			);
 			name = "iOS-Example";
 			productName = CardinalDebugToolkitExample;
@@ -168,7 +140,7 @@
 					BE49E8A61EF991BB00210F44 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = GAQ2528ADM;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -189,35 +161,12 @@
 			mainGroup = BE49E89E1EF991BB00210F44;
 			productRefGroup = BE49E8A81EF991BB00210F44 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BEE6F8881FACD7BE00288A02 /* Products */;
-					ProjectRef = BEE6F8871FACD7BE00288A02 /* CardinalDebugToolkit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BE49E8A61EF991BB00210F44 /* iOS-Example */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BEE6F88D1FACD7BE00288A02 /* CardinalDebugToolkit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CardinalDebugToolkit.framework;
-			remoteRef = BEE6F88C1FACD7BE00288A02 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BEE6F88F1FACD7BE00288A02 /* CardinalDebugToolkitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CardinalDebugToolkitTests.xctest;
-			remoteRef = BEE6F88E1FACD7BE00288A02 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BE49E8A51EF991BB00210F44 /* Resources */ = {
@@ -248,14 +197,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BEE6F8931FACD7D400288A02 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CardinalDebugToolkit;
-			targetProxy = BEE6F8921FACD7D400288A02 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BE49E8AE1EF991BB00210F44 /* Main.storyboard */ = {
@@ -393,12 +334,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "iOS-Example.entitlements";
 				DEVELOPMENT_TEAM = GAQ2528ADM;
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cardinalsolutions.CardinalDebugToolkitExample-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -408,6 +351,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "iOS-Example.entitlements";
 				DEVELOPMENT_TEAM = GAQ2528ADM;
 				INFOPLIST_FILE = Sources/Info.plist;

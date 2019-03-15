@@ -39,6 +39,8 @@
 		BE8A1F521FB4C0E6006394E8 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A1F511FB4C0E6006394E8 /* Menu.swift */; };
 		BE8A1F551FB538F9006394E8 /* DebugMenuBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */; };
 		BE9A16F11FBA20E800E6F744 /* DebugOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A16F01FBA20E700E6F744 /* DebugOverlay.swift */; };
+		BEB6156E21E934380094B323 /* DebuggerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = BEB6156C21E934380094B323 /* DebuggerHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEB6156F21E934380094B323 /* DebuggerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB6156D21E934380094B323 /* DebuggerHelper.m */; };
 		BED145A51FACC4A6003EA3D8 /* StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */; };
 		BED145A71FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED145A61FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,8 @@
 		BE8A1F511FB4C0E6006394E8 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		BE8A1F541FB538F9006394E8 /* DebugMenuBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuBaseCell.swift; sourceTree = "<group>"; };
 		BE9A16F01FBA20E700E6F744 /* DebugOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOverlay.swift; sourceTree = "<group>"; };
+		BEB6156C21E934380094B323 /* DebuggerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebuggerHelper.h; sourceTree = "<group>"; };
+		BEB6156D21E934380094B323 /* DebuggerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebuggerHelper.m; sourceTree = "<group>"; };
 		BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRepresentation.swift; sourceTree = "<group>"; };
 		BED145A61FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUserDefaultItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +207,8 @@
 				BE4015721FACB6F600E706E9 /* NSUserDefaultsHelper.h */,
 				BE4015731FACB6F600E706E9 /* NSUserDefaultsHelper.m */,
 				BED145A41FACC4A6003EA3D8 /* StringRepresentation.swift */,
+				BEB6156C21E934380094B323 /* DebuggerHelper.h */,
+				BEB6156D21E934380094B323 /* DebuggerHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 			files = (
 				BE40153B1FACB55200E706E9 /* CardinalDebugToolkit.h in Headers */,
 				BE40157F1FACBA7E00E706E9 /* NSUserDefaultsHelper.h in Headers */,
+				BEB6156E21E934380094B323 /* DebuggerHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +377,7 @@
 				BED145A71FACC66B003EA3D8 /* DebugUserDefaultItemCell.swift in Sources */,
 				BE4015641FACB67800E706E9 /* DebugKeychainListViewController.swift in Sources */,
 				BE4015751FACB6F600E706E9 /* NSUserDefaultsHelper.m in Sources */,
+				BEB6156F21E934380094B323 /* DebuggerHelper.m in Sources */,
 				BE40155E1FACB67800E706E9 /* DebugOverlayWindow.swift in Sources */,
 				BE40155F1FACB67800E706E9 /* DebugMenuPickerCell.swift in Sources */,
 				BE8A1F551FB538F9006394E8 /* DebugMenuBaseCell.swift in Sources */,
